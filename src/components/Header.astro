@@ -1,26 +1,77 @@
 ---
+import '../styles/header.css';
 ---
+
 <header>
     <div class="nav-container">
-        <div class="header-top">
-            <div class="logo-contact">
-                <img src="/1000030683.webp" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo">
+        <!-- Logo on the left -->
+        <div class="logo-section">
+            <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo">
+        </div>
+        
+        <!-- Header content next to logo -->
+        <div class="header-content">
+            <!-- Top area with contact and slogan -->
+            <div class="header-top">
                 <div class="contact-info">
                     <i class="fas fa-phone"></i> +56 9 5409 9974
                 </div>
+                <p class="slogan">Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</p>
             </div>
-        </div>
-        <div class="header-bottom">
-            <p class="slogan">Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</p>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#quienes-somos">Quienes Somos</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#preguntas">Preguntas Frecuentes</a></li>
-                    <li><a href="#trabaja">Trabaja con Nosotros</a></li>
-                </ul>
-            </nav>
+            
+            <!-- Bottom area with navigation -->
+            <div class="header-bottom">
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul class="nav-menu" id="nav-menu">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#quienes-somos">Quienes Somos</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#preguntas">Preguntas Frecuentes</a></li>
+                        <li><a href="#trabaja">Trabaja con Nosotros</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </header>
+
+<script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                // Change icon based on menu state
+                const icon = menuToggle.querySelector('i');
+                if (icon) {
+                    if (navMenu.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+            
+            // Close menu when clicking on links
+            const menuLinks = navMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    const icon = menuToggle.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+    });
+</script>
