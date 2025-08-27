@@ -1,0 +1,84 @@
+---
+const testimonials = [
+    {
+        name: "Ana Martínez",
+        photo: "/testimonials/ana.jpg",
+        quote: "Gracias a StopCAE pude resolver mi situación y ahora puedo pensar en mi futuro sin preocupaciones."
+    },
+    {
+        name: "Carlos Rodríguez",
+        photo: "/testimonials/carlos.jpg",
+        quote: "El equipo legal me ayudó a entender mis opciones y encontrar la mejor solución para mi caso."
+    },
+    // Agregar más testimonios aquí
+];
+---
+
+<section class="testimonials">
+    <h2 class="section-title">Testimonios</h2>
+    <div class="testimonials-grid">
+        {testimonials.map(testimonial => (
+            <div class="testimonial-card">
+                <div class="testimonial-photo">
+                    <img src={testimonial.photo} alt={`Foto de ${testimonial.name}`} />
+                </div>
+                <div class="testimonial-content">
+                    <blockquote>"{testimonial.quote}"</blockquote>
+                    <p class="testimonial-name">{testimonial.name}</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .testimonials {
+        padding: 4rem 0;
+        background-color: var(--color-gray);
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .testimonial-card {
+        background: var(--color-white);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-photo {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .testimonial-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial-content {
+        padding: 1.5rem;
+    }
+
+    blockquote {
+        margin: 0;
+        font-style: italic;
+        color: var(--color-dark);
+    }
+
+    .testimonial-name {
+        margin-top: 1rem;
+        font-weight: bold;
+        color: var(--color-red);
+        text-align: right;
+    }
+</style>

@@ -1,11 +1,59 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroSlider from '../components/HeroSlider.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Services from '../components/Services.astro';
+import MissionVision from '../components/MissionVision.astro';
+import Testimonials from '../components/Testimonials.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const sliderImages = [
+    {
+        src: '/images/familia.jpg',
+        alt: 'Familia feliz representando un futuro sin deudas'
+    },
+    {
+        src: '/images/auto.jpg',
+        alt: 'Auto nuevo representando las posibilidades después de resolver deudas'
+    },
+    {
+        src: '/images/casa.jpg',
+        alt: 'Casa moderna representando la estabilidad financiera'
+    },
+    {
+        src: '/images/viajes.jpg',
+        alt: 'Viajes y experiencias posibles al liberarse de deudas'
+    }
+];
 ---
 
 <Layout>
-	<Welcome />
+    <Header />
+    <HeroSlider images={sliderImages} />
+    <div class="container">
+        <section id="quienes-somos" class="section">
+            <h2 class="section-title">Quienes Somos</h2>
+            <p>Somos un estudio jurídico especializado en la eliminación de deudas estudiantiles a través de procesos judiciales eficaces, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
+            <p>Nuestro propósito es claro: brindar a profesionales la posibilidad de iniciar su vida laboral sin el peso de una deuda que limita sus oportunidades y posterga sus proyectos. Sabemos que detrás de cada título hay años de esfuerzo, compromiso y sacrificio. Por eso, trabajamos para que ese logro no se vea opacado por una carga financiera injusta.</p>
+        </section>
+    </div>
+    <MissionVision />
+    <div class="container">
+        <ContactForm />
+        <Services />
+        <Testimonials />
+        <FAQ />
+        <section id="trabaja" class="section">
+            <h2 class="section-title">Trabaja con Nosotros</h2>
+            <p>¿Quieres ser parte de nuestro equipo? Envíanos tu currículum y únete a nuestra misión de hacer justicia en la educación.</p>
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="#" class="button">Enviar CV</a>
+            </div>
+        </section>
+    </div>
+    <Footer />
+    <WhatsAppButton />
 </Layout>

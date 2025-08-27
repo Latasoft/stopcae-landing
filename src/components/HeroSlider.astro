@@ -1,0 +1,94 @@
+---
+interface Props {
+    images: {
+        src: string;
+        alt: string;
+    }[];
+}
+
+const { images } = Astro.props;
+---
+
+<section class="hero-slider">
+    <div class="slider-container">
+        {images.map((image) => (
+            <div class="slide">
+                <img src={image.src} alt={image.alt} />
+            </div>
+        ))}
+        <div class="slider-content">
+            <h1>Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</h1>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-slider {
+        position: relative;
+        height: 600px;
+        overflow: hidden;
+        margin-top: 120px;
+    }
+
+    .slider-container {
+        position: relative;
+        height: 100%;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide.active {
+        opacity: 1;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .slider-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: var(--color-white);
+        z-index: 2;
+        width: 80%;
+        max-width: 800px;
+    }
+
+    .slider-content h1 {
+        font-size: 2.5rem;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+</style>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index: number) {
+        slides.forEach((slide) => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    }
+
+    // Iniciar el slider
+    showSlide(0);
+    setInterval(nextSlide, 5000);
+</script>

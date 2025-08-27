@@ -1,0 +1,51 @@
+---
+---
+<section id="servicios" class="section">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <h3>Plan Moratorio</h3>
+            <p>Asesoramiento especializado para gestionar y resolver situaciones de morosidad en deudas estudiantiles.</p>
+        </div>
+        <div class="service-card">
+            <h3>Custodia</h3>
+            <p>Protección y gestión integral de sus documentos e intereses legales durante todo el proceso.</p>
+        </div>
+        <div class="service-card">
+            <h3>Excepciones</h3>
+            <p>Análisis y aplicación de excepciones legales para casos especiales en deudas estudiantiles.</p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .section {
+        margin-bottom: 4rem;
+    }
+
+    .section-title {
+        color: var(--color-red);
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .service-card {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray);
+        border-radius: 8px;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+</style>

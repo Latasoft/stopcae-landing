@@ -1,0 +1,152 @@
+---
+---
+
+<section class="contact-form">
+    <div class="form-container">
+        <h2>¿Fuiste notificado por una demanda CAE?</h2>
+        <h3>Pincha aquí y dile STOP</h3>
+        
+        <form id="stopForm" class="stop-form">
+            <div class="form-options">
+                <label class="option">
+                    <input type="radio" name="status" value="pagando" required>
+                    Estoy pagando mi CAE
+                </label>
+                <label class="option">
+                    <input type="radio" name="status" value="nopagando">
+                    Ya dejé de pagar
+                </label>
+            </div>
+
+            <div class="form-fields">
+                <input type="text" name="nombre" placeholder="Nombre completo" required>
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" required>
+                <textarea name="comentario" placeholder="Cuéntanos tu situación"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Quiero decir STOP</button>
+        </form>
+    </div>
+</section>
+
+<style>
+    .contact-form {
+        background-color: var(--color-red);
+        background-image: url('/images/lady-justice-watermark.png');
+        background-repeat: no-repeat;
+        background-position: right center;
+        background-size: contain;
+        background-blend-mode: soft-light;
+        color: var(--color-white);
+        padding: 4rem 0;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    h2, h3 {
+        text-align: center;
+        margin: 0;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .stop-form {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+    }
+
+    .form-options {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+
+    .form-fields {
+        display: grid;
+        gap: 1rem;
+    }
+
+    input, textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--color-white);
+    }
+
+    input::placeholder, textarea::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    .submit-button {
+        background-color: var(--color-white);
+        color: var(--color-red);
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1rem;
+        transition: transform 0.3s ease;
+    }
+
+    .submit-button:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+<script>
+    const form = document.getElementById('stopForm');
+    
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target as HTMLFormElement);
+        
+        // Aquí puedes agregar la lógica para enviar a Google Sheets o email
+        console.log(Object.fromEntries(formData));
+        
+        // Ejemplo de envío a Google Sheets (necesitarás configurar el endpoint)
+        try {
+            // const response = await fetch('TU_ENDPOINT_DE_GOOGLE_SHEETS', {
+            //     method: 'POST',
+            //     body: formData
+            // });
+            alert('Gracias por contactarnos. Nos comunicaremos contigo pronto.');
+            (e.target as HTMLFormElement).reset();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+        }
+    });
+</script>

@@ -1,0 +1,80 @@
+---
+const faqs = [
+    {
+        question: "¿Qué es el CAE?",
+        answer: "El Crédito con Aval del Estado (CAE) es un préstamo estudiantil respaldado por el Estado chileno para financiar estudios superiores."
+    },
+    {
+        question: "¿Puedo dejar de pagar mi CAE?",
+        answer: "Cada caso es único y requiere evaluación legal. Contáctanos para analizar tu situación específica y las opciones disponibles."
+    },
+    {
+        question: "¿Qué sucede si dejo de pagar?",
+        answer: "Podrías enfrentar consecuencias legales y financieras. Es importante buscar asesoría legal antes de tomar esta decisión."
+    },
+    // Agregar más preguntas aquí
+];
+---
+
+<section class="faq-section">
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <div class="faq-container">
+        {faqs.map((faq, index) => (
+            <details class="faq-item">
+                <summary>{faq.question}</summary>
+                <p>{faq.answer}</p>
+            </details>
+        ))}
+    </div>
+</section>
+
+<style>
+    .faq-section {
+        padding: 4rem 0;
+        background-color: var(--color-white);
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+
+    .faq-item {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--color-gray);
+    }
+
+    summary {
+        padding: 1rem 0;
+        cursor: pointer;
+        font-weight: bold;
+        list-style: none;
+        position: relative;
+        padding-right: 2rem;
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary::after {
+        content: '+';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--color-red);
+    }
+
+    details[open] summary::after {
+        content: '-';
+    }
+
+    .faq-item p {
+        padding: 1rem 0;
+        margin: 0;
+        color: var(--color-dark);
+    }
+</style>
