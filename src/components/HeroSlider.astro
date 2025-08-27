@@ -14,25 +14,46 @@ const { images } = Astro.props;
         {images.map((image) => (
             <div class="slide">
                 <img src={image.src} alt={image.alt} />
+                <div class="slide-overlay"></div>
             </div>
         ))}
         <div class="slider-content">
-            <h1>Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</h1>
+            <div class="hero-text-container">
+                <h1 class="hero-title">
+                    <span class="title-line">¿Fuiste notificado con una demanda CAE?</span>
+                    <span class="title-line">
+                        <span class="action-text">Haz click aqui y ponle<img src="/logo.png" alt="Logo" class="stop-logo"></span>
+                    </span>
+                </h1>
+                <div class="hero-subtitle">
+                    <p>Libera tu futuro financiero con nuestro equipo legal especializado</p>
+                </div>
+            </div>
         </div>
+        
+        <!-- Indicadores de slide -->
+        <div class="slide-indicators">
+            {images.map((_, index) => (
+                <div class="indicator" data-slide={index}></div>
+            ))}
+
     </div>
 </section>
 
 <style>
     .hero-slider {
         position: relative;
-        height: 600px;
+        height: 100vh;
+        min-height: 600px;
         overflow: hidden;
         margin-top: 120px;
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
     }
 
     .slider-container {
         position: relative;
         height: 100%;
+        width: 100%;
     }
 
     .slide {
@@ -42,17 +63,36 @@ const { images } = Astro.props;
         width: 100%;
         height: 100%;
         opacity: 0;
-        transition: opacity 0.5s ease-in-out;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(1.1);
     }
 
     .slide.active {
         opacity: 1;
+        transform: scale(1);
     }
 
     .slide img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: top;
+        filter: brightness(0.8) contrast(1.1);
+    }
+
+    .slide-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            135deg,
+            rgba(220, 38, 38, 0.3) 0%,
+            rgba(185, 28, 28, 0.2) 50%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+        z-index: 1;
     }
 
     .slider-content {
@@ -63,32 +103,402 @@ const { images } = Astro.props;
         text-align: center;
         color: var(--color-white);
         z-index: 2;
-        width: 80%;
-        max-width: 800px;
+        width: 90%;
+        max-width: 1000px;
     }
 
-    .slider-content h1 {
-        font-size: 2.5rem;
+    .hero-text-container {
+        animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 4rem);
         margin: 0;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
+        font-weight: 800;
+        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        letter-spacing: -0.02em;
+    }
+
+    .title-line {
+        display: block;
+        opacity: 0;
+        animation: slideInLeft 0.8s ease-out forwards;
+    }
+
+    .title-line:nth-child(1) { animation-delay: 0.8s; }
+    .title-line:nth-child(2) { animation-delay: 1s; }
+    .title-line:nth-child(3) { animation-delay: 1.2s; }
+
+    .highlight-text {
+        background: linear-gradient(135deg, var(--color-red) 0%, #dc2626 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        position: relative;
+        padding: 0 0.2rem;
+    }
+
+    .highlight-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--color-red) 0%, #dc2626 100%);
+        border-radius: 2px;
+        transform: scaleX(0);
+        animation: underlineExpand 0.6s ease-out 1.5s forwards;
+    }
+
+    .accent-text {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        position: relative;
+        padding: 0 0.2rem;
+        text-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+    }
+
+    .accent-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+        border-radius: 2px;
+        transform: scaleX(0);
+        animation: underlineExpand 0.6s ease-out 1.7s forwards;
+    }
+
+    .action-text {
+        background: linear-gradient(135deg, var(--color-red) 0%, #dc2626 100%);
+        color: white;
+        font-weight: 600;
+        position: relative;
+        padding: 0.5rem 1rem;
+        font-size: 0.85em;
+        opacity: 1;
+        line-height: 1.4;
+        border-radius: 25px;
+        display: inline-block;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .action-text:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .stop-logo {
+        height: 1.5em;
+        width: auto;
+        display: inline-block;
+        margin-left: 0.3rem;
+        filter: brightness(0) invert(1); /* Hace el logo blanco */
+        transition: all 0.3s ease;
+        vertical-align: middle;
+        opacity: 1;
+        border-radius: 4px;
+        padding: 0.1rem;
+    }
+
+    .stop-logo:hover {
+        transform: scale(1.1);
+        filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+    }
+
+    .hero-subtitle {
+        margin-top: 2rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 1.5s forwards;
+    }
+
+    .hero-subtitle p {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 400;
+        opacity: 0.9;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        margin: 0;
+    }
+
+    .cae-banner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+        color: var(--color-red);
+        padding: 2rem 2.5rem;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 3;
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        animation: bannerFloat 3s ease-in-out infinite;
+    }
+
+    .cae-banner:hover {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.98) 100%);
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 
+            0 30px 60px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.3);
+        border-color: rgba(220, 38, 38, 0.3);
+    }
+
+    .banner-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .banner-content {
+        margin-bottom: 1rem;
+    }
+
+    .banner-question {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #374151;
+    }
+
+    .banner-action {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #4b5563;
+    }
+
+    .banner-arrow {
+        font-size: 1.5rem;
+        color: var(--color-red);
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    .stop-text {
+        font-family: 'Arial Black', 'Helvetica Black', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #ff0000;
+        text-shadow: 3px 3px 0px #000, 1px 1px 0px #000;
+        letter-spacing: 3px;
+        display: inline-block;
+        transform: rotate(-5deg);
+        margin-left: 0.5rem;
+        animation: stopGlow 2s ease-in-out infinite;
+    }
+
+    /* Indicadores de slide */
+    .slide-indicators {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
+        z-index: 4;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .indicator.active {
+        background: var(--color-red);
+        transform: scale(1.2);
+        border-color: rgba(255, 255, 255, 0.8);
+    }
+
+    .indicator:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+    }
+
+    /* Controles de navegación */
+    .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        z-index: 4;
+    }
+
+    .slider-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev-btn {
+        left: 2rem;
+    }
+
+    .next-btn {
+        right: 2rem;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes underlineExpand {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes bannerFloat {
+        0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+        50% { transform: translate(-50%, -50%) translateY(-10px); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    @keyframes logoFloat {
+        0%, 100% { 
+            transform: translateY(0px);
+        }
+        50% { 
+            transform: translateY(-5px);
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero-slider {
+            height: 80vh;
+            min-height: 500px;
+        }
+
+        .cae-banner {
+            padding: 1.5rem 2rem;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .slider-nav {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+        }
+
+        .prev-btn { left: 1rem; }
+        .next-btn { right: 1rem; }
     }
 </style>
 
 <script>
     const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
     let currentSlide = 0;
 
     function showSlide(index: number) {
+        // Ocultar todas las slides
         slides.forEach((slide) => slide.classList.remove('active'));
+        indicators.forEach((indicator) => indicator.classList.remove('active'));
+        
+        // Mostrar la slide actual
         slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        currentSlide = index;
     }
 
     function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
     }
+
+    function prevSlide() {
+        const prevIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+        showSlide(prevIndex);
+    }
+
+    // Event listeners para controles
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Event listeners para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+    });
 
     // Iniciar el slider
     showSlide(0);
-    setInterval(nextSlide, 5000);
+    
+    // Auto-play con intervalo
+    const autoPlay = setInterval(nextSlide, 5000);
+    
+    // Pausar auto-play al hacer hover sobre controles
+    const controls = [prevBtn, nextBtn, ...indicators];
+    controls.forEach(control => {
+        if (control) {
+            control.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            control.addEventListener('mouseleave', () => setInterval(nextSlide, 5000));
+        }
+    });
 </script>

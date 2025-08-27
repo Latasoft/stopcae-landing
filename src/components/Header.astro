@@ -1,5 +1,8 @@
 ---
 import '../styles/header.css';
+
+// Get current page or section to determine active tab
+const currentPath = Astro.url.pathname;
 ---
 
 <header>
@@ -11,26 +14,30 @@ import '../styles/header.css';
         
         <!-- Header content next to logo -->
         <div class="header-content">
-            <!-- Top area with contact and slogan -->
+            <!-- First row with contact info -->
             <div class="header-top">
                 <div class="contact-info">
                     <i class="fas fa-phone"></i> +56 9 5409 9974
                 </div>
+            </div>
+            
+            <!-- Second row with slogan -->
+            <div class="header-middle">
                 <p class="slogan">Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</p>
             </div>
             
-            <!-- Bottom area with navigation -->
+            <!-- Third row with navigation -->
             <div class="header-bottom">
                 <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
                     <i class="fas fa-bars"></i>
                 </button>
                 <nav>
                     <ul class="nav-menu" id="nav-menu">
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#quienes-somos">Quienes Somos</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#preguntas">Preguntas Frecuentes</a></li>
-                        <li><a href="#trabaja">Trabaja con Nosotros</a></li>
+                        <li><a href="#inicio" class="nav-link" data-section="inicio">Inicio</a></li>
+                        <li><a href="#servicios" class="nav-link" data-section="servicios">Servicios</a></li>
+                        <li><a href="#quienes-somos" class="nav-link" data-section="quienes-somos">Quienes Somos</a></li>
+                        <li><a href="#preguntas" class="nav-link" data-section="preguntas">Preguntas Frecuentes</a></li>
+                        <li><a href="#trabaja" class="nav-link" data-section="trabaja">Trabaja con Nosotros</a></li>
                     </ul>
                 </nav>
             </div>
@@ -73,5 +80,69 @@ import '../styles/header.css';
                 });
             });
         }
+        
+        // Active tab functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // Function to set active tab based on current section
+        function setActiveTab() {
+            const scrollPosition = window.scrollY + 100; // Offset for header height
+            
+            // Get all sections
+            const sections = document.querySelectorAll('section[id]');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            // Update active tab
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Default to first tab if no section is active
+            if (!currentSection && navLinks.length > 0) {
+                navLinks[0].classList.add('active');
+            }
+        }
+        
+        // Header scroll effect
+        function handleHeaderScroll() {
+            const header = document.querySelector('header');
+            if (header) {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+        }
+        
+        // Set active tab on scroll
+        window.addEventListener('scroll', () => {
+            setActiveTab();
+            handleHeaderScroll();
+        });
+        
+        // Set initial active tab and header state
+        setActiveTab();
+        handleHeaderScroll();
+        
+        // Set active tab on click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        });
     });
 </script>

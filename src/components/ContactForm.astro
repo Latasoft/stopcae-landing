@@ -32,42 +32,60 @@
 
 <style>
     .contact-form {
-        background-color: var(--color-red);
-        background-image: url('/images/lady-justice-watermark.png');
-        background-repeat: no-repeat;
-        background-position: right center;
-        background-size: contain;
-        background-blend-mode: soft-light;
-        color: var(--color-white);
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        color: #FFFBFB;
         padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .contact-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, rgba(57, 57, 57, 0.1) 0%, rgba(202, 1, 1, 0.1) 100%);
+        z-index: 1;
     }
 
     .form-container {
         max-width: 800px;
         margin: 0 auto;
         padding: 0 2rem;
+        position: relative;
+        z-index: 2;
     }
 
     h2, h3 {
         text-align: center;
         margin: 0;
+        color: #FFFBFB;
+        text-shadow: 2px 2px 4px rgba(57, 57, 57, 0.5);
     }
 
     h2 {
-        font-size: 2rem;
+        font-size: 2.5rem;
         margin-bottom: 0.5rem;
+        font-weight: 700;
     }
 
     h3 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         margin-bottom: 2rem;
+        font-weight: 600;
+        opacity: 0.95;
     }
 
     .stop-form {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 2rem;
-        border-radius: 10px;
-        backdrop-filter: blur(5px);
+        background: rgba(255, 251, 251, 0.95);
+        padding: 2.5rem;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 20px 40px rgba(57, 57, 57, 0.2);
+        border: 2px solid rgba(255, 251, 251, 0.3);
+        color: #393939;
     }
 
     .form-options {
@@ -75,6 +93,7 @@
         justify-content: center;
         gap: 2rem;
         margin-bottom: 2rem;
+        flex-wrap: wrap;
     }
 
     .option {
@@ -82,6 +101,24 @@
         align-items: center;
         gap: 0.5rem;
         cursor: pointer;
+        padding: 0.8rem 1.5rem;
+        background: rgba(202, 1, 1, 0.1);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        color: #393939;
+        font-weight: 500;
+    }
+
+    .option:hover {
+        background: rgba(202, 1, 1, 0.2);
+        border-color: rgba(202, 1, 1, 0.5);
+        transform: translateY(-2px);
+    }
+
+    .option input[type="radio"] {
+        accent-color: #CA0101;
+        transform: scale(1.2);
     }
 
     .form-fields {
@@ -91,15 +128,25 @@
 
     input, textarea {
         width: 100%;
-        padding: 0.8rem;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 5px;
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--color-white);
+        padding: 1rem;
+        border: 2px solid rgba(202, 1, 1, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 251, 251, 0.9);
+        color: #393939;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    input:focus, textarea:focus {
+        outline: none;
+        border-color: #CA0101;
+        background: #FFFBFB;
+        box-shadow: 0 0 0 3px rgba(202, 1, 1, 0.1);
     }
 
     input::placeholder, textarea::placeholder {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(57, 57, 57, 0.6);
     }
 
     textarea {
@@ -108,21 +155,31 @@
     }
 
     .submit-button {
-        background-color: var(--color-white);
-        color: var(--color-red);
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        color: #FFFBFB;
         border: none;
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-        font-weight: bold;
-        border-radius: 5px;
+        padding: 1.2rem 2rem;
+        font-size: 1.3rem;
+        font-weight: 700;
+        border-radius: 25px;
         cursor: pointer;
         width: 100%;
-        margin-top: 1rem;
-        transition: transform 0.3s ease;
+        margin-top: 1.5rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 8px 25px rgba(202, 1, 1, 0.3);
+        border: 2px solid rgba(255, 251, 251, 0.2);
     }
 
     .submit-button:hover {
-        transform: scale(1.02);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(202, 1, 1, 0.4);
+        border-color: rgba(255, 251, 251, 0.4);
+    }
+
+    .submit-button:active {
+        transform: translateY(-1px);
     }
 </style>
 

@@ -12,40 +12,45 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const sliderImages = [
     {
-        src: '/images/familia.jpg',
+        src: '/src/assets/img_prov_1.webp',
         alt: 'Familia feliz representando un futuro sin deudas'
     },
     {
-        src: '/images/auto.jpg',
+        src: '/src/assets/img_prov_2.avif',
         alt: 'Auto nuevo representando las posibilidades después de resolver deudas'
     },
     {
-        src: '/images/casa.jpg',
+        src: '/src/assets/img_prov_3.avif',
         alt: 'Casa moderna representando la estabilidad financiera'
-    },
-    {
-        src: '/images/viajes.jpg',
-        alt: 'Viajes y experiencias posibles al liberarse de deudas'
     }
 ];
 ---
 
 <Layout>
     <Header />
-    <HeroSlider images={sliderImages} />
+    <section id="inicio">
+        <HeroSlider images={sliderImages} />
+    </section>
     <div class="container">
+        <section id="servicios">
+            <Services />
+        </section>
         <section id="quienes-somos" class="section">
             <h2 class="section-title">Quienes Somos</h2>
             <p>Somos un estudio jurídico especializado en la eliminación de deudas estudiantiles a través de procesos judiciales eficaces, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
             <p>Nuestro propósito es claro: brindar a profesionales la posibilidad de iniciar su vida laboral sin el peso de una deuda que limita sus oportunidades y posterga sus proyectos. Sabemos que detrás de cada título hay años de esfuerzo, compromiso y sacrificio. Por eso, trabajamos para que ese logro no se vea opacado por una carga financiera injusta.</p>
         </section>
     </div>
-    <MissionVision />
+    <section id="mision-vision">
+        <MissionVision />
+    </section>
     <div class="container">
-        <ContactForm />
-        <Services />
-        <Testimonials />
-        <FAQ />
+        <section id="testimonios">
+            <Testimonials />
+        </section>
+        <section id="preguntas">
+            <FAQ />
+        </section>
         <section id="trabaja" class="section">
             <h2 class="section-title">Trabaja con Nosotros</h2>
             <p>¿Quieres ser parte de nuestro equipo? Envíanos tu currículum y únete a nuestra misión de hacer justicia en la educación.</p>
