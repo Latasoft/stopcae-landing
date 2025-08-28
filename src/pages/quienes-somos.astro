@@ -54,7 +54,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                              <div class="card-icon">⚖️</div>
                              <h3>Especialización Legal</h3>
                          </div>
-                                                   <p>Somos un estudio jurídico especializado en la eliminación de deudas estudiantiles a través de procesos judiciales eficaces, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
+                         <p>Somos un <span class="keyword">estudio jurídico especializado</span> en la <span class="keyword">eliminación de deudas estudiantiles</span> a través de <span class="keyword">procesos judiciales eficaces</span>, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
                      </div>
                      
                      <div class="description-card">
@@ -62,7 +62,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                              <div class="card-icon">🎯</div>
                              <h3>Propósito Claro</h3>
                          </div>
-                                                   <p>Brindar a profesionales la posibilidad de iniciar su vida laboral sin el peso de una deuda que limita sus oportunidades y posterga sus proyectos. Sabemos que detrás de cada título hay años de esfuerzo, compromiso y sacrificio.</p>
+                         <p>Brindar a <span class="keyword">profesionales</span> la posibilidad de iniciar su vida laboral sin el peso de una deuda que <span class="keyword">limita sus oportunidades</span> y posterga sus proyectos. Sabemos que detrás de cada título hay años de <span class="keyword">esfuerzo, compromiso y sacrificio</span>.</p>
                      </div>
                      
                      <div class="description-card">
@@ -70,7 +70,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                              <div class="card-icon">🌍</div>
                              <h3>Alcance Nacional</h3>
                          </div>
-                                                   <p>Actuamos con alcance nacional, acompañando causas en cada provincia con la misma dedicación, cercanía y compromiso, sin importar la distancia. Gracias a un enfoque ágil y profesional, logramos que cada persona pueda acceder a una defensa legal de calidad.</p>
+                         <p>Actuamos con <span class="keyword">alcance nacional</span>, acompañando causas en cada provincia con la misma <span class="keyword">dedicación, cercanía y compromiso</span>, sin importar la distancia. Gracias a un <span class="keyword">enfoque ágil y profesional</span>, logramos que cada persona pueda acceder a una <span class="keyword">defensa legal de calidad</span>.</p>
                      </div>
                      
                      <div class="description-card">
@@ -78,7 +78,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                              <div class="card-icon">🚀</div>
                              <h3>Estrategia Integral</h3>
                          </div>
-                                                   <p>Combinamos experiencia legal, atención personalizada y una estrategia orientada a resultados. Cada caso que representamos es una oportunidad para transformar un obstáculo en un nuevo comienzo.</p>
+                         <p>Combinamos <span class="keyword">experiencia legal</span>, <span class="keyword">atención personalizada</span> y una <span class="keyword">estrategia orientada a resultados</span>. Cada caso que representamos es una oportunidad para <span class="keyword">transformar un obstáculo en un nuevo comienzo</span>.</p>
                      </div>
                      
                      <div class="description-card">
@@ -86,7 +86,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                              <div class="card-icon">💡</div>
                              <h3>Nuestra Filosofía</h3>
                          </div>
-                                                   <p>En nuestro estudio, creemos que estudiar no debe ser una condena económica, sino una inversión en el futuro. Acompañamos a quienes decidieron apostar por su educación para que también puedan apostar por su libertad.</p>
+                         <p>En nuestro estudio, creemos que <span class="keyword">estudiar no debe ser una condena económica</span>, sino una <span class="keyword">inversión en el futuro</span>. Acompañamos a quienes decidieron apostar por su educación para que también puedan apostar por su <span class="keyword">libertad</span>.</p>
                      </div>
                  </div>
              </div>
@@ -375,7 +375,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          color: white;
          position: relative;
          overflow: hidden;
-         border: 1px solid rgba(202, 1, 1, 0.08);
      }
      
      .detailed-description-section::before {
@@ -427,7 +426,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          background: rgba(255, 255, 255, 0.08);
          padding: 2rem 1.8rem;
          border-radius: 16px;
-         border: 1px solid rgba(202, 1, 1, 0.08);
+         border: 1px solid rgba(202, 1, 1, 0.2);
          transition: all 0.3s ease;
          position: relative;
          overflow: hidden;
@@ -471,7 +470,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
      }
      
      .card-header h3 {
-         color: white;
+         color: #CA0101;
          font-size: 1.4rem;
          font-weight: 700;
          margin: 0;
@@ -488,7 +487,13 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          opacity: 0.95;
      }
      
-
+     /* Estilos para palabras clave */
+     .keyword {
+         color: #CA0101;
+         font-weight: 600;
+         position: relative;
+         padding: 0 1px;
+     }
      
      @media (max-width: 768px) {
          .detailed-description-section {
@@ -529,6 +534,8 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
              line-height: 1.6;
          }
          
-
+         .keyword {
+             font-weight: 500;
+         }
      }
  </style>

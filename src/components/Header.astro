@@ -9,7 +9,9 @@ const currentPath = Astro.url.pathname;
     <div class="nav-container">
         <!-- Logo on the left -->
         <div class="logo-section">
-            <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo">
+            <a href="/">
+                <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo">
+            </a>
         </div>
         
         <!-- Header content next to logo -->
@@ -33,8 +35,8 @@ const currentPath = Astro.url.pathname;
                 </button>
                 <nav>
                     <ul class="nav-menu" id="nav-menu">
-                        <li><a href="#inicio" class="nav-link" data-section="inicio">Inicio</a></li>
-                        <li><a href="#servicios" class="nav-link" data-section="servicios">Servicios</a></li>
+                        <li><a href="/" class="nav-link">Inicio</a></li>
+                        <li><a href="/servicios" class="nav-link">Servicios</a></li>
                         <li><a href="/quienes-somos" class="nav-link">Quienes Somos</a></li>
                         <li><a href="/faq" class="nav-link">FAQ</a></li>
                         <li><a href="/trabaja-con-nosotros" class="nav-link">Trabaja con Nosotros</a></li>
