@@ -2,11 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import HeroSlider from '../components/HeroSlider.astro';
-import ContactForm from '../components/ContactForm.astro';
-import Services from '../components/Services.astro';
-import MissionVision from '../components/MissionVision.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
@@ -28,40 +23,9 @@ const sliderImages = [
 
 <Layout>
     <Header />
-    <section id="inicio">
+        <section id="inicio">
         <HeroSlider images={sliderImages} />
     </section>
-    <div class="container">
-        <section id="servicios">
-            <Services />
-        </section>
-                 <section id="quienes-somos" class="section">
-             <h2 class="section-title">Quienes Somos</h2>
-             <p>Somos un estudio jurídico especializado en la eliminación de deudas estudiantiles a través de procesos judiciales eficaces, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
-             <p>Nuestro propósito es claro: brindar a profesionales la posibilidad de iniciar su vida laboral sin el peso de una deuda que limita sus oportunidades y posterga sus proyectos. Sabemos que detrás de cada título hay años de esfuerzo, compromiso y sacrificio. Por eso, trabajamos para que ese logro no se vea opacado por una carga financiera injusta.</p>
-             <div style="text-align: center; margin-top: 2rem;">
-                 <a href="/quienes-somos" class="button">Conoce Más</a>
-             </div>
-         </section>
-    </div>
-    <section id="mision-vision">
-        <MissionVision />
-    </section>
-    <div class="container">
-        <section id="testimonios">
-            <Testimonials />
-        </section>
-        <section id="preguntas">
-            <FAQ />
-        </section>
-                 <section id="trabaja" class="section">
-             <h2 class="section-title">Trabaja con Nosotros</h2>
-             <p>¿Quieres ser parte de nuestro equipo? Envíanos tu currículum y únete a nuestra misión de hacer justicia en la educación.</p>
-             <div style="text-align: center; margin-top: 2rem;">
-                 <a href="/trabaja-con-nosotros" class="button">Enviar CV</a>
-             </div>
-         </section>
-    </div>
     <Footer />
     <WhatsAppButton />
 </Layout>
