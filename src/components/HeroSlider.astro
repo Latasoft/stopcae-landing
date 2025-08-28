@@ -231,17 +231,19 @@ const { images } = Astro.props;
         width: auto;
         display: inline-block;
         margin-left: 0.3rem;
-        filter: brightness(1) saturate(1); /* Quitar el filtro que invierte colores */
         transition: all 0.3s ease;
         vertical-align: middle;
         opacity: 1;
         border-radius: 4px;
         padding: 0.1rem;
+
+        /* Recolor logo a rojo vía filtros CSS */
+        filter: brightness(0) saturate(100%) sepia(1) hue-rotate(-8deg) saturate(600%) contrast(1);
     }
 
     .stop-logo:hover {
         transform: scale(1.1);
-        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6)); /* Mantener solo la sombra */
+        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6)) brightness(0) saturate(100%) sepia(1) hue-rotate(-8deg) saturate(600%) contrast(1);
     }
 
     .hero-subtitle {
