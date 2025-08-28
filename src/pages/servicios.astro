@@ -48,13 +48,66 @@ import Testimonials from '../components/Testimonials.astro';
     <WhatsAppButton />
 </Layout>
 
+<script>
+    // Disable scroll snapping for servicios page
+    document.addEventListener('DOMContentLoaded', () => {
+        // Override body scroll behavior
+        document.body.style.scrollSnapType = 'none';
+        
+        // Override all sections in this page
+        const sections = document.querySelectorAll('.servicios-page section');
+        sections.forEach(section => {
+            section.style.scrollSnapAlign = 'none';
+            section.style.minHeight = 'auto';
+            section.style.height = 'auto';
+            section.style.display = 'block';
+            section.style.justifyContent = 'flex-start';
+            section.style.overflow = 'visible';
+        });
+        
+        // Override container sections
+        const containerSections = document.querySelectorAll('.servicios-page .container section');
+        containerSections.forEach(section => {
+            section.style.minHeight = 'auto';
+            section.style.display = 'block';
+            section.style.justifyContent = 'flex-start';
+        });
+    });
+</script>
+
 <style>
+    /* Override global CSS rules that break responsivity */
     .servicios-page {
         padding-top: 90px; /* Space for fixed header */
+        /* Disable scroll snapping for this page */
+        scroll-snap-type: none;
     }
     
+    /* Override global section rules for servicios page */
+    .servicios-page section {
+        min-height: auto !important;
+        height: auto !important;
+        scroll-snap-align: none !important;
+        display: block !important;
+        justify-content: flex-start !important;
+        padding: 2rem 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+    }
+    
+    /* Override global body scroll behavior for this page */
+    .servicios-page body {
+        scroll-snap-type: none !important;
+    }
+    
+    /* Override global container section rules */
+    .servicios-page .container section {
+        min-height: auto !important;
+        display: block !important;
+        justify-content: flex-start !important;
+    }
 
-     .services-header h2 {
+    .services-header h2 {
         text-align: center;
         margin: 0;
         color: white;
@@ -72,7 +125,7 @@ import Testimonials from '../components/Testimonials.astro';
     
     .container {
         max-width: 1200px;
-        margin:  auto;
+        margin: 0 auto;
         padding: 1.5rem 1rem;
     }
     
@@ -89,7 +142,7 @@ import Testimonials from '../components/Testimonials.astro';
     }
     
     .form-wrapper {
-        background-color: transparent
+        background-color: transparent;
         margin-left: -1rem;
         margin-right: -1rem;
         padding: 2rem;
@@ -174,5 +227,87 @@ import Testimonials from '../components/Testimonials.astro';
     .testimonials-wrapper {
         margin-top: 3rem;
         width: 100%;
+    }
+    
+    /* Responsive styles for servicios page */
+    @media (max-width: 768px) {
+        .servicios-page {
+            padding-top: 80px;
+        }
+        
+        .servicios-content {
+            gap: 2rem;
+        }
+        
+        .servicios-background {
+            padding: 2rem 0;
+        }
+        
+        .form-wrapper {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .form-heading {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+        
+        .container {
+            padding: 1rem 0.8rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .servicios-page {
+            padding-top: 70px;
+        }
+        
+        .servicios-content {
+            gap: 1.5rem;
+        }
+        
+        .servicios-background {
+            padding: 1.5rem 0;
+        }
+        
+        .form-wrapper {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-heading {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+        }
+        
+        .container {
+            padding: 0.8rem 0.6rem;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        .servicios-page {
+            padding-top: 60px;
+        }
+        
+        .servicios-content {
+            gap: 1rem;
+        }
+        
+        .servicios-background {
+            padding: 1rem 0;
+        }
+        
+        .form-wrapper {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-heading {
+            font-size: clamp(1.1rem, 3vw, 1.8rem);
+        }
+        
+        .container {
+            padding: 0.6rem 0.5rem;
+        }
     }
 </style>

@@ -31,12 +31,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
              <div class="container">
                  <div class="mission-vision-grid">
                      <div class="mission-card">
-                         <div class="card-icon">🎯</div>
+                         <div class="card-icon">
+                             <i class="fas fa-bullseye"></i>
+                         </div>
                          <h3>Misión</h3>
                          <p>Brindar asesoría y representación legal especializada a quienes han accedido a la educación superior, con el objetivo de eliminar sus deudas estudiantiles mediante procesos judiciales justos y efectivos. Trabajamos con compromiso, empatía y excelencia para que cada profesional pueda comenzar su vida laboral con libertad financiera y dignidad.</p>
                      </div>
                      <div class="vision-card">
-                         <div class="card-icon">🌟</div>
+                         <div class="card-icon">
+                             <i class="fas fa-star"></i>
+                         </div>
                          <h3>Visión</h3>
                          <p>Ser el estudio jurídico líder en la eliminación de deudas estudiantiles, brindando a los profesionales la oportunidad de comenzar su vida laboral sin cargas injustas, reconociendo su esfuerzo, dedicación y compromiso con la educación como base de un futuro más justo y equitativo.</p>
                      </div>
@@ -51,7 +55,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                  <div class="description-cards-grid">
                      <div class="description-card">
                          <div class="card-header">
-                             <div class="card-icon">⚖️</div>
+                             <div class="card-icon">
+                                 <i class="fas fa-balance-scale"></i>
+                             </div>
                              <h3>Especialización Legal</h3>
                          </div>
                          <p>Somos un <span class="keyword">estudio jurídico especializado</span> en la <span class="keyword">eliminación de deudas estudiantiles</span> a través de <span class="keyword">procesos judiciales eficaces</span>, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
@@ -59,7 +65,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                      
                      <div class="description-card">
                          <div class="card-header">
-                             <div class="card-icon">🎯</div>
+                             <div class="card-icon">
+                                 <i class="fas fa-crosshairs"></i>
+                             </div>
                              <h3>Propósito Claro</h3>
                          </div>
                          <p>Brindar a <span class="keyword">profesionales</span> la posibilidad de iniciar su vida laboral sin el peso de una deuda que <span class="keyword">limita sus oportunidades</span> y posterga sus proyectos. Sabemos que detrás de cada título hay años de <span class="keyword">esfuerzo, compromiso y sacrificio</span>.</p>
@@ -67,7 +75,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                      
                      <div class="description-card">
                          <div class="card-header">
-                             <div class="card-icon">🌍</div>
+                             <div class="card-icon">
+                                 <i class="fas fa-globe-americas"></i>
+                             </div>
                              <h3>Alcance Nacional</h3>
                          </div>
                          <p>Actuamos con <span class="keyword">alcance nacional</span>, acompañando causas en cada provincia con la misma <span class="keyword">dedicación, cercanía y compromiso</span>, sin importar la distancia. Gracias a un <span class="keyword">enfoque ágil y profesional</span>, logramos que cada persona pueda acceder a una <span class="keyword">defensa legal de calidad</span>.</p>
@@ -75,7 +85,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                      
                      <div class="description-card">
                          <div class="card-header">
-                             <div class="card-icon">🚀</div>
+                             <div class="card-icon">
+                                 <i class="fas fa-rocket"></i>
+                             </div>
                              <h3>Estrategia Integral</h3>
                          </div>
                          <p>Combinamos <span class="keyword">experiencia legal</span>, <span class="keyword">atención personalizada</span> y una <span class="keyword">estrategia orientada a resultados</span>. Cada caso que representamos es una oportunidad para <span class="keyword">transformar un obstáculo en un nuevo comienzo</span>.</p>
@@ -83,7 +95,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                      
                      <div class="description-card">
                          <div class="card-header">
-                             <div class="card-icon">💡</div>
+                             <div class="card-icon">
+                                 <i class="fas fa-lightbulb"></i>
+                             </div>
                              <h3>Nuestra Filosofía</h3>
                          </div>
                          <p>En nuestro estudio, creemos que <span class="keyword">estudiar no debe ser una condena económica</span>, sino una <span class="keyword">inversión en el futuro</span>. Acompañamos a quienes decidieron apostar por su educación para que también puedan apostar por su <span class="keyword">libertad</span>.</p>
@@ -276,8 +290,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          .card-icon {
          font-size: 3.5rem;
          margin-bottom: 2rem;
-         display: block;
+         display: flex;
+         align-items: center;
+         justify-content: center;
          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+         transition: all 0.3s ease;
+     }
+     
+     .card-icon i {
+         font-size: 3.5rem;
+         color: #CA0101;
          transition: all 0.3s ease;
      }
      
@@ -365,6 +387,14 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          .card-icon {
              font-size: 3rem;
              margin-bottom: 1.5rem;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+         
+         .card-icon i {
+             font-size: 3rem;
+             color: #CA0101;
          }
      }
      
@@ -462,7 +492,18 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          font-size: 2.2rem;
          color: #CA0101;
          opacity: 0.8;
-         transition: opacity 0.3s ease;
+         transition: all 0.3s ease;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 50px;
+         height: 50px;
+     }
+     
+     .card-header .card-icon i {
+         font-size: 2.2rem;
+         color: #CA0101;
+         transition: all 0.3s ease;
      }
      
      .description-card:hover .card-header .card-icon {

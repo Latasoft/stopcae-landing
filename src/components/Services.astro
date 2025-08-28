@@ -5,7 +5,7 @@
     <div class="services-grid">
         <div class="service-card" data-aos="fade-up" data-aos-delay="100">
             <div class="service-icon">
-                <i class="icon-analysis">⚖️</i>
+                <i class="fas fa-balance-scale"></i>
             </div>
             <h3>Análisis Legal</h3>
             <p>Evaluamos tu caso desde una perspectiva legal y financiera para determinar la mejor estrategia.</p>
@@ -15,7 +15,7 @@
         </div>
         <div class="service-card" data-aos="fade-up" data-aos-delay="200">
             <div class="service-icon">
-                <i class="icon-representation">👨‍⚖️</i>
+                <i class="fas fa-user-tie"></i>
             </div>
             <h3>Representación Judicial</h3>
             <p>Te representamos en todas las instancias legales necesarias para resolver tu caso.</p>
@@ -25,7 +25,7 @@
         </div>
         <div class="service-card" data-aos="fade-up" data-aos-delay="300">
             <div class="service-icon">
-                <i class="icon-support">📋</i>
+                <i class="fas fa-headset"></i>
             </div>
             <h3>Asesoría Continua</h3>
             <p>Te acompañamos durante todo el proceso, manteniéndote informado en cada etapa.</p>
@@ -88,5 +88,22 @@
     .service-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-icon {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .service-icon i {
+        font-size: 3rem;
+        color: var(--color-red);
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .service-card:hover .service-icon i {
+        transform: scale(1.1);
+        color: var(--color-red-bright);
     }
 </style>
