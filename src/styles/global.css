@@ -16,7 +16,7 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 25%, #dee2e6 50%, #ced4da 75%, #adb5bd 100%);
+    background: linear-gradient(135deg, #e5e5e5 0%, #d8d8d8 25%, #c9c9c9 50%, #bebebe 75%, #b5b5b5 100%);
     color: var(--color-dark);
     overflow-x: hidden; /* Prevent horizontal scroll */
     scroll-snap-type: y mandatory; /* Enable scroll snapping */
@@ -38,69 +38,18 @@ body::before {
     z-index: -1;
 }
 
-/* Alternating section backgrounds - Nintendo inspired */
-section:nth-child(odd) {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
-    position: relative;
-}
 
-section:nth-child(odd)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 80%, rgba(202, 1, 1, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(227, 6, 19, 0.02) 0%, transparent 50%);
-    pointer-events: none;
-}
-
-section:nth-child(even) {
-    background: linear-gradient(135deg, #e9ecef 0%, #ced4da 50%, #adb5bd 100%);
-    position: relative;
-}
-
-section:nth-child(even)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 30% 70%, rgba(202, 1, 1, 0.04) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-}
 
 /* First section after header - enhanced gradient transition */
-section:first-of-type {
-    background: linear-gradient(180deg, 
-        var(--color-red) 0%, 
-        #dc2626 25%, 
-        #ef4444 50%, 
-        #fca5a5 75%, 
-        #fef2f2 100%);
+section {
+    background: linear-gradient(100deg, 
+        var(--color-red) 0%,  
+        #ef4444 30%, 
+        #fca5a5 70%, 
+        #E0DCDC 100%);
     position: relative;
 }
 
-section:first-of-type::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 70%),
-        linear-gradient(180deg, 
-            rgba(202, 1, 1, 0.05) 0%, 
-            rgba(255, 251, 251, 0.02) 50%, 
-            rgba(255, 255, 255, 0.05) 100%);
-    pointer-events: none;
-}
 
 
 
@@ -272,9 +221,9 @@ section[id="inicio"] {
 
 .service-card {
     background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.9) 0%, 
-        rgba(248, 249, 250, 0.8) 50%, 
-        rgba(233, 236, 239, 0.7) 100%);
+        rgba(248, 245, 245, 0.9) 0%, 
+        rgba(240, 237, 237, 0.8) 50%, 
+        rgba(224, 220, 220, 0.7) 100%);
     border: 1px solid rgba(202, 1, 1, 0.1);
     border-radius: 12px;
     padding: 2rem;
@@ -306,11 +255,11 @@ section[id="inicio"] {
 
 .mission-vision {
     background: linear-gradient(135deg, 
-        #e9ecef 0%, 
-        #dee2e6 25%, 
-        #ced4da 50%, 
-        #adb5bd 75%, 
-        #868e96 100%);
+        #E8E5E5 0%, 
+        #E0DCDC 25%, 
+        #d8d4d4 50%, 
+        #cfcbcb 75%, 
+        #c7c3c3 100%);
     padding: 4rem 0;
     margin: 0;
     min-height: 100vh;

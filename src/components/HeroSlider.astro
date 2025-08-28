@@ -231,7 +231,7 @@ const { images } = Astro.props;
         width: auto;
         display: inline-block;
         margin-left: 0.3rem;
-        filter: brightness(0) invert(0); /* Mantiene el logo original */
+        filter: brightness(1) saturate(1); /* Quitar el filtro que invierte colores */
         transition: all 0.3s ease;
         vertical-align: middle;
         opacity: 1;
@@ -241,7 +241,7 @@ const { images } = Astro.props;
 
     .stop-logo:hover {
         transform: scale(1.1);
-        filter: brightness(0) invert(0) drop-shadow(0 0 8px rgba(202, 1, 1, 0.6));
+        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6)); /* Mantener solo la sombra */
     }
 
     .hero-subtitle {

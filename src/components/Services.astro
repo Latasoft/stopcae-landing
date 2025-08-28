@@ -1,20 +1,73 @@
 ---
-import ContactForm from './ContactForm.astro';
 ---
-<section id="servicios" class="section">
-
-    <ContactForm />
-</section>
+<div class="services-content">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-icon">
+                <i class="icon-analysis">⚖️</i>
+            </div>
+            <h3>Análisis Legal</h3>
+            <p>Evaluamos tu caso desde una perspectiva legal y financiera para determinar la mejor estrategia.</p>
+            <div class="service-card-footer">
+                <span class="service-card-link">Saber más</span>
+            </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-icon">
+                <i class="icon-representation">👨‍⚖️</i>
+            </div>
+            <h3>Representación Judicial</h3>
+            <p>Te representamos en todas las instancias legales necesarias para resolver tu caso.</p>
+            <div class="service-card-footer">
+                <span class="service-card-link">Saber más</span>
+            </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-icon">
+                <i class="icon-support">📋</i>
+            </div>
+            <h3>Asesoría Continua</h3>
+            <p>Te acompañamos durante todo el proceso, manteniéndote informado en cada etapa.</p>
+            <div class="service-card-footer">
+                <span class="service-card-link">Saber más</span>
+            </div>
+        </div>
+    </div>
+</div>
 
 <style>
-    .section {
-        margin-bottom: 4rem;
-    }
-
     .section-title {
         color: var(--color-red);
-        margin-bottom: 2rem;
+        margin: 0 auto 3rem auto;
         text-align: center;
+        font-size: 2.5rem;
+        font-weight: 800;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--color-red);
+        border-radius: 2px;
+    }
+
+    .services-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
     .services-grid {

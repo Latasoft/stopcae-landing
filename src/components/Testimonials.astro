@@ -2,39 +2,90 @@
 const testimonials = [
     {
         name: "Ana Martínez",
-        photo: "/testimonials/ana.jpg",
-        quote: "Gracias a StopCAE pude resolver mi situación y ahora puedo pensar en mi futuro sin preocupaciones."
+        role: "Estudiante de Psicología",
+        quote: "Gracias a StopCAE pude resolver mi situación financiera. Después de años de angustia, ahora puedo pensar en mi futuro sin preocupaciones económicas constantes.",
+        avatar: "👩‍🎓"
     },
     {
         name: "Carlos Rodríguez",
-        photo: "/testimonials/carlos.jpg",
-        quote: "El equipo legal me ayudó a entender mis opciones y encontrar la mejor solución para mi caso."
+        role: "Ingeniero Comercial",
+        quote: "El equipo legal me ayudó a entender mis opciones y encontrar la mejor solución para mi caso. Su asesoría profesional hizo toda la diferencia en mi proceso.",
+        avatar: "👨‍💼"
     },
-    // Agregar más testimonios aquí
+    {
+        name: "María González",
+        role: "Profesora de Historia",
+        quote: "Nunca pensé que podría liberarme de mi deuda del CAE. Gracias al equipo legal de Superior-Satellite, ahora disfruto de estabilidad financiera por primera vez en años.",
+        avatar: "👩‍🏫"
+    },
+    {
+        name: "Javier Soto",
+        role: "Diseñador Gráfico",
+        quote: "La transparencia y profesionalismo del equipo marcó la diferencia. Me explicaron cada paso del proceso y lograron resultados que superaron mis expectativas.",
+        avatar: "👨‍🎨"
+    }
 ];
 ---
 
-<section class="testimonials">
-    <h2 class="section-title">Testimonios</h2>
+<div class="testimonials overlay">
     <div class="testimonials-grid">
-        {testimonials.map(testimonial => (
-            <div class="testimonial-card">
-                <div class="testimonial-photo">
-                    <img src={testimonial.photo} alt={`Foto de ${testimonial.name}`} />
+        {testimonials.map((testimonial, index) => (
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay={100 * (index + 1)}>
+                <div class="testimonial-avatar">
+                    <span class="avatar-text">{testimonial.avatar}</span>
                 </div>
                 <div class="testimonial-content">
                     <blockquote>"{testimonial.quote}"</blockquote>
-                    <p class="testimonial-name">{testimonial.name}</p>
+                    <div class="testimonial-info">
+                        <p class="testimonial-name">{testimonial.name}</p>
+                        <p class="testimonial-role">{testimonial.role}</p>
+                    </div>
                 </div>
             </div>
         ))}
     </div>
-</section>
+</div>
 
 <style>
     .testimonials {
-        padding: 4rem 0;
-        background-color: var(--color-gray);
+        padding: 2rem;
+        position: relative;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        color: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .overlay {
+        background-color: var(--color-red);
+    }
+
+    .section-title {
+        color: var(--color-white);
+        margin: 0 auto 3rem auto;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 800;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        padding-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 2px;
     }
 
     .testimonials-grid {
@@ -43,42 +94,142 @@ const testimonials = [
         gap: 2rem;
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 2rem;
+        width: 100%;
     }
 
     .testimonial-card {
-        background: var(--color-white);
-        border-radius: 10px;
+        background: linear-gradient(135deg, rgba(250, 250, 250, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        position: relative;
+        padding: 1.8rem;
+        display: flex;
+        flex-direction: column;
     }
 
-    .testimonial-photo {
+    .testimonial-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 200px;
-        overflow: hidden;
+        height: 0;
+        background: linear-gradient(135deg, rgba(202, 1, 1, 0.05) 0%, rgba(202, 1, 1, 0.02) 100%);
+        transition: height 0.5s ease;
+        z-index: 0;
     }
 
-    .testimonial-photo img {
-        width: 100%;
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        border-color: rgba(202, 1, 1, 0.2);
+    }
+
+    .testimonial-card:hover::before {
         height: 100%;
-        object-fit: cover;
+    }
+
+    .testimonial-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: var(--color-red);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        color: white;
+        box-shadow: 0 5px 15px rgba(202, 1, 1, 0.3);
+        position: relative;
+        z-index: 2;
+    }
+
+    .avatar-text {
+        position: relative;
+        z-index: 3;
     }
 
     .testimonial-content {
-        padding: 1.5rem;
+        position: relative;
+        z-index: 2;
+        flex: 1;
     }
 
+    
+
     blockquote {
-        margin: 0;
+        margin: 0 0 1.5rem 0;
         font-style: italic;
         color: var(--color-dark);
+        line-height: 1.6;
+        font-size: 1rem;
+        position: relative;
+        padding-left: 1.5rem;
+        border-left: 3px solid var(--color-red);
+        transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover blockquote {
+        color: #000;
+    }
+
+    .testimonial-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
     }
 
     .testimonial-name {
-        margin-top: 1rem;
-        font-weight: bold;
+        margin: 0;
+        font-weight: 700;
         color: var(--color-red);
-        text-align: right;
+        font-size: 1.1rem;
+    }
+
+    .testimonial-role {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    @keyframes fadeInTestimonial {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .testimonial-card:nth-child(1) {
+        animation: fadeInTestimonial 0.6s ease-out 0.1s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(2) {
+        animation: fadeInTestimonial 0.6s ease-out 0.3s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(3) {
+        animation: fadeInTestimonial 0.6s ease-out 0.5s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(4) {
+        animation: fadeInTestimonial 0.6s ease-out 0.7s forwards;
+        opacity: 0;
+    }
+
+    @media (max-width: 768px) {
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>

@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import ContactForm from '../components/ContactForm.astro';
+import CaeDescription from '../components/CaeDescription.astro';
+import Testimonials from '../components/Testimonials.astro';
+---
+
+<Layout>
+    <Header />
+    
+    <main class="servicios-page">
+        <section class="services-header">
+                <h1>Servicios</h1>
+        </section>
+        
+        <section class="servicios-content">
+            <div class="form-background">
+                <div class="container">
+                    <h3 class="form-heading">Porque estudiar no debería costarte tu futuro</h3>
+                    <div class="form-wrapper">
+                        <ContactForm />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="servicios-background">
+                <div class="container">
+                    <CaeDescription />
+                </div>
+            </div>
+
+            <div class="form-background">
+                <div class="container">
+                    <h3 class="form-heading">Testimonios</h3>
+
+                    <div class="testimonials-wrapper">
+                        <Testimonials />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppButton />
+</Layout>
+
+<style>
+    .servicios-page {
+        padding-top: 90px; /* Space for fixed header */
+    }
+    
+
+     .services-header h2 {
+        text-align: center;
+        margin: 0;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+    
+    .services-header p {
+        font-size: 0.5rem;
+        max-width: 600px;
+        margin: 0 auto;
+        color: var(--color-dark);
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin:  auto;
+        padding: 1.5rem 1rem;
+    }
+    
+    .servicios-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .servicios-background {
+        background-color: #E8E5E5;
+        padding: 4rem 0;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .form-wrapper {
+        background-color: transparent
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        width: calc(100% + 2rem);
+        max-width: calc(100% + 2rem);
+        display: flex;
+        justify-content: center;
+    }
+    
+    .form-heading {
+        text-align: center;
+        margin: 0 0 2rem 0;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.2;
+        position: relative;
+        padding: 0.5rem 0;
+    }
+    
+    .form-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 2px;
+    }
+    
+    .testimonials-section {
+        color: var(--color-white);
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        margin: 2rem auto;
+        border-radius: 12px;
+    }
+
+    .overlay {
+        background-color: var(--color-red);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        color: var(--color-white);
+    }
+
+    .testimonials-heading {
+        text-align: center;
+        margin: 0 0 2rem 0;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.2;
+        position: relative;
+        padding: 0.5rem 0;
+    }
+    
+    .testimonials-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 2px;
+    }
+    
+    .testimonials-wrapper {
+        margin-top: 3rem;
+        width: 100%;
+    }
+</style>
