@@ -347,7 +347,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         max-width: 100%;
         overflow: hidden;
         padding: 4rem 0;
-        color: white;
+        color: #393939;
         position: relative;
         border: 1px solid rgba(202, 1, 1, 0.08);
     }
@@ -423,11 +423,11 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     .testimonials-heading {
         text-align: center;
-        margin: 0 0 2rem 0;
-        color: #white;
-        font-weight: 800;
+        margin: 0 0 3rem 0;
+        color: white;
+        font-weight: 700;
         letter-spacing: -0.02em;
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(2rem, 4vw, 3rem);
         line-height: 1.2;
         position: relative;
         padding: 0.5rem 0;
@@ -1502,50 +1502,59 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
 
     .section-title {
-        color: #393939;
+        color: #CA0101;
         margin: 0 auto 3rem auto;
         text-align: center;
-        font-size: 2.5rem;
-        font-weight: 800;
+        font-size: 1.8rem;
+        font-weight: 700;
         position: relative;
-        display: relative;
+        display: inline-block;
         width: 100%;
         padding-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
     }
 
     .section-title::after {
         content: '';
         position: absolute;
-        bottom: 0;
+        bottom: -8px;
         left: 50%;
         transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
+        width: 40px;
+        height: 3px;
         background: linear-gradient(90deg, #CA0101, #E30613);
         border-radius: 2px;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .testimonials:hover .section-title::after {
+        opacity: 1;
+        width: 60px;
     }
 
     .testimonials-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        max-width: 1200px;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 3rem;
+        max-width: 1000px;
         margin: 0 auto;
         width: 100%;
     }
 
     .testimonial-card {
-        background: linear-gradient(135deg, rgba(250, 250, 250, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
-        border-radius: 12px;
+        border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 1px solid rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(202, 1, 1, 0.08);
         position: relative;
         padding: 0;
         display: flex;
         flex-direction: column;
         height: 450px;
+        backdrop-filter: blur(10px);
     }
 
     .card-image-container {
@@ -1573,14 +1582,15 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         bottom: 0;
         left: 0;
         right: 0;
-        background: linear-gradient(to top, rgba(250, 250, 250, 0.98), rgba(250, 250, 250, 0.9) 80%, rgba(250, 250, 250, 0.5));
-        padding: 1.5rem;
-        border-radius: 12px;
+        background: rgba(34, 23, 23, 0.98);
+        padding: 2rem;
+        border-radius: 24px;
         z-index: 2;
         height: 45%;
         display: flex;
         flex-direction: column;
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(202, 1, 1, 0.08);
     }
 
     .testimonials blockquote {
@@ -1600,10 +1610,27 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         padding-top: 0.75rem;
     }
 
+    .testimonial-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+        z-index: 3;
+    }
+
+    .testimonial-card:hover::before {
+        transform: scaleX(1);
+    }
+
     .testimonial-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        border-color: rgba(202, 1, 1, 0.2);
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+        border-color: rgba(202, 1, 1, 0.15);
     }
 
     .testimonial-card:hover blockquote {
@@ -1622,8 +1649,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     .testimonial-name {
         margin: 0;
         font-weight: 700;
-        color: var(--color-red);
+        color: #CA0101;
         font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     .testimonial-role {
