@@ -22,7 +22,10 @@ const { images } = Astro.props;
                 <h1 class="hero-title">
                     <span class="title-line">¿Fuiste notificado con una demanda CAE?</span>
                     <span class="title-line">
-                        <span class="action-text">Haz click aqui y ponle<img src="/stop.png" alt="Logo" class="stop-logo"></span>
+                        <a href="/servicios" class="action-text">
+                            Haz click aqui y ponle
+                            <img src="/stop.png" alt="Logo" class="stop-logo">
+                        </a>
                     </span>
                 </h1>
                 <div class="hero-subtitle">
@@ -217,6 +220,8 @@ const { images } = Astro.props;
         transition: all 0.3s ease;
         border: 2px solid rgba(255, 255, 255, 0.8);
         text-shadow: none;
+        text-decoration: none;
+        cursor: pointer;
     }
 
     .action-text:hover {
