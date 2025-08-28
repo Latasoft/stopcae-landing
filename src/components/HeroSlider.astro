@@ -46,8 +46,30 @@ const { images } = Astro.props;
         height: 100vh;
         min-height: 600px;
         overflow: hidden;
-        margin-top: 120px;
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        margin-top: 0;
+        background: linear-gradient(180deg, 
+            var(--color-red) 0%, 
+            #dc2626 20%, 
+            #ef4444 40%, 
+            #f87171 60%, 
+            #fca5a5 80%, 
+            #fef2f2 100%);
+        scroll-snap-align: start;
+    }
+
+    .hero-slider::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 70% 80%, rgba(202, 1, 1, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
     }
 
     .slider-container {
@@ -87,10 +109,12 @@ const { images } = Astro.props;
         width: 100%;
         height: 100%;
         background: linear-gradient(
-            135deg,
-            rgba(220, 38, 38, 0.3) 0%,
-            rgba(185, 28, 28, 0.2) 50%,
-            rgba(0, 0, 0, 0.4) 100%
+            180deg,
+            rgba(202, 1, 1, 0.3) 0%,
+            rgba(202, 1, 1, 0.15) 25%,
+            rgba(220, 38, 38, 0.1) 50%,
+            rgba(239, 68, 68, 0.05) 75%,
+            rgba(255, 255, 255, 0.1) 100%
         );
         z-index: 1;
     }
@@ -116,8 +140,9 @@ const { images } = Astro.props;
         margin: 0;
         line-height: 1.2;
         font-weight: 800;
-        text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         letter-spacing: -0.02em;
+        color: var(--color-white);
     }
 
     .title-line {
@@ -178,9 +203,9 @@ const { images } = Astro.props;
     }
 
     .action-text {
-        background: linear-gradient(135deg, var(--color-red) 0%, #dc2626 100%);
-        color: white;
-        font-weight: 600;
+        background: linear-gradient(135deg, var(--color-white) 0%, #f8f8f8 100%);
+        color: var(--color-red);
+        font-weight: 700;
         position: relative;
         padding: 0.5rem 1rem;
         font-size: 0.85em;
@@ -188,15 +213,17 @@ const { images } = Astro.props;
         line-height: 1.4;
         border-radius: 25px;
         display: inline-block;
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        text-shadow: none;
     }
 
     .action-text:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(220, 38, 38, 0.6);
-        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        border-color: var(--color-red);
+        background: linear-gradient(135deg, var(--color-white) 0%, #ffffff 100%);
     }
 
     .stop-logo {
@@ -204,7 +231,7 @@ const { images } = Astro.props;
         width: auto;
         display: inline-block;
         margin-left: 0.3rem;
-        filter: brightness(0) invert(1); /* Hace el logo blanco */
+        filter: brightness(0) invert(0); /* Mantiene el logo original */
         transition: all 0.3s ease;
         vertical-align: middle;
         opacity: 1;
@@ -214,7 +241,7 @@ const { images } = Astro.props;
 
     .stop-logo:hover {
         transform: scale(1.1);
-        filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+        filter: brightness(0) invert(0) drop-shadow(0 0 8px rgba(202, 1, 1, 0.6));
     }
 
     .hero-subtitle {
@@ -226,9 +253,10 @@ const { images } = Astro.props;
     .hero-subtitle p {
         font-size: clamp(1.1rem, 2.5vw, 1.5rem);
         font-weight: 400;
-        opacity: 0.9;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        opacity: 1;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
         margin: 0;
+        color: var(--color-white);
     }
 
     .cae-banner {
@@ -319,21 +347,24 @@ const { images } = Astro.props;
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.6);
         cursor: pointer;
         transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .indicator.active {
         background: var(--color-red);
         transform: scale(1.2);
-        border-color: rgba(255, 255, 255, 0.8);
+        border-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 12px rgba(202, 1, 1, 0.5);
     }
 
     .indicator:hover {
-        background: rgba(255, 255, 255, 0.8);
+        background: rgba(255, 255, 255, 0.9);
         transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     /* Controles de navegación */

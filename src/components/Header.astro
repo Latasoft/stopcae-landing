@@ -126,16 +126,110 @@ const currentPath = Astro.url.pathname;
                 }
             }
         }
+
+        // Smooth scroll to section with snap behavior
+        function smoothScrollToSection(sectionId) {
+            const section = document.querySelector(`#${sectionId}`);
+            if (section) {
+                const targetPosition = section.offsetTop;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Auto-navigation based on scroll direction and position
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        
+        function handleSmartScroll() {
+            const currentScrollTop = window.scrollY;
+            const scrollDirection = currentScrollTop > lastScrollTop ? 'down' : 'up';
+            const scrollDistance = Math.abs(currentScrollTop - lastScrollTop);
+            
+            // Only trigger auto-navigation for significant scrolls
+            if (scrollDistance > 30) {
+                clearTimeout(scrollTimeout);
+                
+                scrollTimeout = setTimeout(() => {
+                    const sections = document.querySelectorAll('section[id]');
+                    const currentPosition = currentScrollTop + 50;
+                    
+                    let targetSection = null;
+                    
+                    if (scrollDirection === 'down') {
+                        // Find next section
+                        for (let i = 0; i < sections.length; i++) {
+                            if (sections[i].offsetTop > currentPosition) {
+                                targetSection = sections[i];
+                                break;
+                            }
+                        }
+                    } else {
+                        // Find previous section
+                        for (let i = sections.length - 1; i >= 0; i--) {
+                            if (sections[i].offsetTop < currentPosition) {
+                                targetSection = sections[i];
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Auto-scroll to target section if found
+                    if (targetSection && scrollDistance > 50) {
+                        const targetId = targetSection.getAttribute('id');
+                        smoothScrollToSection(targetId);
+                    }
+                }, 100); // Reduced delay for more responsive navigation
+            }
+            
+            lastScrollTop = currentScrollTop;
+        }
+        
+        // Update scroll indicator
+        function updateScrollIndicator() {
+            const scrollDots = document.querySelectorAll('.scroll-dot');
+            const scrollPosition = window.scrollY + 100;
+            
+            scrollDots.forEach(dot => {
+                const sectionId = dot.getAttribute('data-section');
+                const section = document.querySelector(`#${sectionId}`);
+                
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionBottom = sectionTop + section.offsetHeight;
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                }
+            });
+        }
+
+        // Handle scroll dot clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('scroll-dot')) {
+                const sectionId = e.target.getAttribute('data-section');
+                smoothScrollToSection(sectionId);
+            }
+        });
         
         // Set active tab on scroll
         window.addEventListener('scroll', () => {
             setActiveTab();
             handleHeaderScroll();
+            handleSmartScroll();
+            updateScrollIndicator();
         });
         
         // Set initial active tab and header state
         setActiveTab();
         handleHeaderScroll();
+        updateScrollIndicator();
         
         // Set active tab on click
         navLinks.forEach(link => {

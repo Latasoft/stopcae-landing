@@ -31,16 +31,10 @@ const sliderImages = [
     <section id="inicio">
         <HeroSlider images={sliderImages} />
     </section>
-    <div class="container">
         <section id="servicios">
             <Services />
         </section>
-        <section id="quienes-somos" class="section">
-            <h2 class="section-title">Quienes Somos</h2>
-            <p>Somos un estudio jurídico especializado en la eliminación de deudas estudiantiles a través de procesos judiciales eficaces, justos y sostenidos en un profundo conocimiento del derecho y la realidad social de nuestros clientes.</p>
-            <p>Nuestro propósito es claro: brindar a profesionales la posibilidad de iniciar su vida laboral sin el peso de una deuda que limita sus oportunidades y posterga sus proyectos. Sabemos que detrás de cada título hay años de esfuerzo, compromiso y sacrificio. Por eso, trabajamos para que ese logro no se vea opacado por una carga financiera injusta.</p>
-        </section>
-    </div>
+
     <section id="mision-vision">
         <MissionVision />
     </section>
@@ -61,4 +55,15 @@ const sliderImages = [
     </div>
     <Footer />
     <WhatsAppButton />
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scroll-indicator">
+        <div class="scroll-dot" data-section="inicio"></div>
+        <div class="scroll-dot" data-section="servicios"></div>
+        <div class="scroll-dot" data-section="quienes-somos"></div>
+        <div class="scroll-dot" data-section="mision-vision"></div>
+        <div class="scroll-dot" data-section="testimonios"></div>
+        <div class="scroll-dot" data-section="preguntas"></div>
+        <div class="scroll-dot" data-section="trabaja"></div>
+    </div>
 </Layout>
