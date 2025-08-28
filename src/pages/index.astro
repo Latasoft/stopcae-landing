@@ -9,7 +9,7 @@ import Testimonials from '../components/Testimonials.astro';
 import FAQ from '../components/FAQ.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import CaeDescription from '../components/CaeDescription.astro';
+
 
 const sliderImages = [
     {
@@ -33,13 +33,13 @@ const sliderImages = [
         <HeroSlider images={sliderImages} />
     </section>
     
-    <section id="mision-vision">
+        <section id="mision-vision">
         <MissionVision />
     </section>
-        </section>
-        <section id="preguntas">
-            <FAQ />
-        </section>
+    
+    <section id="preguntas">
+        <FAQ />
+    </section>
         <section id="trabaja" class="section">
             <h2 class="section-title">Trabaja con Nosotros</h2>
             <p>¿Quieres ser parte de nuestro equipo? Envíanos tu currículum y únete a nuestra misión de hacer justicia en la educación.</p>
@@ -47,7 +47,6 @@ const sliderImages = [
                 <a href="#" class="button">Enviar CV</a>
             </div>
         </section>
-    </div>
     <Footer />
     <WhatsAppButton />
     
@@ -55,7 +54,6 @@ const sliderImages = [
     <div class="scroll-indicator" id="scroll-indicator">
         <div class="scroll-dot" data-section="inicio"></div>
         <div class="scroll-dot" data-section="mision-vision"></div>
-        <div class="scroll-dot" data-section="quienes-somos"></div>
         <div class="scroll-dot" data-section="preguntas"></div>
         <div class="scroll-dot" data-section="trabaja"></div>
     </div>

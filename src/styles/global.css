@@ -42,11 +42,8 @@ body::before {
 
 /* First section after header - enhanced gradient transition */
 section {
-    background: linear-gradient(100deg, 
-        var(--color-red) 0%,  
-        #ef4444 30%, 
-        #fca5a5 70%, 
-        #E0DCDC 100%);
+    background: linear-gradient(135deg, #393939 0%, #2d2d2d 100%);
+
     position: relative;
 }
 
@@ -169,6 +166,14 @@ section[id="inicio"] {
     min-height: 100vh;
     padding: 0;
     margin: 0;
+}
+
+/* Special style for quienes-somos section */
+section[id="quienes-somos"] {
+    min-height: 100vh;
+    padding: 4rem 0;
+    margin: 0;
+    scroll-snap-align: start;
 }
 
 /* Adjust container to match section heights */
