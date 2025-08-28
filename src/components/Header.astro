@@ -3,6 +3,20 @@ import '../styles/header.css';
 
 // Get current page or section to determine active tab
 const currentPath = Astro.url.pathname;
+
+// Determine which tab should be active based on current path
+let activeTab = 'inicio';
+if (currentPath === '/') {
+    activeTab = 'inicio';
+} else if (currentPath.startsWith('/servicios')) {
+    activeTab = 'servicios';
+} else if (currentPath.startsWith('/quienes-somos')) {
+    activeTab = 'quienes-somos';
+} else if (currentPath.startsWith('/faq')) {
+    activeTab = 'faq';
+} else if (currentPath.startsWith('/trabaja-con-nosotros')) {
+    activeTab = 'trabaja-con-nosotros';
+}
 ---
 
 <header>
@@ -35,12 +49,11 @@ const currentPath = Astro.url.pathname;
                 </button>
                 <nav>
                     <ul class="nav-menu" id="nav-menu">
-                        <li><a href="/" class="nav-link">Inicio</a></li>
-                        <li><a href="/servicios" class="nav-link">Servicios</a></li>
-                        <li><a href="/quienes-somos" class="nav-link">Quienes Somos</a></li>
-                        <li><a href="/faq" class="nav-link">FAQ</a></li>
-                        <li><a href="/trabaja-con-nosotros" class="nav-link">Trabaja con Nosotros</a></li>
-                        
+                        <li><a href="/" class="nav-link" data-section="inicio" class:list={['nav-link', { active: activeTab === 'inicio' }]}>Inicio</a></li>
+                        <li><a href="/servicios" class="nav-link" data-section="servicios" class:list={['nav-link', { active: activeTab === 'servicios' }]}>Servicios</a></li>
+                        <li><a href="/quienes-somos" class="nav-link" data-section="quienes-somos" class:list={['nav-link', { active: activeTab === 'quienes-somos' }]}>Quienes Somos</a></li>
+                        <li><a href="/faq" class="nav-link" data-section="faq" class:list={['nav-link', { active: activeTab === 'faq' }]}>FAQ</a></li>
+                        <li><a href="/trabaja-con-nosotros" class="nav-link" data-section="trabaja-con-nosotros" class:list={['nav-link', { active: activeTab === 'trabaja-con-nosotros' }]}>Trabaja con Nosotros</a></li>
                     </ul>
                 </nav>
             </div>
@@ -87,22 +100,22 @@ const currentPath = Astro.url.pathname;
         // Active tab functionality
         const navLinks = document.querySelectorAll('.nav-link');
         
-        // Function to set active tab based on current section
+        // Function to set active tab based on current URL
         function setActiveTab() {
-            const scrollPosition = window.scrollY + 100; // Offset for header height
+            const currentPath = window.location.pathname;
+            let currentSection = 'inicio';
             
-            // Get all sections
-            const sections = document.querySelectorAll('section[id]');
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
+            if (currentPath === '/') {
+                currentSection = 'inicio';
+            } else if (currentPath.startsWith('/servicios')) {
+                currentSection = 'servicios';
+            } else if (currentPath.startsWith('/quienes-somos')) {
+                currentSection = 'quienes-somos';
+            } else if (currentPath.startsWith('/faq')) {
+                currentSection = 'faq';
+            } else if (currentPath.startsWith('/trabaja-con-nosotros')) {
+                currentSection = 'trabaja-con-nosotros';
+            }
             
             // Update active tab
             navLinks.forEach(link => {
@@ -111,11 +124,6 @@ const currentPath = Astro.url.pathname;
                     link.classList.add('active');
                 }
             });
-            
-            // Default to first tab if no section is active
-            if (!currentSection && navLinks.length > 0) {
-                navLinks[0].classList.add('active');
-            }
         }
         
         // Header scroll effect
@@ -221,12 +229,16 @@ const currentPath = Astro.url.pathname;
             }
         });
         
-        // Set active tab on scroll
+        // Set active tab on scroll and navigation
         window.addEventListener('scroll', () => {
-            setActiveTab();
             handleHeaderScroll();
             handleSmartScroll();
             updateScrollIndicator();
+        });
+        
+        // Listen for navigation changes (for SPA-like behavior)
+        window.addEventListener('popstate', () => {
+            setActiveTab();
         });
         
         // Set initial active tab and header state
@@ -234,11 +246,18 @@ const currentPath = Astro.url.pathname;
         handleHeaderScroll();
         updateScrollIndicator();
         
-        // Set active tab on click
+        // Set active tab on click and update based on navigation
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
+                // Remove active class from all links
                 navLinks.forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
                 link.classList.add('active');
+                
+                // Update active tab based on the new URL after navigation
+                setTimeout(() => {
+                    setActiveTab();
+                }, 100);
             });
         });
     });
