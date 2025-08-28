@@ -463,8 +463,8 @@ const { images } = Astro.props;
     /* Responsive */
     @media (max-width: 768px) {
         .hero-slider {
-            height: 80vh;
-            min-height: 500px;
+            height: 100vh; /* Ocupar toda la altura de la pantalla */
+            min-height: 100vh; /* Asegurar que sea al menos 100vh */
         }
 
         .cae-banner {
@@ -481,6 +481,50 @@ const { images } = Astro.props;
 
         .prev-btn { left: 1rem; }
         .next-btn { right: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+        .hero-slider {
+            height: 100vh; /* Mantener 100vh en pantallas muy pequeñas */
+            min-height: 100vh;
+        }
+
+        .hero-title {
+            font-size: clamp(1.5rem, 6vw, 3rem);
+        }
+
+        .action-text {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75em;
+        }
+
+        .stop-logo {
+            height: 1.2em;
+            margin-left: 0.2rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
+        }
+
+        .slider-nav {
+            width: 35px;
+            height: 35px;
+            font-size: 1.2rem;
+        }
+
+        .prev-btn { left: 0.5rem; }
+        .next-btn { right: 0.5rem; }
+
+        .slide-indicators {
+            bottom: 1.5rem;
+            gap: 0.8rem;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+        }
     }
 </style>
 
