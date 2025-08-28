@@ -37,22 +37,22 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nombre">Nombre Completo *</label>
-                            <input type="text" id="nombre" name="nombre" required>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej. María Pérez">
                         </div>
                         <div class="form-group">
                             <label for="email">Correo Electrónico *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder="Ej. correo@ejemplo.com">
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono">
+                            <input type="tel" id="telefono" name="telefono" placeholder="+56 9 1234 5678">
                         </div>
                         <div class="form-group">
                             <label for="ciudad">Ciudad *</label>
-                            <input type="text" id="ciudad" name="ciudad" required>
+                            <input type="text" id="ciudad" name="ciudad" required placeholder="Ej. Santiago">
                         </div>
                     </div>
                     
@@ -82,12 +82,12 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     
                     <div class="form-group">
                         <label for="motivacion">¿Por qué quieres unirte a nuestro equipo? *</label>
-                        <textarea id="motivacion" name="motivacion" rows="4" required placeholder="Cuéntanos tu motivación para formar parte de nuestro estudio jurídico..."></textarea>
+                        <textarea id="motivacion" name="motivacion" rows="4" required placeholder="Describe brevemente tu motivación (máx. 300 caracteres)"></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="aportes">¿Cómo crees que puedes contribuir a nuestra misión? *</label>
-                        <textarea id="aportes" name="aportes" rows="4" required placeholder="Describe cómo tu experiencia y habilidades pueden ayudarnos a transformar vidas..."></textarea>
+                        <textarea id="aportes" name="aportes" rows="4" required placeholder="Ej. experiencia en litigios de consumo, negociación con entidades financieras..."></textarea>
                     </div>
                     
                     <div class="form-group">
@@ -98,13 +98,13 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     
                     <div class="form-group">
                         <label for="carta">Carta de Presentación (opcional)</label>
-                        <textarea id="carta" name="carta" rows="3" placeholder="Si deseas, incluye una carta de presentación..."></textarea>
+                        <textarea id="carta" name="carta" rows="3" placeholder="Carta breve (opcional): ¿por qué encajas en el equipo?"></textarea>
                     </div>
                     
                     <div class="form-group checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" name="disponibilidad" required>
-                            <span class="checkmark"></span>
+                            <span class="checkmark" aria-hidden="true"></span>
                             Estoy disponible para comenzar en el plazo indicado
                         </label>
                     </div>
@@ -112,7 +112,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     <div class="form-group checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" name="acepto" required>
-                            <span class="checkmark"></span>
+                            <span class="checkmark" aria-hidden="true"></span>
                             Acepto el procesamiento de mis datos personales según la política de privacidad
                         </label>
                     </div>
@@ -396,20 +396,29 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         margin-bottom: 2rem;
     }
 
+    /* Checkbox — accessible custom checkbox */
     .checkbox-label {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         gap: 1rem;
         cursor: pointer;
         color: #393939;
         font-size: 1rem;
         line-height: 1.5;
+        position: relative;
     }
 
+    /* hide native checkbox but keep it accessible */
     .checkbox-label input[type="checkbox"] {
-        width: auto;
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
         margin: 0;
-        transform: scale(1.2);
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
     }
 
     .checkmark {
@@ -420,12 +429,44 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         background: rgba(255, 255, 255, 0.9);
         border: 2px solid rgba(202, 1, 1, 0.2);
         border-radius: 4px;
-        transition: all 0.3s ease;
+        transition: all 0.18s ease;
+        flex-shrink: 0;
     }
 
     .checkbox-label:hover .checkmark {
         border-color: #CA0101;
-        background: rgba(202, 1, 1, 0.05);
+        background: rgba(202, 1, 1, 0.04);
+    }
+
+    /* check mark (hidden by default) */
+    .checkmark::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 1px;
+        width: 6px;
+        height: 11px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg) scale(0.6);
+        opacity: 0;
+        transition: all 0.16s ease;
+    }
+
+    /* checked state */
+    .checkbox-label input[type="checkbox"]:checked + .checkmark {
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        border-color: #CA0101;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+    }
+    
+    /* keyboard focus */
+    .checkbox-label input[type="checkbox"]:focus + .checkmark {
+        box-shadow: 0 0 0 4px rgba(202,1,1,0.08);
     }
 
     .submit-btn {
