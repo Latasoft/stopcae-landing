@@ -4,6 +4,10 @@ import '../styles/header.css';
 // Get current page or section to determine active tab
 const currentPath = Astro.url.pathname;
 
+// Número configurable (usa PUBLIC_PHONE si está en .env, sino usa el valor por defecto)
+const PHONE = import.meta.env.PUBLIC_PHONE ?? '+56 9 5409 9974';
+const PHONE_HREF = PHONE.replace(/[^+\d+]/g, '');
+
 // Determine which tab should be active based on current path
 let activeTab = 'inicio';
 if (currentPath === '/') {
@@ -33,7 +37,12 @@ if (currentPath === '/') {
             <!-- First row with contact info -->
             <div class="header-top">
                 <div class="contact-info">
-                    <i class="fas fa-phone"></i> +56 9 5409 9974
+                    <a href={`tel:${PHONE_HREF}`} class="phone-link" aria-label={`Llamar ${PHONE}`}>
+                                        <i class="fas fa-phone"></i>
+
+                        <span class="call-text">Llámanos</span>
+                        <span class="phone-number">{PHONE}</span>
+                    </a>
                 </div>
             </div>
             

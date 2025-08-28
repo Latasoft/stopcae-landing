@@ -22,6 +22,18 @@ header.scrolled .logo {
     transition: height 0.3s ease;
 }
 
+header.scrolled .nav-menu a {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+header.scrolled .contact-info {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
 header.scrolled .header-top,
 header.scrolled .header-middle {
     opacity: 0;
@@ -85,6 +97,48 @@ header.scrolled .nav-container {
     font-weight: 600;
     margin-left: 0;
     padding-left: 0;
+}
+
+.contact-info .phone-link {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.contact-info .call-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.contact-info .phone-number {
+    font-weight: 600;
+    font-size: 1rem;
+    opacity: 0.9;
+    padding-left: 0.5rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.contact-info .phone-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+.contact-info i {
+    margin-right: 0.5rem;
+    color: var(--color-white);
+    font-size: 1.1rem;
 }
 
 /* Second row with slogan */
