@@ -22,7 +22,7 @@ const { images } = Astro.props;
                 <h1 class="hero-title">
                     <span class="title-line">¿Fuiste notificado con una demanda CAE?</span>
                     <span class="title-line">
-                        <span class="action-text">Haz click aqui y ponle<img src="/logo.png" alt="Logo" class="stop-logo"></span>
+                        <span class="action-text">Haz click aqui y ponle<img src="/stop.png" alt="Logo" class="stop-logo"></span>
                     </span>
                 </h1>
                 <div class="hero-subtitle">
@@ -236,14 +236,11 @@ const { images } = Astro.props;
         opacity: 1;
         border-radius: 4px;
         padding: 0.1rem;
-
-        /* Recolor logo a rojo vía filtros CSS */
-        filter: brightness(0) saturate(100%) sepia(1) hue-rotate(-8deg) saturate(600%) contrast(1);
     }
 
     .stop-logo:hover {
         transform: scale(1.1);
-        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6)) brightness(0) saturate(100%) sepia(1) hue-rotate(-8deg) saturate(600%) contrast(1);
+        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6)) 
     }
 
     .hero-subtitle {

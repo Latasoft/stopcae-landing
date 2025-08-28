@@ -31,12 +31,30 @@
                 <textarea name="comentario" placeholder="Cuéntanos tu situación"></textarea>
             </div>
 
-            <button type="submit" class="submit-button">Quiero decir STOP</button>
+            <button type="submit" class="submit-button">Quiero decir <img src="/stop.png" alt="Logo" class="stop-logo" /></button>
         </form>
     </div>
 </div>
 
 <style>
+
+      .stop-logo {
+        display: inline-block;
+        height: 3rem;        /* ajusta según prefieras */
+        width: auto;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;      /* corregido */
+        vertical-align: middle;
+        transition: transform 0.25s ease;
+        opacity: 1;
+        pointer-events: none;  /* evita dobles eventos5 */
+    }
+
+    .stop-logo:hover {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6));
+    }
+
     .contact-form {
         color: var(--color-white);
         padding: 2rem 0;
@@ -222,15 +240,19 @@
     }
 
     .submit-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
         background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
         color: #FFFBFB;
         border: none;
-        padding: 1.2rem 2rem;
-        font-size: 1.3rem;
+        padding: 1.05rem 1.25rem;
+        font-size: 1.05rem;
         font-weight: 700;
         border-radius: 25px;
         cursor: pointer;
-        width: 100%;
+        width: 100%;            /* puedes quitar si no quieres full-width */
         margin-top: 1.5rem;
         transition: all 0.3s ease;
         text-transform: uppercase;

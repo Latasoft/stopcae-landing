@@ -1,8 +1,8 @@
 ---
 ---
 
-<div class="whatsapp-button">
-    <a href="https://wa.me/+56954099974" target="_blank" rel="noopener noreferrer">
+<div class="whatsapp-button animate-on-scroll fade-in-scale">
+    <a href="https://wa.me/+56954099974" target="_blank" rel="noopener noreferrer" class="hover-bounce">
         <i class="fab fa-whatsapp"></i>
     </a>
 </div>
@@ -31,6 +31,11 @@
 
     .whatsapp-button a:hover {
         transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
+
+    .whatsapp-button.animate-on-scroll {
+        animation: float 3s ease-in-out infinite;
     }
 
     .whatsapp-button i {

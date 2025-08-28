@@ -19,12 +19,12 @@ if (currentPath === '/') {
 }
 ---
 
-<header>
+<header class="animate-on-scroll slide-in-down">
     <div class="nav-container">
         <!-- Logo on the left -->
         <div class="logo-section">
             <a href="/">
-                <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo">
+                <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo hover-pulse">
             </a>
         </div>
         
@@ -49,11 +49,11 @@ if (currentPath === '/') {
                 </button>
                 <nav>
                     <ul class="nav-menu" id="nav-menu">
-                        <li><a href="/" class="nav-link" data-section="inicio" class:list={['nav-link', { active: activeTab === 'inicio' }]}>Inicio</a></li>
-                        <li><a href="/servicios" class="nav-link" data-section="servicios" class:list={['nav-link', { active: activeTab === 'servicios' }]}>Servicios</a></li>
-                        <li><a href="/quienes-somos" class="nav-link" data-section="quienes-somos" class:list={['nav-link', { active: activeTab === 'quienes-somos' }]}>Quienes Somos</a></li>
-                        <li><a href="/faq" class="nav-link" data-section="faq" class:list={['nav-link', { active: activeTab === 'faq' }]}>FAQ</a></li>
-                        <li><a href="/trabaja-con-nosotros" class="nav-link" data-section="trabaja-con-nosotros" class:list={['nav-link', { active: activeTab === 'trabaja-con-nosotros' }]}>Trabaja con Nosotros</a></li>
+                        <li><a href="/" class={`nav-link animate-on-scroll fade-in-up ${activeTab === 'inicio' ? 'active' : ''}`} data-section="inicio">Inicio</a></li>
+                        <li><a href="/servicios" class={`nav-link animate-on-scroll fade-in-up ${activeTab === 'servicios' ? 'active' : ''}`} data-section="servicios">Servicios</a></li>
+                        <li><a href="/quienes-somos" class={`nav-link animate-on-scroll fade-in-up ${activeTab === 'quienes-somos' ? 'active' : ''}`} data-section="quienes-somos">Quienes Somos</a></li>
+                        <li><a href="/faq" class={`nav-link animate-on-scroll fade-in-up ${activeTab === 'faq' ? 'active' : ''}`} data-section="faq">FAQ</a></li>
+                        <li><a href="/trabaja-con-nosotros" class={`nav-link animate-on-scroll fade-in-up ${activeTab === 'trabaja-con-nosotros' ? 'active' : ''}`} data-section="trabaja-con-nosotros">Trabaja con Nosotros</a></li>
                     </ul>
                 </nav>
             </div>
