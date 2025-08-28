@@ -243,6 +243,42 @@ header.scrolled .nav-container {
 }
 
 @media (max-width: 768px) {
+    /* Forzar estado compacto en móviles */
+    header {
+        padding: 0.3rem 0; /* Aplicar padding reducido como en scrolled */
+    }
+    
+    .logo {
+        height: 60px; /* Logo pequeño siempre */
+    }
+    
+    .nav-menu a {
+        font-size: 0.9rem;
+        padding: 0.6rem 0.5rem;
+    }
+    
+    .contact-info {
+        opacity: 0;
+        transform: translateY(-10px);
+        height: 0;
+        overflow: hidden; /* Ocultar permanentemente */
+    }
+    
+    .header-top,
+    .header-middle {
+        opacity: 0;
+        height: 0;
+        overflow: hidden; /* Ocultar slogan y contact-info */
+    }
+    
+    .header-bottom {
+        margin-top: 0;
+    }
+    
+    .nav-container {
+        align-items: center;
+    }
+    
     .nav-container {
         flex-direction: column;
         align-items: flex-start;

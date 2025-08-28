@@ -3,10 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
-import ContactForm from '../components/ContactForm.astro';
-import CaeDescription from '../components/CaeDescription.astro';
-import Testimonials from '../components/Testimonials.astro';
 ---
+
+<!-- Meta viewport para responsividad móvil -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <Layout>
     <Header />
@@ -21,14 +21,99 @@ import Testimonials from '../components/Testimonials.astro';
                 <div class="container">
                     <h3 class="form-heading">Porque estudiar no debería costarte tu futuro</h3>
                     <div class="form-wrapper">
-                        <ContactForm />
+                        <!-- ContactForm Component Inserted -->
+                        <div class="contact-form">
+                            <div class="form-container overlay">
+                                <h2>Contacta con nosotros</h2>
+                                
+                                <form id="stopForm" class="stop-form">
+                                    <div class="form-options">
+                                        <label class="option">
+                                            <input type="radio" name="status" value="pagando" required>
+                                            <span>Estoy pagando mi CAE</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="status" value="nopagando">
+                                            <span>Ya dejé de pagar</span>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-fields">
+                                        <input type="text" name="nombre" placeholder="Nombre completo" required>
+                                        <input type="email" name="correo" placeholder="Correo electrónico" required>
+                                        <input type="tel" name="telefono" placeholder="Teléfono" required>
+                                        <textarea name="comentario" placeholder="Cuéntanos tu situación"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="submit-button">Quiero decir <img src="/stop.png" alt="Logo" class="stop-logo" /></button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="servicios-background">
                 <div class="container">
-                    <CaeDescription />
+                    <!-- CaeDescription Component Inserted -->
+                    <div class="cae-description-container">
+                        <div class="cae-logo-container">
+                            <div class="cae-logo">
+                                <span class="logo-text">CAE</span>
+                                <div class="logo-strike"></div>
+                            </div>
+                        </div>
+
+                        <div class="cae-content">
+                            <p class="hero-subtitle-text">El servicio de excepción del CAE es una solución legal que te permite liberarte de una deuda injusta.</p>
+                            
+                            <div class="cae-benefits">
+                                <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="benefit-icon">
+                                        <span class="icon-text">✓</span>
+                                        <div class="icon-pulse"></div>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h3>Análisis de caso gratuito</h3>
+                                        <p>Evaluamos tu situación particular sin costo y te ofrecemos opciones personalizadas para tu caso.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="benefit-icon">
+                                        <span class="icon-text">✓</span>
+                                        <div class="icon-pulse"></div>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h3>Respaldo jurídico completo</h3>
+                                        <p>Nuestro equipo de abogados especializados te acompaña durante todo el proceso legal, desde la presentación de la demanda hasta su resolución.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="benefit-icon">
+                                        <span class="icon-text">✓</span>
+                                        <div class="icon-pulse"></div>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h3>Pago justo y transparente</h3>
+                                        <p>Solo pagas cuando obtenemos resultados. Sin costos ocultos ni tarifas iniciales que compliquen tu situación financiera.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="benefit-item" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="benefit-icon">
+                                        <span class="icon-text">✓</span>
+                                        <div class="icon-pulse"></div>
+                                    </div>
+                                    <div class="benefit-text">
+                                        <h3>Atención personalizada</h3>
+                                        <p>Te asignamos un asesor dedicado que te mantendrá informado sobre el avance de tu caso y responderá todas tus consultas durante el proceso.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -37,7 +122,63 @@ import Testimonials from '../components/Testimonials.astro';
                     <h3 class="form-heading">Testimonios</h3>
 
                     <div class="testimonials-wrapper">
-                        <Testimonials />
+                        <!-- Testimonials Component Inserted -->
+                        <div class="testimonials overlay">
+                            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                            <div class="testimonials-grid">
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="card-image-container">
+                                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ana Martínez" class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">Ana Martínez</p>
+                                            <p class="testimonial-role">Estudiante de Psicología</p>
+                                        </div>
+                                        <blockquote>"Gracias a StopCAE pude resolver mi situación financiera. Después de años de angustia, ahora puedo pensar en mi futuro sin preocupaciones económicas constantes."</blockquote>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="card-image-container">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Carlos Rodríguez" class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">Carlos Rodríguez</p>
+                                            <p class="testimonial-role">Ingeniero Comercial</p>
+                                        </div>
+                                        <blockquote>"El equipo legal me ayudó a entender mis opciones y encontrar la mejor solución para mi caso. Su asesoría profesional hizo toda la diferencia en mi proceso."</blockquote>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="card-image-container">
+                                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="María González" class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">María González</p>
+                                            <p class="testimonial-role">Profesora de Historia</p>
+                                        </div>
+                                        <blockquote>"Nunca pensé que podría liberarme de mi deuda del CAE. Gracias al equipo legal de Superior-Satellite, ahora disfruto de estabilidad financiera por primera vez en años."</blockquote>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="card-image-container">
+                                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Javier Soto" class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">Javier Soto</p>
+                                            <p class="testimonial-role">Diseñador Gráfico</p>
+                                        </div>
+                                        <blockquote>"La transparencia y profesionalismo del equipo marcó la diferencia. Me explicaron cada paso del proceso y lograron resultados que superaron mis expectativas."</blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,6 +222,10 @@ import Testimonials from '../components/Testimonials.astro';
         padding-top: 90px; /* Space for fixed header */
         /* Disable scroll snapping for this page */
         scroll-snap-type: none;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
     }
     
     /* Override global section rules for servicios page */
@@ -98,6 +243,21 @@ import Testimonials from '../components/Testimonials.astro';
     /* Override global body scroll behavior for this page */
     .servicios-page body {
         scroll-snap-type: none !important;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Ensure HTML and body have correct width */
+    html, body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        box-sizing: border-box;
+    }
+
+    * {
+        box-sizing: border-box;
     }
     
     /* Override global container section rules */
@@ -107,13 +267,27 @@ import Testimonials from '../components/Testimonials.astro';
         justify-content: flex-start !important;
     }
 
-    .services-header h2 {
+    .services-header {
+        width: 100%;
+        text-align: center;
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        padding: 2rem 0;
+        margin: 0;
+        overflow: hidden;
+    }
+
+    .services-header h1 {
         text-align: center;
         margin: 0;
         color: white;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         font-weight: 800;
         letter-spacing: -0.02em;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        line-height: 1.2;
+        padding: 2rem 0;
+        width: 100%;
+        max-width: 100%;
     }
     
     .services-header p {
@@ -127,28 +301,42 @@ import Testimonials from '../components/Testimonials.astro';
         max-width: 1200px;
         margin: 0 auto;
         padding: 1.5rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .servicios-content {
         display: flex;
         flex-direction: column;
         width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     
     .servicios-background {
         background-color: #E8E5E5;
         padding: 4rem 0;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .form-background {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        padding: 2rem 0;
     }
     
     .form-wrapper {
         background-color: transparent;
-        margin-left: -1rem;
-        margin-right: -1rem;
+        margin: 0;
         padding: 2rem;
         margin-bottom: 3rem;
-        width: calc(100% + 2rem);
-        max-width: calc(100% + 2rem);
+        width: 100%;
+        max-width: 100%;
         display: flex;
         justify-content: center;
     }
@@ -246,14 +434,183 @@ import Testimonials from '../components/Testimonials.astro';
         .form-wrapper {
             padding: 1.5rem;
             margin-bottom: 2rem;
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
         }
         
         .form-heading {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
         }
         
         .container {
             padding: 1rem 0.8rem;
+        }
+
+        /* Services Header Responsive */
+        .services-header {
+            padding: 2rem 0;
+        }
+
+        .services-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            padding: 0 1rem;
+        }
+
+        /* ContactForm Responsive */
+        .contact-form {
+            padding: 1.5rem 0;
+        }
+
+        .form-container {
+            padding: 1.5rem;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .stop-form {
+            padding: 2rem 1.5rem;
+        }
+
+        .form-options {
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 10px;
+            height: 10px;
+        }
+
+        .form-fields {
+            gap: 0.8rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            height: 80px;
+        }
+
+        .submit-button {
+            padding: 0.9rem 1rem;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+
+        /* CaeDescription Responsive */
+        .cae-description-container {
+            padding: 2rem 0;
+        }
+
+        .cae-logo-container {
+            min-width: auto;
+            margin-bottom: 2rem;
+        }
+
+        .cae-logo {
+            width: 150px;
+            height: 150px;
+        }
+
+        .logo-text {
+            font-size: 3rem;
+        }
+
+        .hero-subtitle-text {
+            font-size: clamp(1rem, 2.2vw, 1.3rem);
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .cae-benefits {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .benefit-item {
+            padding: 1.5rem;
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+        }
+
+        .benefit-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-text p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* Testimonials Responsive */
+        .testimonials {
+            padding: 1.5rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            height: auto;
+            min-height: 400px;
+        }
+
+        .card-image-container {
+            height: 60%;
+        }
+
+        .testimonial-content {
+            height: 50%;
+            padding: 1.2rem;
+        }
+
+        .testimonials blockquote {
+            font-size: 0.85rem;
+            -webkit-line-clamp: 5;
+            line-height: 1.4;
+        }
+
+        .testimonial-name {
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.8rem;
         }
     }
     
@@ -282,6 +639,141 @@ import Testimonials from '../components/Testimonials.astro';
         .container {
             padding: 0.8rem 0.6rem;
         }
+
+        /* ContactForm Responsive */
+        .contact-form {
+            padding: 1rem 0;
+        }
+
+        .form-container {
+            padding: 1rem;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+        }
+
+        .stop-form {
+            padding: 1.5rem 1rem;
+        }
+
+        .form-options {
+            gap: 0.8rem;
+        }
+
+        .option {
+            padding: 0.7rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 8px;
+            height: 8px;
+        }
+
+        .form-fields {
+            gap: 0.7rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        .contact-form textarea {
+            height: 70px;
+        }
+
+        .submit-button {
+            padding: 0.8rem 0.9rem;
+            font-size: 0.9rem;
+        }
+
+        /* CaeDescription Responsive */
+        .cae-description-container {
+            padding: 1.5rem 0;
+        }
+
+        .cae-logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .logo-text {
+            font-size: 2.5rem;
+        }
+
+        .hero-subtitle-text {
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            padding: 0 0.8rem;
+        }
+
+        .cae-benefits {
+            gap: 1.2rem;
+            padding: 0 0.8rem;
+        }
+
+        .benefit-item {
+            padding: 1.2rem;
+        }
+
+        .benefit-icon {
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem;
+        }
+
+        .benefit-text h3 {
+            font-size: 1.1rem;
+        }
+
+        .benefit-text p {
+            font-size: 0.85rem;
+        }
+
+        /* Testimonials Responsive */
+        .testimonials {
+            padding: 1.2rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4.5vw, 2.2rem);
+        }
+
+        .testimonials-grid {
+            gap: 1.2rem;
+        }
+
+        .testimonial-card {
+            min-height: 380px;
+        }
+
+        .card-image-container {
+            height: 55%;
+        }
+
+        .testimonial-content {
+            height: 55%;
+            padding: 1rem;
+        }
+
+        .testimonials blockquote {
+            font-size: 0.8rem;
+            -webkit-line-clamp: 6;
+        }
+
+        .testimonial-name {
+            font-size: 1rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.75rem;
+        }
     }
     
     @media (max-width: 360px) {
@@ -309,5 +801,961 @@ import Testimonials from '../components/Testimonials.astro';
         .container {
             padding: 0.6rem 0.5rem;
         }
+
+        /* ContactForm Responsive */
+        .contact-form {
+            padding: 0.8rem 0;
+        }
+
+        .form-container {
+            padding: 0.8rem;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+        }
+
+        .stop-form {
+            padding: 1.2rem 0.8rem;
+        }
+
+        .form-options {
+            gap: 0.6rem;
+        }
+
+        .option {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .option input[type="radio"] {
+            width: 14px;
+            height: 14px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 7px;
+            height: 7px;
+        }
+
+        .form-fields {
+            gap: 0.6rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.6rem;
+            font-size: 0.8rem;
+        }
+
+        .contact-form textarea {
+            height: 60px;
+        }
+
+        .submit-button {
+            padding: 0.7rem 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        /* CaeDescription Responsive */
+        .cae-description-container {
+            padding: 1rem 0;
+        }
+
+        .cae-logo {
+            width: 100px;
+            height: 100px;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+        }
+
+        .hero-subtitle-text {
+            font-size: clamp(0.8rem, 1.8vw, 1.1rem);
+            padding: 0 0.6rem;
+        }
+
+        .cae-benefits {
+            gap: 1rem;
+            padding: 0 0.6rem;
+        }
+
+        .benefit-item {
+            padding: 1rem;
+        }
+
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+        }
+
+        .benefit-text h3 {
+            font-size: 1rem;
+        }
+
+        .benefit-text p {
+            font-size: 0.8rem;
+        }
+
+        /* Testimonials Responsive */
+        .testimonials {
+            padding: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 4vw, 2rem);
+        }
+
+        .testimonials-grid {
+            gap: 1rem;
+        }
+
+        .testimonial-card {
+            min-height: 350px;
+        }
+
+        .card-image-container {
+            height: 50%;
+        }
+
+        .testimonial-content {
+            height: 60%;
+            padding: 0.8rem;
+        }
+
+        .testimonials blockquote {
+            font-size: 0.75rem;
+            -webkit-line-clamp: 7;
+        }
+
+        .testimonial-name {
+            font-size: 0.9rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.7rem;
+        }
+    }
+
+    /* ContactForm Styles */
+    .stop-logo {
+        display: inline-block;
+        height: 3rem;
+        width: auto;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+        vertical-align: middle;
+        transition: transform 0.25s ease;
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .stop-logo:hover {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6));
+    }
+
+    .contact-form {
+        color: var(--color-white);
+        padding: 2rem 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        color: #393939;
+    }
+
+    .contact-form h2, .contact-form h3 {
+        text-align: center;
+        margin: 0;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+
+    .contact-form h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        text-align: center;
+        color: var(--color-white);
+    }
+
+    .contact-form h3 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        opacity: 0.95;
+    }
+
+    .stop-form {
+        background: linear-gradient(30deg, #FFFBFB 0%, #E8E5E5 50%,#E8E5E5 75%, #E0DCDC 100%);
+        padding: 3rem;
+        border-radius: 12px;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 15px 30px rgba(57, 57, 57, 0.15);
+        border: 2px solid rgba(202, 1, 1, 0.1);
+        color: #393939;
+        margin-top: 2rem;
+        transition: all 0.3s ease;
+    }
+
+    .stop-form:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 30px 60px rgba(57, 57, 57, 0.25);
+        border-color: rgba(202, 1, 1, 0.2);
+    }
+
+    .form-options {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        padding: 1rem 1.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        color: #393939;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .option:hover {
+        background: rgba(255, 255, 255, 1);
+        border-color: rgba(202, 1, 1, 0.7);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .option input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2px solid rgba(202, 1, 1, 0.5);
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: white;
+    }
+    
+    .option input[type="radio"]:checked {
+        border-color: #CA0101;
+        background-color: white;
+    }
+    
+    .option input[type="radio"]:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #CA0101;
+        animation: pulse 0.3s ease-out;
+    }
+    
+    .option input[type="radio"]:checked + span {
+        color: #CA0101;
+        font-weight: 700;
+    }
+    
+    .option span {
+        transition: all 0.3s ease;
+    }
+    
+    @keyframes pulse {
+        0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .form-fields {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid rgba(202, 1, 1, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 251, 251, 0.9);
+        color: #393939;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+        outline: none;
+        border-color: #CA0101;
+        background: #FFFBFB;
+        box-shadow: 0 0 0 3px rgba(202, 1, 1, 0.1);
+    }
+
+    .contact-form input::placeholder, .contact-form textarea::placeholder {
+        color: rgba(57, 57, 57, 0.6);
+    }
+
+    .contact-form textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    .submit-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        color: #FFFBFB;
+        border: none;
+        padding: 1.05rem 1.25rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1.5rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 8px 25px rgba(202, 1, 1, 0.25);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+    }
+
+    .submit-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(202, 1, 1, 0.4);
+        border-color: rgba(255, 251, 251, 0.4);
+    }
+
+    .submit-button:active {
+        transform: translateY(-1px);
+    }
+
+    /* CaeDescription Styles */
+    .cae-description-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 3rem 0;
+        color: var(--color-dark);
+        background: transparent;
+        box-shadow: none;
+    }
+    
+    @media (min-width: 768px) {
+        .cae-description-container {
+            display: block;
+        }
+    }
+    
+    .cae-logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 300px;
+    }
+    
+    .cae-logo {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        border: 3px solid white;
+    }
+    
+    .logo-text {
+        font-size: 4rem;
+        font-weight: 800;
+        color: var(--color-red);
+        letter-spacing: -2px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .logo-strike {
+        position: absolute;
+        width: 150%;
+        height: 6px;
+        background-color: var(--color-red);
+        transform: rotate(-45deg);
+        animation: strikeThrough 1.5s ease-out forwards;
+        transform-origin: center center;
+    }
+    
+    @keyframes strikeThrough {
+        0% { width: 0; opacity: 0; }
+        50% { opacity: 1; }
+        100% { width: 150%; opacity: 1; }
+    }
+    
+    .cae-content {
+        flex: 1;
+    }
+    
+    .hero-subtitle-text {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 400;
+        color: var(--color-dark);
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+        text-align: center;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .cae-benefits {
+        display: grid;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding: 0 2rem;
+        width: 100%;
+    }
+    
+    @media (min-width: 768px) {
+        .cae-benefits {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    
+    @media (min-width: 1200px) {
+        .cae-benefits {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+    
+    .benefit-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        background: linear-gradient(135deg, rgba(250, 250, 250, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
+        padding: 1.8rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        position: relative;
+        overflow: hidden;
+        transform: translateY(0);
+    }
+    
+    .benefit-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: linear-gradient(135deg, rgba(202, 1, 1, 0.05) 0%, rgba(202, 1, 1, 0.02) 100%);
+        transition: height 0.5s ease;
+        z-index: 0;
+    }
+    
+    .benefit-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        border-color: rgba(202, 1, 1, 0.2);
+    }
+    
+    .benefit-item:hover::before {
+        height: 100%;
+    }
+    
+    .benefit-icon {
+        background-color: var(--color-red);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+        position: relative;
+        box-shadow: 0 5px 15px rgba(202, 1, 1, 0.3);
+        z-index: 2;
+    }
+    
+    .icon-text {
+        position: relative;
+        z-index: 3;
+    }
+    
+    .icon-pulse {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: var(--color-red);
+        opacity: 0.8;
+        animation: iconPulse 2s infinite;
+    }
+    
+    @keyframes iconPulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.8;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+    
+    .benefit-text {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .benefit-text h3 {
+        font-size: 1.3rem;
+        margin: 0 0 0.8rem 0;
+        color: var(--color-red);
+        position: relative;
+        padding-bottom: 0.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .benefit-text h3::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-red);
+        transition: width 0.5s ease;
+    }
+    
+    .benefit-item:hover .benefit-text h3::after {
+        width: 50px;
+    }
+    
+    .benefit-text p {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--color-dark);
+        line-height: 1.6;
+        transition: all 0.3s ease;
+    }
+    
+    .benefit-item:hover .benefit-text h3 {
+        transform: translateX(5px);
+    }
+    
+    .benefit-item:hover .benefit-text p {
+        color: #000;
+    }
+    
+    @media (max-width: 767px) {
+        .cae-logo {
+            width: 150px;
+            height: 150px;
+        }
+        
+        .logo-text {
+            font-size: 3rem;
+        }
+    }
+    
+    @keyframes fadeInBenefit {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .benefit-item:nth-child(1) {
+        animation: fadeInBenefit 0.6s ease-out 0.1s forwards;
+        opacity: 0;
+    }
+    
+    .benefit-item:nth-child(2) {
+        animation: fadeInBenefit 0.6s ease-out 0.3s forwards;
+        opacity: 0;
+    }
+    
+    .benefit-item:nth-child(3) {
+        animation: fadeInBenefit 0.6s ease-out 0.5s forwards;
+        opacity: 0;
+    }
+    
+    .benefit-item:nth-child(4) {
+        animation: fadeInBenefit 0.6s ease-out 0.7s forwards;
+        opacity: 0;
+    }
+
+    /* Testimonials Styles */
+    .testimonials {
+        padding: 2rem;
+        position: relative;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        color: var(--color-white);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .section-title {
+        color: var(--color-white);
+        margin: 0 auto 3rem auto;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 800;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        padding-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 2px;
+    }
+
+    .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .testimonial-card {
+        background: linear-gradient(135deg, rgba(250, 250, 250, 0.9) 0%, rgba(240, 240, 240, 0.9) 100%);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        position: relative;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        height: 450px;
+    }
+
+    .card-image-container {
+        width: 100%;
+        height: 65%;
+        overflow: hidden;
+        position: relative;
+        background-color: #f5f5f5;
+    }
+
+    .testimonial-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+        background-color: #f5f5f5;
+    }
+
+    .testimonial-card:hover .testimonial-image {
+        transform: scale(1.05);
+    }
+
+    .testimonial-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(250, 250, 250, 0.98), rgba(250, 250, 250, 0.9) 80%, rgba(250, 250, 250, 0.5));
+        padding: 1.5rem;
+        border-radius: 12px;
+        z-index: 2;
+        height: 45%;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(5px);
+    }
+
+    .testimonials blockquote {
+        margin: 1rem 0 0 0;
+        font-style: italic;
+        color: var(--color-dark);
+        line-height: 1.5;
+        font-size: 0.9rem;
+        position: relative;
+        transition: all 0.3s ease;
+        flex: 1;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        border-top: 1px solid rgba(202, 1, 1, 0.1);
+        padding-top: 0.75rem;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        border-color: rgba(202, 1, 1, 0.2);
+    }
+
+    .testimonial-card:hover blockquote {
+        color: #000;
+    }
+
+    .testimonial-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-top: auto;
+        border-top: 1px solid rgba(202, 1, 1, 0.1);
+        padding-top: 0.75rem;
+    }
+
+    .testimonial-name {
+        margin: 0;
+        font-weight: 700;
+        color: var(--color-red);
+        font-size: 1.2rem;
+    }
+
+    .testimonial-role {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    @keyframes fadeInTestimonial {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .testimonial-card:nth-child(1) {
+        animation: fadeInTestimonial 0.6s ease-out 0.1s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(2) {
+        animation: fadeInTestimonial 0.6s ease-out 0.3s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(3) {
+        animation: fadeInTestimonial 0.6s ease-out 0.5s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(4) {
+        animation: fadeInTestimonial 0.6s ease-out 0.7s forwards;
+        opacity: 0;
+    }
+
+    .testimonial-card:nth-child(3), .testimonial-card:nth-child(4) {
+        margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .testimonials-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .testimonial-card {
+            margin-top: 0 !important;
+        }
+        
+        .card-image-container {
+            height: 60%;
+        }
+        
+        .testimonial-content {
+            height: 50%;
+        }
+        
+        .testimonials blockquote {
+            -webkit-line-clamp: 5;
+        }
+    }
+
+    /* Additional mobile optimizations */
+    @media (max-width: 480px) {
+        .stop-logo {
+            height: 2.5rem;
+        }
+
+        .form-heading::after {
+            width: 60px;
+            height: 2px;
+            bottom: -8px;
+        }
+
+        .section-title::after {
+            width: 60px;
+            height: 3px;
+            bottom: -12px;
+        }
+
+        .container {
+            padding: 0.8rem 0.6rem;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .form-wrapper {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 1rem;
+        }
+    }
+
+    /* Landscape orientation adjustments for mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+        .servicios-page {
+            padding-top: 60px;
+        }
+
+        .services-header h1 {
+            padding: 1rem 0;
+        }
+
+        .form-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .cae-description-container {
+            padding: 1.5rem 0;
+        }
+
+        .testimonials {
+            padding: 1rem;
+        }
+    }
+
+    /* High DPI displays optimization */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .benefit-icon,
+        .testimonial-image,
+        .stop-logo {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+    }
+
+    /* Ensure content is centered and not overflowing */
+    .cae-description-container,
+    .testimonials-wrapper,
+    .contact-form {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* Center all text content */
+    .hero-subtitle-text,
+    .benefit-text h3,
+    .benefit-text p,
+    .testimonials blockquote {
+        text-align: center;
+    }
+
+    /* Ensure grid items don't overflow */
+    .cae-benefits,
+    .testimonials-grid {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
     }
 </style>
+
+<script>
+    const form = document.getElementById('stopForm');
+    
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target as HTMLFormElement);
+        
+        // Aquí puedes agregar la lógica para enviar a Google Sheets o email
+        console.log(Object.fromEntries(formData));
+        
+        // Ejemplo de envío a Google Sheets (necesitarás configurar el endpoint)
+        try {
+            // const response = await fetch('TU_ENDPOINT_DE_GOOGLE_SHEETS', {
+            //     method: 'POST',
+            //     body: formData
+            // });
+            alert('Gracias por contactarnos. Nos comunicaremos contigo pronto.');
+            (e.target as HTMLFormElement).reset();
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+        }
+    });
+</script>
