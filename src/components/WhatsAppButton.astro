@@ -2,9 +2,14 @@
 ---
 
 <div class="whatsapp-button animate-on-scroll fade-in-scale">
-    <a href="https://wa.me/+56954099974" target="_blank" rel="noopener noreferrer" class="hover-bounce">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="https://instagram.com/stopcae" target="_blank" rel="noopener noreferrer" class="hover-bounce" style="background-color: #E1306C;">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://web.whatsapp.com/send?phone=56954787021" target="_blank" rel="noopener noreferrer" class="hover-bounce">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 </div>
 
 <style>
@@ -31,6 +36,14 @@
 
     .whatsapp-button a:hover {
         transform: scale(1.1);
+    }
+
+    .whatsapp-button a[href*="instagram"]:hover {
+        background-color: #ff0000 !important;
+        box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
+    }
+
+    .whatsapp-button a[href*="whatsapp"]:hover {
         box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
 

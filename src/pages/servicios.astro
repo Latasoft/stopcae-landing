@@ -17,7 +17,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         <section class="servicios-content">
             <div class="form-background">
                 <div class="container">
-                    <h3 class="form-heading">Porque estudiar no debería costarte tu futuro</h3>
+                    <h3 class="form-heading" style="padding-top:1.5rem;">Porque estudiar no debería costarte tu futuro</h3>
                     <div class="form-wrapper">
                         <!-- ContactForm Component Inserted -->
                         <div class="contact-form">
@@ -214,6 +214,18 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 </script>
 
 <style>
+@keyframes slideInLogo {
+    0% { transform: translateX(120px); opacity: 0; }
+    80% { transform: translateX(-10px); opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+        .logo-stopcae-animado {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 0.2rem;
+            margin-top: 0.2rem;
+        }
     /* Override global CSS rules that break responsivity */
     .servicios-page {
         padding-top: 90px; /* Space for fixed header */
