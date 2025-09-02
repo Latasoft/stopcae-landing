@@ -23,7 +23,7 @@ if (currentPath === '/') {
 }
 ---
 
-<header class="animate-on-scroll slide-in-down">
+<header>
     <div class="nav-container">
         <!-- Logo and mobile slogan section -->
         <div class="logo-mobile-wrapper">
@@ -139,28 +139,51 @@ if (currentPath === '/') {
     
     /* Asegurar que el teléfono esté siempre visible y fijo al lado del logo */
     header.scrolled .mobile-phone-link {
-        /* Eliminar el display: flex !important que lo hace visible en escritorio */
-        font-size: 14px !important;
-        padding: 8px 12px !important;
-        gap: 6px !important;
-        position: relative !important;
+        /* NO mostrar en desktop */
+        display: none !important;
+    }
+    
+    /* Asegurar que el menu toggle NO aparezca en desktop */
+    header.scrolled .menu-toggle {
+        display: none !important;
     }
     
     /* Añade esta regla específica para móvil */
     @media (max-width: 768px) {
-        /* ... otros estilos móviles ... */
-        
         header.scrolled .mobile-phone-link {
             display: flex !important; /* Solo aplicar display: flex en móvil */
         }
-    }
-    
-    /* Mantener la estructura del logo-section siempre */
-    header.scrolled .logo-section {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
+        
+        header.scrolled .menu-toggle {
+            display: block !important; /* Solo mostrar en móvil */
+        }
+        
+        /* Evitar que el logo se encoja en móvil */
+        header.scrolled .logo {
+            max-width: 120px !important; /* Mantener el tamaño original del logo en móvil */
+        }
+        
+        /* Evitar que logo-mobile-wrapper se encoja */
+        header.scrolled .logo-mobile-wrapper {
+            padding: 10px !important; /* Mantener padding original */
+        }
+        
+        /* Desactivar las reglas problemáticas del header.css en móvil */
+        header.scrolled .nav-container {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            padding: 0 1rem !important;
+        }
+        
+        header.scrolled .header-content {
+            width: 100% !important;
+        }
+        
+        /* Asegurar que header-top y header-middle sigan ocultos en móvil */
+        header.scrolled .header-top,
+        header.scrolled .header-middle {
+            display: none !important;
+        }
     }
     
     @keyframes pulse {
@@ -236,10 +259,6 @@ if (currentPath === '/') {
         .mobile-slogan {
             display: block;
             animation: fadeIn 0.8s ease-in-out;
-        }
-        
-        header.scrolled .logo-mobile-wrapper {
-            padding: 5px;
         }
         
         .header-middle {
