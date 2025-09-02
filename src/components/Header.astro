@@ -31,6 +31,11 @@ if (currentPath === '/') {
                 <a href="/">
                     <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo hover-pulse">
                 </a>
+                <!-- Número de teléfono móvil -->
+                <a href={`tel:${PHONE_HREF}`} class="mobile-phone-link" aria-label={`Llamar ${PHONE}`}>
+                    <i class="fas fa-phone"></i>
+                    <span class="mobile-phone-number">{PHONE}</span>
+                </a>
             </div>
             <!-- Mobile-only slogan -->
             <p class="mobile-slogan">Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</p>
@@ -82,6 +87,74 @@ if (currentPath === '/') {
         transition: all 0.3s ease;
     }
     
+    /* Estilos para el número de teléfono móvil */
+    .mobile-phone-link {
+        display: none;
+        color: #c0392b;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        min-width: auto;
+        flex-shrink: 0;
+    }
+    
+    .mobile-phone-link i {
+        font-size: 14px;
+        animation: pulse 1.5s infinite;
+        flex-shrink: 0;
+    }
+    
+    .mobile-phone-number {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .mobile-phone-link:hover {
+        transform: scale(1.05);
+        background: #fff;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Asegurar que el teléfono esté siempre visible y fijo al lado del logo */
+    header.scrolled .mobile-phone-link {
+        display: flex !important;
+        font-size: 14px !important;
+        padding: 8px 12px !important;
+        gap: 6px !important;
+        position: relative !important;
+    }
+    
+    header.scrolled .mobile-phone-link i {
+        font-size: 14px !important;
+    }
+    
+    header.scrolled .mobile-phone-number {
+        font-size: 14px !important;
+    }
+    
+    /* Mantener la estructura del logo-section siempre */
+    header.scrolled .logo-section {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+    
     /* Slogan para móvil (oculto por defecto) */
     .mobile-slogan {
         display: none;
@@ -116,6 +189,18 @@ if (currentPath === '/') {
     @media (max-width: 768px) {
         .logo-mobile-wrapper {
             padding: 10px;
+        }
+        
+        .logo-section {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .mobile-phone-link {
+            display: flex;
         }
         
         .mobile-slogan {
