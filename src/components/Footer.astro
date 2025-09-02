@@ -16,6 +16,12 @@
         background-color: var(--color-dark);
         color: var(--color-white);
         text-align: center;
+        padding: 2rem 0;
+        margin-bottom: 0;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        left: 0;
     }
 
     .container {
@@ -37,4 +43,40 @@
     .social-link:hover {
         color: var(--color-red-bright);
     }
+    
+    /* Estilos globales para eliminar espacio al final de la página */
+    :global(body) {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    :global(main) {
+        flex: 1 0 auto;
+    }
 </style>
+
+<script>
+    // Asegurarse de que el footer siempre esté al final
+    document.addEventListener('DOMContentLoaded', () => {
+        const body = document.body;
+        const footer = document.querySelector('footer');
+        
+        // Ajustar la altura de la página si es necesario
+        function adjustFooterPosition() {
+            const bodyHeight = body.clientHeight;
+            const windowHeight = window.innerHeight;
+            
+            if (bodyHeight < windowHeight) {
+                footer.style.marginTop = `${windowHeight - bodyHeight}px`;
+            } else {
+                footer.style.marginTop = '0';
+            }
+        }
+        
+        // Ejecutar al cargar y al cambiar tamaño de ventana
+        adjustFooterPosition();
+        window.addEventListener('resize', adjustFooterPosition);
+    });
+</script>
