@@ -126,19 +126,20 @@ if (currentPath === '/') {
     
     /* Asegurar que el teléfono esté siempre visible y fijo al lado del logo */
     header.scrolled .mobile-phone-link {
-        display: flex !important;
+        /* Eliminar el display: flex !important que lo hace visible en escritorio */
         font-size: 14px !important;
         padding: 8px 12px !important;
         gap: 6px !important;
         position: relative !important;
     }
     
-    header.scrolled .mobile-phone-link i {
-        font-size: 14px !important;
-    }
-    
-    header.scrolled .mobile-phone-number {
-        font-size: 14px !important;
+    /* Añade esta regla específica para móvil */
+    @media (max-width: 768px) {
+        /* ... otros estilos móviles ... */
+        
+        header.scrolled .mobile-phone-link {
+            display: flex !important; /* Solo aplicar display: flex en móvil */
+        }
     }
     
     /* Mantener la estructura del logo-section siempre */
