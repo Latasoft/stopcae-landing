@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const i=document.body,e=document.querySelector("footer");function o(){const t=i.clientHeight,n=window.innerHeight;t<n?e.style.marginTop=`${n-t}px`:e.style.marginTop="0"}o(),window.addEventListener("resize",o)});

@@ -1,0 +1,1 @@
+const t=/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),e=document.getElementById("whatsapp-link");e&&(t?e.href="https://api.whatsapp.com/send?phone=56954787021":e.href="https://web.whatsapp.com/send?phone=56954787021");
