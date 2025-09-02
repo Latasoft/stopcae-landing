@@ -119,7 +119,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
 
     .quienes-somos-section {
-        padding: clamp(6rem, 15vh, 12rem) 0 2rem 0;
+        padding: clamp(8rem, 20vh, 14rem) 0 2rem 0; /* Aumentado desde 6rem a 8rem */
         background: linear-gradient(135deg, #393939 0%, #2d2d2d 100%);
         position: relative;
         overflow: hidden;
@@ -362,7 +362,8 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         }
 
         .quienes-somos-section {
-            padding: clamp(5rem, 12vh, 8rem) 0 1rem 0;
+            padding-top: clamp(10rem, 25vh, 16rem); /* Padding específico para móvil */
+            padding-bottom: 1rem;
         }
 
         .mission-vision-grid {
@@ -570,7 +571,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
              font-size: 1.2rem;
          }
          
-         .description-card p {
+         .description_card p {
              font-size: 0.95rem;
              line-height: 1.6;
          }
