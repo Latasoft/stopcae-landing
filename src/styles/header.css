@@ -225,6 +225,13 @@ header.scrolled .nav-container {
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
 }
 
 /* Responsive Styles */
@@ -276,17 +283,15 @@ header.scrolled .nav-container {
     }
     
     .nav-container {
-        align-items: center;
-    }
-    
-    .nav-container {
         flex-direction: column;
         align-items: flex-start;
+        padding: 0 1rem; /* Adjust padding for mobile */
     }
     
     .logo-section {
         margin-bottom: 1rem;
         margin-right: 0;
+        width: 100%; /* Ensure logo section uses full width */
     }
     
     .header-content {
@@ -310,13 +315,6 @@ header.scrolled .nav-container {
         border-top: 1px solid rgba(255, 255, 255, 0.1);
         padding-top: 0.5rem;
         width: 100%;
-    }
-    
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        top: 1rem;
-        right: 2rem;
     }
     
     .nav-menu {
