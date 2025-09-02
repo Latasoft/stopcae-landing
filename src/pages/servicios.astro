@@ -1780,6 +1780,82 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .testimonials blockquote {
             -webkit-line-clamp: 5;
         }
+
+        /* Ampliar todas las imágenes en móvil */
+        .testimonial-image {
+            transform: scale(1.6) !important;
+        }
+
+        /* Ajustes específicos por imagen */
+        .testimonial-card:nth-child(1) .testimonial-image {
+            transform: scale(1.6) translateY(20px) !important;
+        }
+
+        .testimonial-card:nth-child(2) .testimonial-image {
+            transform: scale(1.8) translateY(40px) !important;
+        }
+
+        .testimonial-card:nth-child(3) .testimonial-image {
+            transform: scale(1.6) translateY(30px) !important;
+        }
+
+        .testimonial-card:nth-child(4) .testimonial-image {
+            transform: scale(1.6) translateY(20px) !important;
+        }
+
+        /* Estados hover en móvil */
+        .testimonial-card:hover .testimonial-image {
+            transform: scale(1.65) translateY(20px) !important;
+        }
+
+        .testimonial-card:nth-child(2):hover .testimonial-image {
+            transform: scale(1.85) translateY(40px) !important;
+        }
+
+        .testimonial-card:nth-child(3):hover .testimonial-image {
+            transform: scale(1.65) translateY(30px) !important;
+        }
+
+        .testimonial-card:nth-child(4):hover .testimonial-image {
+            transform: scale(1.65) translateY(20px) !important;
+        }
+
+        /* Estilos específicos para cada imagen en móvil */
+        /* Erika */
+        .testimonial-card:nth-child(1) .testimonial-image {
+            transform: scale(1.12);
+            object-position: center 10%;
+        }
+
+        /* Angela */
+        .testimonial-card:nth-child(2) .testimonial-image {
+            transform: scale(1.5) translateY(40px);
+            object-position: center center;
+        }
+
+        /* Angelina */
+        .testimonial-card:nth-child(3) .testimonial-image {
+            object-position: center 0%;
+        }
+
+        /* León */
+        .testimonial-card:nth-child(4) .testimonial-image {
+            transform: scale(1.3);
+            object-position: center 10%;
+        }
+
+        /* Hover estados */
+        .testimonial-card:nth-child(1):hover .testimonial-image {
+            transform: scale(1.17);
+        }
+
+        .testimonial-card:nth-child(2):hover .testimonial-image {
+            transform: scale(1.55) translateY(40px);
+        }
+
+        .testimonial-card:nth-child(4):hover .testimonial-image {
+            transform: scale(1.35);
+        }
     }
 
     /* Additional mobile optimizations */
