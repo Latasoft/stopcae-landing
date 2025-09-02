@@ -6,11 +6,27 @@
         <a href="https://instagram.com/stopcae" target="_blank" rel="noopener noreferrer" class="hover-bounce" style="background-color: #E1306C;">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://web.whatsapp.com/send?phone=56954787021" target="_blank" rel="noopener noreferrer" class="hover-bounce">
+        <a href="https://web.whatsapp.com/send?phone=56954787021" id="whatsapp-link" target="_blank" rel="noopener noreferrer" class="hover-bounce">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
 </div>
+
+<script>
+    // Detectar si es un dispositivo móvil
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const whatsappLink = document.getElementById('whatsapp-link');
+    
+    if (whatsappLink) {
+        if (isMobile) {
+            // En móvil, usar el esquema de la app nativa
+            whatsappLink.href = "https://api.whatsapp.com/send?phone=56954787021";
+        } else {
+            // En escritorio, usar WhatsApp Web
+            whatsappLink.href = "https://web.whatsapp.com/send?phone=56954787021";
+        }
+    }
+</script>
 
 <style>
     .whatsapp-button {
