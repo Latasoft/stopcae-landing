@@ -125,7 +125,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                             <div class="testimonials-grid">
                                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
                                     <div class="card-image-container">
-                                        <img src="/src/assets/testimnios/erika_ingeniera.jpeg" alt="Erika S." class="testimonial-image" />
+                                        <img src="/src/assets/erika_ingeniera.jpeg" alt="Erika S." class="testimonial-image" />
                                     </div>
                                     <div class="testimonial-content">
                                         <div class="testimonial-info">
@@ -138,7 +138,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
                                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
                                     <div class="card-image-container">
-                                        <img src="/src/assets/testimnios/angela-enfermera.jpeg" alt="Angela A." class="testimonial-image" />
+                                        <img src="/src/assets/angela-enfermera.jpeg" alt="Angela A." class="testimonial-image" />
                                     </div>
                                     <div class="testimonial-content">
                                         <div class="testimonial-info">
@@ -151,7 +151,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
                                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
                                     <div class="card-image-container">
-                                        <img src="/src/assets/testimnios/angelina_ed_parvularia.jpeg" alt="Angelina L." class="testimonial-image" />
+                                        <img src="/src/assets/angelina_ed_parvularia.jpeg" alt="Angelina L." class="testimonial-image" />
                                     </div>
                                     <div class="testimonial-content">
                                         <div class="testimonial-info">
@@ -164,7 +164,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
                                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
                                     <div class="card-image-container">
-                                        <img src="/src/assets/testimnios/leon_tecnico_mineria.jpeg" alt="León S." class="testimonial-image" />
+                                        <img src="/src/assets/leon_tecnico_mineria.jpeg" alt="León S." class="testimonial-image" />
                                     </div>
                                     <div class="testimonial-content">
                                         <div class="testimonial-info">
@@ -1565,16 +1565,29 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         padding: 0;
         display: flex;
         flex-direction: column;
-        height: 450px;
+        height: 600px;
         backdrop-filter: blur(10px);
     }
 
     .card-image-container {
         width: 100%;
-        height: 65%;
+        height: 75%;
         overflow: hidden;
         position: relative;
-        background-color: #f5f5f5;
+        background-color: rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+    .card-image-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: inset 0 0 0 12px rgba(0, 0, 0, 0.2);
+        pointer-events: none;
+        z-index: 2;
     }
 
     .testimonial-image {
