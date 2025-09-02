@@ -25,11 +25,15 @@ if (currentPath === '/') {
 
 <header class="animate-on-scroll slide-in-down">
     <div class="nav-container">
-        <!-- Logo on the left -->
-        <div class="logo-section">
-            <a href="/">
-                <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo hover-pulse">
-            </a>
+        <!-- Logo and mobile slogan section -->
+        <div class="logo-mobile-wrapper">
+            <div class="logo-section">
+                <a href="/">
+                    <img src="/logo.png" alt="Stop CAE logo featuring bold red and black text with a stylized legal scale symbol, conveying professionalism and determination; the logo is set against a clean white background, evoking trust and support for students facing debt" class="logo hover-pulse">
+                </a>
+            </div>
+            <!-- Mobile-only slogan -->
+            <p class="mobile-slogan">Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</p>
         </div>
         
         <!-- Header content next to logo -->
@@ -38,15 +42,14 @@ if (currentPath === '/') {
             <div class="header-top">
                 <div class="contact-info">
                     <a href={`tel:${PHONE_HREF}`} class="phone-link" aria-label={`Llamar ${PHONE}`}>
-                                        <i class="fas fa-phone"></i>
-
+                        <i class="fas fa-phone"></i>
                         <span class="call-text">Llámanos</span>
                         <span class="phone-number">{PHONE}</span>
                     </a>
                 </div>
             </div>
             
-            <!-- Second row with slogan -->
+            <!-- Second row with slogan (desktop only) -->
             <div class="header-middle">
                 <p class="slogan">Transformamos tu deuda estudiantil en el impulso para tus próximos proyectos</p>
             </div>
@@ -69,6 +72,87 @@ if (currentPath === '/') {
         </div>
     </div>
 </header>
+
+<style>
+    /* Estilos para el wrapper del logo y slogan en móvil */
+    .logo-mobile-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        transition: all 0.3s ease;
+    }
+    
+    /* Slogan para móvil (oculto por defecto) */
+    .mobile-slogan {
+        display: none;
+        font-size: 14px;
+        font-style: italic;
+        color: #555;
+        margin: 5px 0 0 0;
+        max-width: 250px;
+        text-align: left;
+        line-height: 1.3;
+        transition: all 0.3s ease;
+    }
+    
+    /* Ocultar los lemas cuando el header está en estado scrolled */
+    header.scrolled .mobile-slogan,
+    header.scrolled .header-middle,
+    header.scrolled .slogan {
+        display: none;
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    header.scrolled .logo {
+        max-width: 100px;
+        transition: all 0.3s ease;
+    }
+    
+    /* Media queries para móvil */
+    @media (max-width: 768px) {
+        .logo-mobile-wrapper {
+            padding: 10px;
+        }
+        
+        .mobile-slogan {
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        header.scrolled .logo-mobile-wrapper {
+            padding: 5px;
+        }
+        
+        .header-middle {
+            display: none; /* Oculta el slogan en desktop */
+        }
+        
+        .nav-container {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-section {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            max-width: 120px;
+        }
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
 
 <script>
     // Mobile menu toggle functionality
