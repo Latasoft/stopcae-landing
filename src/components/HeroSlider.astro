@@ -481,8 +481,23 @@ const { images } = Astro.props;
 
         .prev-btn { left: 1rem; }
         .next-btn { right: 1rem; }
-    }
 
+        /* Añadir más espacio entre la pregunta y el botón */
+        .title-line:nth-child(1) {
+            margin-bottom: 1.5rem;
+            display: block;
+            padding-bottom: 0.5rem;
+        }
+        
+        /* Mejorar espaciado general del título en móvil */
+        .hero-title {
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    
     @media (max-width: 480px) {
         .hero-slider {
             height: 100vh; /* Mantener 100vh en pantallas muy pequeñas */
@@ -490,7 +505,7 @@ const { images } = Astro.props;
         }
 
         .hero-title {
-            font-size: clamp(1.5rem, 6vw, 3rem);
+            font-size: clamp(1.8rem, 7vw, 3.5rem);
         }
 
         .action-text {
@@ -499,8 +514,12 @@ const { images } = Astro.props;
         }
 
         .stop-logo {
-            height: 1.2em;
+            height: 2.3em;
             margin-left: 0.2rem;
+        }
+
+        .hero-subtitle {
+            margin-top: 3.5rem;
         }
 
         .hero-subtitle p {
