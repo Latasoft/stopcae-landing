@@ -87,7 +87,7 @@ if (currentPath === '/') {
         transition: all 0.3s ease;
     }
     
-    /* Estilos para el número de teléfono móvil */
+    /* Estilo mejorado para el número de teléfono móvil */
     .mobile-phone-link {
         display: none;
         color: #c0392b;
@@ -106,22 +106,34 @@ if (currentPath === '/') {
         flex-shrink: 0;
     }
     
+    /* Eliminada la animación del ícono */
     .mobile-phone-link i {
-        font-size: 14px;
-        animation: pulse 1.5s infinite;
-        flex-shrink: 0;
+        font-size: 16px;
+        /* animación eliminada */
+        vertical-align: middle; /* Mejor alineación vertical */
     }
     
     .mobile-phone-number {
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
+        vertical-align: middle; /* Alinear con el ícono */
+        display: inline-flex;
+        align-items: center;
     }
     
-    .mobile-phone-link:hover {
-        transform: scale(1.05);
-        background: #fff;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    /* Estilo mejorado para el teléfono en desktop */
+    .contact-info .phone-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .contact-info i {
+        /* animación eliminada */
+        vertical-align: middle;
+    }
+    
+    .contact-info .call-text,
+    .contact-info .phone-number {
+        vertical-align: middle;
     }
     
     /* Asegurar que el teléfono esté siempre visible y fijo al lado del logo */
