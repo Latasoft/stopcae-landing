@@ -603,30 +603,82 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 </style>
 
 <script>
+    // Importar EmailJS y configuración
+    import emailjs from '@emailjs/browser';
+    import { EMAILJS_CONFIG, validateEmailJSConfig } from '../config/emailjs.js';
+
     // Manejo del formulario de postulación
     document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('postulacionForm');
         
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Aquí puedes agregar la lógica para enviar el formulario
-                // Por ejemplo, usando fetch() para enviar a un endpoint
-                
-                // Simulación de envío exitoso
+                // Obtener el botón de envío
                 const submitBtn = form.querySelector('.submit-btn');
                 const originalText = submitBtn.innerHTML;
                 
+                // Cambiar estado del botón a "enviando"
                 submitBtn.innerHTML = '<span class="btn-text">Enviando...</span><span class="btn-icon">⏳</span>';
                 submitBtn.disabled = true;
                 
-                setTimeout(() => {
-                    alert('¡Gracias por tu postulación! Nos pondremos en contacto contigo pronto.');
-                    form.reset();
+                try {
+                    // Recopilar datos del formulario
+                    const formData = {
+                        nombre: form.querySelector('[name="nombre"]').value,
+                        email: form.querySelector('[name="email"]').value,
+                        telefono: form.querySelector('[name="telefono"]').value || 'No proporcionado',
+                        ciudad: form.querySelector('[name="ciudad"]').value,
+                        especialidad: form.querySelector('[name="especialidad"]').value,
+                        experiencia: form.querySelector('[name="experiencia"]').value,
+                        motivacion: form.querySelector('[name="motivacion"]').value,
+                        aportes: form.querySelector('[name="aportes"]').value,
+                        carta: form.querySelector('[name="carta"]').value || 'Sin carta de presentación',
+                        disponibilidad: form.querySelector('[name="disponibilidad"]').checked ? 'Sí' : 'No',
+                        time: new Date().toLocaleString('es-CL', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        })
+                    };
+
+                    // Validar configuración antes de enviar
+                    if (!validateEmailJSConfig()) {
+                        throw new Error('Configuración de EmailJS incompleta');
+                    }
+
+                    // Enviar email usando EmailJS
+                    const response = await emailjs.send(
+                        EMAILJS_CONFIG.SERVICE_ID,
+                        EMAILJS_CONFIG.TEMPLATE_ID_TRABAJA,
+                        formData,
+                        EMAILJS_CONFIG.PUBLIC_KEY
+                    );
+
+                    if (response.status === 200) {
+                        // Éxito
+                        alert('¡Gracias por tu postulación! Hemos recibido tu información y nos pondremos en contacto contigo pronto.');
+                        form.reset();
+                        
+                        // Limpiar validaciones visuales
+                        form.querySelectorAll('input, select, textarea').forEach(field => {
+                            field.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                        });
+                    } else {
+                        throw new Error('Error en el envío');
+                    }
+                    
+                } catch (error) {
+                    console.error('Error al enviar el formulario:', error);
+                    alert('Hubo un error al enviar tu postulación. Por favor, intenta nuevamente.');
+                } finally {
+                    // Restaurar botón
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
-                }, 2000);
+                }
             });
         }
         
