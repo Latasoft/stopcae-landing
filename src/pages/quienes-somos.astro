@@ -116,6 +116,30 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         min-height: 100vh;
         background: linear-gradient(135deg, #e5e5e5 0%, #d8d8d8 25%, #c9c9c9 50%, #bebebe 75%, #b5b5b5 100%);
         scroll-margin-top: 120px;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .quienes-somos-page::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(202, 1, 1, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 80%, rgba(227, 6, 19, 0.02) 0%, transparent 50%),
+            radial-gradient(circle at 40% 60%, rgba(202, 1, 1, 0.01) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+        animation: backgroundFloat 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundFloat {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        33% { transform: translateY(-10px) rotate(0.5deg); }
+        66% { transform: translateY(5px) rotate(-0.5deg); }
     }
 
     .quienes-somos-section {
@@ -150,6 +174,23 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         padding: 0 2rem;
         position: relative;
         z-index: 2;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (min-width: 769px) {
+        .banner-container {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: bannerSlideIn 1.2s ease-out 0.3s forwards;
+        }
+    }
+
+    @keyframes bannerSlideIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .banner-illustration {
@@ -157,6 +198,23 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    @media (min-width: 769px) {
+        .banner-illustration {
+            opacity: 0;
+            transform: scale(0.8) rotate(-10deg);
+            animation: illustrationFloat 1.5s ease-out 0.6s forwards;
+        }
+    }
+
+    @keyframes illustrationFloat {
+        to {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
     }
 
     .illustration-placeholder {
@@ -169,6 +227,38 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         border-radius: 50%;
         backdrop-filter: blur(10px);
         border: 2px solid rgba(202, 1, 1, 0.3);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .illustration-placeholder::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.6s ease;
+        opacity: 0;
+    }
+
+    .illustration-placeholder:hover::before {
+        opacity: 1;
+        animation: shimmer 1.5s ease-in-out;
+    }
+
+    .illustration-placeholder:hover {
+        transform: scale(1.05);
+        border-color: rgba(202, 1, 1, 0.6);
+        box-shadow: 0 0 30px rgba(202, 1, 1, 0.3);
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
 
     .banner-content {
@@ -183,6 +273,23 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         margin-bottom: 1rem;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         position: relative;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    @media (min-width: 769px) {
+        .banner-title {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: titleSlideIn 1s ease-out 0.9s forwards;
+        }
+    }
+
+    @keyframes titleSlideIn {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
     }
 
     .banner-title::after {
@@ -194,6 +301,19 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         height: 5px;
         background: linear-gradient(90deg, #CA0101, #E30613);
         border-radius: 3px;
+    }
+
+    @media (min-width: 769px) {
+        .banner-title::after {
+            width: 0;
+            animation: underlineExpand 1s ease-out 1.6s forwards;
+        }
+    }
+
+    @keyframes underlineExpand {
+        to {
+            width: 100px;
+        }
     }
 
     .banner-description h2 {
@@ -263,6 +383,31 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          position: relative;
          overflow: hidden;
          backdrop-filter: blur(10px);
+         opacity: 1;
+         transform: translateY(0) scale(1);
+     }
+
+     @media (min-width: 769px) {
+         .mission-card, .vision-card {
+             opacity: 0;
+             transform: translateY(50px) scale(0.9);
+             animation: cardSlideIn 0.8s ease-out forwards;
+         }
+
+         .mission-card {
+             animation-delay: 0.2s;
+         }
+
+         .vision-card {
+             animation-delay: 0.4s;
+         }
+     }
+
+     @keyframes cardSlideIn {
+         to {
+             opacity: 1;
+             transform: translateY(0) scale(1);
+         }
      }
 
     .mission-card::before, .vision-card::before {
@@ -462,6 +607,29 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
          position: relative;
          overflow: hidden;
          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+         opacity: 1;
+         transform: translateY(0) scale(1);
+     }
+
+     @media (min-width: 769px) {
+         .description-card {
+             opacity: 0;
+             transform: translateY(50px) scale(0.9);
+             animation: descriptionSlideIn 0.8s ease-out forwards;
+         }
+
+         .description-card:nth-child(1) { animation-delay: 0.1s; }
+         .description-card:nth-child(2) { animation-delay: 0.2s; }
+         .description-card:nth-child(3) { animation-delay: 0.3s; }
+         .description-card:nth-child(4) { animation-delay: 0.4s; }
+         .description-card:nth-child(5) { animation-delay: 0.5s; }
+     }
+
+     @keyframes descriptionSlideIn {
+         to {
+             opacity: 1;
+             transform: translateY(0) scale(1);
+         }
      }
      
      .description-card::before {
