@@ -24,14 +24,22 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     </div>
                 </div>
                 <div class="banner-content">
-                    <h1 class="banner-title">¡Defendemos tus derechos y te acompañamos en todo momento!</h1>
+                    <h1 class="banner-title">
+                        <span class="title-line">Defiende tu futuro,</span>
+                        <span class="title-line">te ayudamos a excepcionar el CAE legalmente.</span>
+                    </h1>
+                    
                 </div>
             </div>
         </section>
+
         
         <!-- Formulario de Contacto -->
         <section class="trabaja-content-section">
             <div class="container">
+                            <div class="form-header">
+                    <h2>Contáctanos</h2>
+                </div>
                 <p class="hero-subtitle-text">Completa el formulario y nos pondremos en contacto contigo.</p>
                 <form class="postulacion-form" id="contactForm">
                     <div class="form-row">
@@ -93,7 +101,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     
                     <button type="submit" class="submit-btn">
                         <span class="btn-text">Quiero decir</span>
-                        <span class="btn-text">STOP</span>
                         <img src="/stop.png" alt="STOP" class="stop-logo">
                     </button>
                 </form>
@@ -112,9 +119,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                             </div>
                         </div>
 
-                        <div class="cae-content">
-                            <p class="hero-subtitle-text">El servicio de excepción del CAE es una solución legal que te permite liberarte de una deuda injusta.</p>
-                            
+                        <div class="cae-content">                            
                             <div class="cae-benefits">
                                 <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
                                     <div class="benefit-icon">
@@ -312,6 +317,13 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         margin-bottom: 1rem;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .title-line {
+        display: block;
     }
 
     .banner-title::after {
@@ -332,6 +344,140 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         margin-bottom: 1.5rem;
         color: #FFFBFB;
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Sección de Servicio de Excepción CAE */
+    .cae-exception-section {
+        padding: 5rem 0;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(202, 1, 1, 0.08);
+    }
+
+    .cae-exception-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.04) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .exception-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .exception-icon {
+        flex: 0 0 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon-circle {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #CA0101, #E30613);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 15px 35px rgba(202, 1, 1, 0.3);
+        animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    .icon-text {
+        font-size: 3rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .exception-text {
+        flex: 1;
+    }
+
+    .exception-title {
+        color: #CA0101;
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        position: relative;
+    }
+
+    .exception-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        border-radius: 2px;
+    }
+
+    .exception-description {
+        color: #393939;
+        font-size: 1.2rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .exception-description strong {
+        color: #CA0101;
+        font-weight: 700;
+    }
+
+    .exception-highlights {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .highlight-item {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 1rem 1.5rem;
+        border-radius: 25px;
+        border: 2px solid rgba(202, 1, 1, 0.1);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+    }
+
+    .highlight-item:hover {
+        transform: translateY(-3px);
+        border-color: rgba(202, 1, 1, 0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .highlight-icon {
+        font-size: 1.5rem;
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    }
+
+    .highlight-item span:last-child {
+        color: #393939;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    @keyframes iconFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
     }
 
     /* Estilos del Formulario de Contacto - Igual que trabaja con nosotros */
@@ -1009,6 +1155,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .banner-title::after {
             left: 50%;
             transform: translateX(-50%);
+        }
+
+        .banner-title {
+            gap: 0.3rem;
         }
 
         .servicios-section {
@@ -1932,6 +2082,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     @media (min-width: 768px) {
         .cae-description-container {
             display: block;
+        }
+        
+        .cae-logo-container {
+            margin-bottom: 6rem;
         }
     }
     
