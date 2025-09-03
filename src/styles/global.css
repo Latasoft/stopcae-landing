@@ -176,6 +176,13 @@ section[id="quienes-somos"] {
     scroll-snap-align: start;
 }
 
+section[id="servicios"] {
+    min-height: 100vh;
+    padding: 4rem 0;
+    margin: 0;
+    scroll-snap-align: start;
+}
+
 /* Adjust container to match section heights */
 .container {
     max-width: 1200px;

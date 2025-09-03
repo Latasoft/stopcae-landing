@@ -12,44 +12,25 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     <Header />
     
     <main class="servicios-page">
-
-        
-        <section class="servicios-content">
-            <div class="form-background">
-                <div class="container">
-                    <h3 class="form-heading" style="padding-top:1.5rem;">Porque estudiar no debería costarte tu futuro</h3>
-                    <div class="form-wrapper">
-                        <!-- ContactForm Component Inserted -->
-                        <div class="contact-form">
-                            <div class="form-container overlay">
-                                <h2>Contacta con nosotros</h2>
-                                
-                                <form id="stopForm" class="stop-form">
-                                    <div class="form-options">
-                                        <label class="option">
-                                            <input type="radio" name="status" value="pagando" required>
-                                            <span>Estoy pagando mi CAE</span>
-                                        </label>
-                                        <label class="option">
-                                            <input type="radio" name="status" value="nopagando">
-                                            <span>Ya dejé de pagar</span>
-                                        </label>
-                                    </div>
-
-                                    <div class="form-fields">
-                                        <input type="text" name="nombre" placeholder="Nombre completo" required>
-                                        <input type="email" name="correo" placeholder="Correo electrónico" required>
-                                        <input type="tel" name="telefono" placeholder="Teléfono" required>
-                                        <textarea name="comentario" placeholder="Cuéntanos tu situación"></textarea>
-                                    </div>
-
-                                    <button type="submit" class="submit-button">Quiero decir <img src="/stop.png" alt="Logo" class="stop-logo" /></button>
-                                </form>
-                            </div>
-                        </div>
+        <section class="servicios-section">
+            <div class="banner-container">
+                <div class="banner-illustration">
+                    <!-- Aquí puedes agregar una imagen o ilustración -->
+                    <div class="illustration-placeholder">
+                        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="100" cy="100" r="80" fill="#E0DCDC" stroke="#CA0101" stroke-width="2"/>
+                            <path d="M70 90 L90 110 L130 70" stroke="#CA0101" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
                 </div>
+                <div class="banner-content">
+                    <h1 class="banner-title">¡Defendemos tus derechos y te acompañamos en todo momento!</h1>
+                </div>
             </div>
+        </section>
+        
+        <section class="servicios-content">
+
             
             <div class="servicios-background">
                 <div class="container">
@@ -186,76 +167,112 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     <WhatsAppButton />
 </Layout>
 
-<script>
-    // Disable scroll snapping for servicios page
-    document.addEventListener('DOMContentLoaded', () => {
-        // Override body scroll behavior
-        document.body.style.scrollSnapType = 'none';
-        
-        // Override all sections in this page
-        const sections = document.querySelectorAll('.servicios-page section');
-        sections.forEach(section => {
-            section.style.scrollSnapAlign = 'none';
-            section.style.minHeight = 'auto';
-            section.style.height = 'auto';
-            section.style.display = 'block';
-            section.style.justifyContent = 'flex-start';
-            section.style.overflow = 'visible';
-        });
-        
-        // Override container sections
-        const containerSections = document.querySelectorAll('.servicios-page .container section');
-        containerSections.forEach(section => {
-            section.style.minHeight = 'auto';
-            section.style.display = 'block';
-            section.style.justifyContent = 'flex-start';
-        });
-    });
-</script>
+
 
 <style>
-@keyframes slideInLogo {
-    0% { transform: translateX(120px); opacity: 0; }
-    80% { transform: translateX(-10px); opacity: 1; }
-    100% { transform: translateX(0); opacity: 1; }
-}
-        .logo-stopcae-animado {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 0.2rem;
-            margin-top: 0.2rem;
-        }
-    /* Override global CSS rules that break responsivity */
+
     .servicios-page {
-        padding-top: 90px; /* Space for fixed header */
-        /* Disable scroll snapping for this page */
-        scroll-snap-type: none;
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        box-sizing: border-box;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #e5e5e5 0%, #d8d8d8 25%, #c9c9c9 50%, #bebebe 75%, #b5b5b5 100%);
+        scroll-margin-top: 120px;
     }
-    
-    /* Override global section rules for servicios page */
-    .servicios-page section {
-        min-height: auto !important;
-        height: auto !important;
-        scroll-snap-align: none !important;
-        display: block !important;
-        justify-content: flex-start !important;
-        padding: 2rem 0 !important;
-        margin: 0 !important;
-        overflow: visible !important;
+
+    /* Estilos del banner - copiados de quienes-somos.astro */
+    .servicios-section {
+        padding: clamp(8rem, 20vh, 14rem) 0 2rem 0; /* Aumentado desde 6rem a 8rem */
+        background: linear-gradient(135deg, #393939 0%, #2d2d2d 100%);
+        position: relative;
+        overflow: hidden;
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
     }
-    
-    /* Override global body scroll behavior for this page */
-    .servicios-page body {
-        scroll-snap-type: none !important;
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
+
+    .servicios-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.08) 0%, transparent 50%);
+        pointer-events: none;
     }
+
+    .banner-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .banner-illustration {
+        flex: 0 0 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .illustration-placeholder {
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+    }
+
+    .banner-content {
+        flex: 1;
+        color: white;
+    }
+
+    .banner-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        position: relative;
+    }
+
+    .banner-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        border-radius: 3px;
+    }
+
+        .banner-description h2 {
+        font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+        font-weight: 700;
+        line-height: 1.4;
+        margin-bottom: 1.5rem;
+        color: #FFFBFB;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+        .banner-description p {
+        font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+        line-height: 1.6;
+        color: #E0DCDC;
+        margin-bottom: 1rem;
+        opacity: 0.95;
+    }
+
 
     /* Ensure HTML and body have correct width */
     html, body {
@@ -269,12 +286,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         box-sizing: border-box;
     }
     
-    /* Override global container section rules */
-    .servicios-page .container section {
-        min-height: auto !important;
-        display: block !important;
-        justify-content: flex-start !important;
-    }
 
     .services-header {
         width: 100%;
@@ -464,10 +475,28 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     
     /* Responsive styles for servicios page */
     @media (max-width: 768px) {
-        .servicios-page {
-            padding-top: 80px;
+        /* Banner responsive styles */
+        .banner-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 2rem;
         }
-        
+
+        .banner-illustration {
+            flex: none;
+        }
+
+        .banner-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .servicios-section {
+            padding-top: clamp(10rem, 25vh, 16rem); /* Padding específico para móvil */
+            padding-bottom: 1rem;
+        }
+
+
         .servicios-content {
             gap: 2rem;
         }
@@ -664,10 +693,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
     
     @media (max-width: 480px) {
-        .servicios-page {
-            padding-top: 70px;
-        }
-        
+
         .servicios-content {
             gap: 1.5rem;
         }
@@ -830,9 +856,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
     
     @media (max-width: 360px) {
-        .servicios-page {
-            padding-top: 60px;
-        }
+
         
         .servicios-content {
             gap: 1rem;
@@ -1889,9 +1913,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     /* Landscape orientation adjustments for mobile */
     @media (max-width: 768px) and (orientation: landscape) {
-        .servicios-page {
-            padding-top: 60px;
-        }
+
 
         .services-header h1 {
             padding: 1rem 0;
