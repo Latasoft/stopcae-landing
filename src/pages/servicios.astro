@@ -36,7 +36,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         
         <!-- Formulario de Contacto -->
         <section class="trabaja-content-section">
-            <div class="container">
+                <div class="container">
                             <div class="form-header">
                     <h2>Contáctanos</h2>
                 </div>
@@ -82,25 +82,25 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         <fieldset>
                             <legend style="text-align: center; display: block; font-weight: 600; margin-bottom: 1rem;">¿Cuál es tu situación actual? *</legend>
                             <div class="form-options" role="radiogroup" aria-labelledby="status-legend">
-                                <label class="option">
+                                        <label class="option">
                                     <input type="radio" name="status" value="pagando" required aria-describedby="status-help">
-                                    <span>Estoy pagando mi CAE</span>
-                                </label>
-                                <label class="option">
+                                            <span>Estoy pagando mi CAE</span>
+                                        </label>
+                                        <label class="option">
                                     <input type="radio" name="status" value="nopagando" required aria-describedby="status-help">
-                                    <span>Ya dejé de pagar</span>
-                                </label>
+                                            <span>Ya dejé de pagar</span>
+                                        </label>
                             </div>
                             <div id="status-help" class="sr-only">Selecciona tu situación actual con respecto al CAE</div>
                         </fieldset>
-                    </div>
-                    
+                                    </div>
+
                                         <div class="form-group">
                         <label for="mensaje">Cuéntanos tu situación</label>
                         <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tu caso o consulta..." 
                                   aria-describedby="mensaje-help"></textarea>
                         <small id="mensaje-help">Este campo es opcional pero nos ayuda a entender mejor tu caso.</small>
-                    </div>
+                                    </div>
 
                     <div class="form-group checkbox-group">
                         <label class="checkbox-label">
@@ -116,10 +116,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         <img src="/stop.png" alt="STOP" class="stop-logo">
                     </button>
                     <div id="submit-help" class="sr-only">Envía tu consulta y nos pondremos en contacto contigo</div>
-                </form>
-            </div>
+                                </form>
+                            </div>
         </section>
-        
+            
         <section class="servicios-content">
             <div class="servicios-background">
                 <div class="container">
@@ -132,7 +132,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                             </div>
                         </div>
 
-                        <div class="cae-content">                            
+                        <div class="cae-content">
                             <div class="cae-benefits">
                                 <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
                                     <div class="benefit-icon">
@@ -326,7 +326,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         position: relative;
         overflow: hidden;
         min-height: 50vh;
-        display: flex;
+            display: flex;
         align-items: center;
     }
 
@@ -352,9 +352,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         padding: 0 2rem;
         position: relative;
         z-index: 2;
-        opacity: 0;
-        transform: translateY(50px);
-        animation: bannerSlideIn 1.2s ease-out 0.3s forwards;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (min-width: 769px) {
+        .banner-container {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: bannerSlideIn 1.2s ease-out 0.3s forwards;
+        }
     }
 
     @keyframes bannerSlideIn {
@@ -368,10 +375,17 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         flex: 0 0 300px;
         display: flex;
         align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transform: scale(0.8) rotate(-10deg);
-        animation: illustrationFloat 1.5s ease-out 0.6s forwards;
+            justify-content: center;
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+
+    @media (min-width: 769px) {
+        .banner-illustration {
+            opacity: 0;
+            transform: scale(0.8) rotate(-10deg);
+            animation: illustrationFloat 1.5s ease-out 0.6s forwards;
+        }
     }
 
     @keyframes illustrationFloat {
@@ -385,7 +399,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         width: 200px;
         height: 200px;
         display: flex;
-        align-items: center;
+            align-items: center;
         justify-content: center;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
@@ -440,9 +454,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-        opacity: 0;
-        transform: translateX(-30px);
-        animation: titleSlideIn 1s ease-out 0.9s forwards;
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    @media (min-width: 769px) {
+        .banner-title {
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: titleSlideIn 1s ease-out 0.9s forwards;
+        }
     }
 
     @keyframes titleSlideIn {
@@ -454,17 +475,24 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     .title-line {
         display: block;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: lineReveal 0.8s ease-out forwards;
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .title-line:nth-child(1) {
-        animation-delay: 1.2s;
-    }
+    @media (min-width: 769px) {
+        .title-line {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: lineReveal 0.8s ease-out forwards;
+        }
 
-    .title-line:nth-child(2) {
-        animation-delay: 1.4s;
+        .title-line:nth-child(1) {
+            animation-delay: 1.2s;
+        }
+
+        .title-line:nth-child(2) {
+            animation-delay: 1.4s;
+        }
     }
 
     @keyframes lineReveal {
@@ -479,11 +507,17 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         position: absolute;
         bottom: -10px;
         left: 0;
-        width: 0;
+        width: 100px;
         height: 5px;
         background: linear-gradient(90deg, #CA0101, #E30613);
         border-radius: 3px;
-        animation: underlineExpand 1s ease-out 1.6s forwards;
+    }
+
+    @media (min-width: 769px) {
+        .banner-title::after {
+            width: 0;
+            animation: underlineExpand 1s ease-out 1.6s forwards;
+        }
     }
 
     @keyframes underlineExpand {
@@ -710,10 +744,17 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         overflow: visible;
         backdrop-filter: blur(10px);
         z-index: 2;
-        opacity: 0;
-        transform: translateY(50px) scale(0.95);
-        animation: formSlideIn 1.2s ease-out 0.5s forwards;
+        opacity: 1;
+        transform: translateY(0) scale(1);
         transition: all 0.3s ease;
+    }
+
+    @media (min-width: 769px) {
+        .postulacion-form {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            animation: formSlideIn 1.2s ease-out 0.5s forwards;
+        }
     }
 
     .postulacion-form:hover {
@@ -1000,9 +1041,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         position: relative;
         overflow: hidden;
         margin: 0 auto;
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-        animation: buttonSlideIn 1s ease-out 1.8s forwards;
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    @media (min-width: 769px) {
+        .submit-btn {
+            opacity: 0;
+            transform: translateY(30px) scale(0.9);
+            animation: buttonSlideIn 1s ease-out 1.8s forwards;
+        }
     }
 
     .submit-btn:focus {
@@ -1406,7 +1454,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             font-size: 1rem;
         }
 
-
+        
         .servicios-content {
             gap: 2rem;
         }
@@ -1607,7 +1655,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
     
     @media (max-width: 480px) {
-
+        
         .servicios-content {
             gap: 1.5rem;
         }
@@ -2420,15 +2468,22 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         overflow: hidden;
         transform: translateY(0);
         min-height: 160px;
-        opacity: 0;
-        transform: translateY(50px) scale(0.9);
-        animation: benefitSlideIn 0.8s ease-out forwards;
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 
-    .benefit-item:nth-child(1) { animation-delay: 0.2s; }
-    .benefit-item:nth-child(2) { animation-delay: 0.4s; }
-    .benefit-item:nth-child(3) { animation-delay: 0.6s; }
-    .benefit-item:nth-child(4) { animation-delay: 0.8s; }
+    @media (min-width: 769px) {
+        .benefit-item {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            animation: benefitSlideIn 0.8s ease-out forwards;
+        }
+
+        .benefit-item:nth-child(1) { animation-delay: 0.2s; }
+        .benefit-item:nth-child(2) { animation-delay: 0.4s; }
+        .benefit-item:nth-child(3) { animation-delay: 0.6s; }
+        .benefit-item:nth-child(4) { animation-delay: 0.8s; }
+    }
 
     @keyframes benefitSlideIn {
         to {
@@ -2673,15 +2728,22 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         max-width: 320px;
         backdrop-filter: blur(10px);
         margin: 0 auto;
-        opacity: 0;
-        transform: translateY(60px) scale(0.9);
-        animation: testimonialSlideIn 1s ease-out forwards;
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 
-    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-    .testimonial-card:nth-child(2) { animation-delay: 0.3s; }
-    .testimonial-card:nth-child(3) { animation-delay: 0.5s; }
-    .testimonial-card:nth-child(4) { animation-delay: 0.7s; }
+    @media (min-width: 769px) {
+        .testimonial-card {
+            opacity: 0;
+            transform: translateY(60px) scale(0.9);
+            animation: testimonialSlideIn 1s ease-out forwards;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.3s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.5s; }
+        .testimonial-card:nth-child(4) { animation-delay: 0.7s; }
+    }
 
     @keyframes testimonialSlideIn {
         to {
@@ -3077,7 +3139,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         
         if (form) {
             form.addEventListener('submit', async function(e) {
-                e.preventDefault();
+        e.preventDefault();
                 
                 // Obtener el botón de envío
                 const submitBtn = form.querySelector('.submit-btn');
@@ -3131,9 +3193,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         throw new Error('Error en el envío');
                     }
                     
-                } catch (error) {
+        } catch (error) {
                     console.error('Error al enviar el formulario:', error);
-                    alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+            alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
                 } finally {
                     // Restaurar botón
                     submitBtn.innerHTML = originalText;
