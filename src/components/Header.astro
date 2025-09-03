@@ -152,20 +152,25 @@ if (currentPath === '/') {
     @media (max-width: 768px) {
         header.scrolled .mobile-phone-link {
             display: flex !important; /* Solo aplicar display: flex en móvil */
+            transform: translateX(-50%) scale(0.95);
+            animation: slideInPhone 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         header.scrolled .menu-toggle {
             display: block !important; /* Solo mostrar en móvil */
+            animation: slideInToggle 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         /* Evitar que el logo se encoja en móvil */
         header.scrolled .logo {
             max-width: 120px !important; /* Mantener el tamaño original del logo en móvil */
+            animation: logoShrink 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         /* Evitar que logo-mobile-wrapper se encoja */
         header.scrolled .logo-mobile-wrapper {
             padding: 10px !important; /* Mantener padding original */
+            animation: wrapperCollapse 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         /* Desactivar las reglas problemáticas del header.css en móvil */
@@ -173,6 +178,7 @@ if (currentPath === '/') {
             flex-direction: column !important;
             align-items: flex-start !important;
             padding: 0 1rem !important;
+            animation: containerCollapse 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         header.scrolled .header-content {
@@ -183,6 +189,13 @@ if (currentPath === '/') {
         header.scrolled .header-top,
         header.scrolled .header-middle {
             display: none !important;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        /* Animación del slogan móvil cuando se oculta */
+        header.scrolled .mobile-slogan {
+            animation: sloganFadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
     }
     
@@ -216,11 +229,65 @@ if (currentPath === '/') {
         margin: 0;
         padding: 0;
         overflow: hidden;
+        transform: translateY(-20px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Animaciones para elementos del header cuando se hace scroll */
+    header {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     header.scrolled .logo {
         max-width: 100px;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(0.9);
+    }
+    
+    /* Animaciones para elementos móviles */
+    header.scrolled .mobile-phone-link {
+        transform: translateX(-50%) scale(0.95);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    header.scrolled .menu-toggle {
+        transform: scale(0.9);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Animaciones para el nav-container */
+    header.scrolled .nav-container {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Animaciones para elementos del header-content */
+    header.scrolled .header-top {
+        opacity: 0;
+        transform: translateY(-15px);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Transiciones suaves para todos los elementos */
+    .logo, .mobile-phone-link, .menu-toggle, .mobile-slogan,
+    .header-top, .header-middle, .slogan, .nav-container {
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Animaciones de entrada cuando el header no está scrolled */
+    header:not(.scrolled) .mobile-slogan {
+        animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    header:not(.scrolled) .header-top {
+        animation: slideInFromTop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    header:not(.scrolled) .header-middle {
+        animation: slideInFromTop 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    header:not(.scrolled) .logo {
+        animation: logoExpand 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
     
     /* Media queries para móvil */
@@ -285,6 +352,110 @@ if (currentPath === '/') {
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Nuevas animaciones para el comportamiento de scroll */
+    @keyframes slideInPhone {
+        from { 
+            opacity: 0; 
+            transform: translateX(-50%) scale(0.8) translateY(-10px);
+        }
+        to { 
+            opacity: 1; 
+            transform: translateX(-50%) scale(0.95) translateY(0);
+        }
+    }
+    
+    @keyframes slideInToggle {
+        from { 
+            opacity: 0; 
+            transform: scale(0.7) rotate(-90deg);
+        }
+        to { 
+            opacity: 1; 
+            transform: scale(0.9) rotate(0deg);
+        }
+    }
+    
+    @keyframes logoShrink {
+        from { 
+            max-width: 140px;
+            transform: scale(1);
+        }
+        to { 
+            max-width: 120px;
+            transform: scale(0.95);
+        }
+    }
+    
+    @keyframes wrapperCollapse {
+        from { 
+            padding: 15px;
+            transform: translateY(0);
+        }
+        to { 
+            padding: 10px;
+            transform: translateY(-5px);
+        }
+    }
+    
+    @keyframes containerCollapse {
+        from { 
+            padding: 0 1.5rem;
+            transform: translateY(0);
+        }
+        to { 
+            padding: 0 1rem;
+            transform: translateY(-3px);
+        }
+    }
+    
+    @keyframes sloganFadeOut {
+        from { 
+            opacity: 1; 
+            transform: translateY(0);
+            height: auto;
+        }
+        to { 
+            opacity: 0; 
+            transform: translateY(-15px);
+            height: 0;
+        }
+    }
+    
+    @keyframes headerContentCollapse {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 100px;
+        }
+        to {
+            opacity: 0;
+            transform: translateY(-20px);
+            max-height: 0;
+        }
+    }
+    
+    @keyframes slideInFromTop {
+        from {
+            opacity: 0;
+            transform: translateY(-15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes logoExpand {
+        from {
+            transform: scale(0.9);
+            opacity: 0.8;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
     }
 </style>
 
