@@ -29,6 +29,77 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             </div>
         </section>
         
+        <!-- Formulario de Contacto -->
+        <section class="trabaja-content-section">
+            <div class="container">
+                <p class="hero-subtitle-text">Completa el formulario y nos pondremos en contacto contigo.</p>
+                <form class="postulacion-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej. María Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required placeholder="Ej. correo@ejemplo.com">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required placeholder="+56 9 1234 5678">
+                        </div>
+                        <div class="form-group">
+                            <label for="servicio">Tipo de Servicio *</label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="cae">Eliminación de deuda CAE</option>
+                                <option value="evaluacion">Evaluación de caso gratuito</option>
+                                <option value="consulta">Consulta legal general</option>
+                                <option value="acompañamiento">Acompañamiento legal completo</option>
+                                <option value="otro">Otro servicio</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label style="text-align: center; display: block;">¿Cuál es tu situación actual? *</label>
+                        <div class="form-options">
+                            <label class="option">
+                                <input type="radio" name="status" value="pagando" required>
+                                <span>Estoy pagando mi CAE</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="status" value="nopagando" required>
+                                <span>Ya dejé de pagar</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Cuéntanos tu situación</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tu caso o consulta..."></textarea>
+                        <small>Este campo es opcional pero nos ayuda a entender mejor tu caso.</small>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="privacy" required>
+                            <span class="checkmark" aria-hidden="true"></span>
+                            Acepto que mis datos sean tratados según la <a href="#" class="privacy-link">política de privacidad</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Quiero decir</span>
+                        <span class="btn-text">STOP</span>
+                        <img src="/stop.png" alt="STOP" class="stop-logo">
+                    </button>
+                </form>
+            </div>
+        </section>
+        
         <section class="servicios-content">
             <div class="servicios-background">
                 <div class="container">
@@ -263,10 +334,475 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     }
 
+    /* Estilos del Formulario de Contacto - Igual que trabaja con nosotros */
+    .trabaja-content-section {
+        padding: 6rem 0;
+        background: linear-gradient(135deg, rgb(248, 249, 250) 0%, rgb(233, 236, 239) 100%);
+        color: #393939;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(202, 1, 1, 0.08);
+    }
+
+    .trabaja-content-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.06) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .form-header h2 {
+        color: #CA0101;
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        position: relative;
+    }
+
+    .form-header h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        border-radius: 2px;
+    }
+
+    .form-header p {
+        color: #393939;
+        font-size: 1.2rem;
+        line-height: 1.6;
+        opacity: 0.8;
+    }
+
+    .postulacion-form {
+        background: rgba(255, 255, 255, 0.98);
+        padding: 3rem;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(202, 1, 1, 0.08);
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        overflow: visible;
+        backdrop-filter: blur(10px);
+        z-index: 2;
+    }
+
+    .postulacion-form::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        z-index: 0;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 3;
+    }
+
+    .form-group label {
+        display: block;
+        color: #393939;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid rgba(202, 1, 1, 0.1);
+        border-radius: 12px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        color: #393939;
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #CA0101;
+        box-shadow: 0 0 0 3px rgba(202, 1, 1, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .form-group small {
+        display: block;
+        color: #666;
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        font-style: italic;
+    }
+
+    .checkbox-group {
+        margin-bottom: 2rem;
+    }
+
+
+
+    /* Checkbox — accessible custom checkbox */
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        cursor: pointer;
+        color: #393939;
+        font-size: 1rem;
+        line-height: 1.5;
+        position: relative;
+    }
+
+    /* hide native checkbox but keep it accessible */
+    .checkbox-label input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 1px;
+        height: 1px;
+        margin: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    .checkmark {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(202, 1, 1, 0.2);
+        border-radius: 4px;
+        transition: all 0.18s ease;
+        flex-shrink: 0;
+    }
+
+    .checkbox-label:hover .checkmark {
+        border-color: #CA0101;
+        background: rgba(202, 1, 1, 0.04);
+    }
+
+    /* check mark (hidden by default) */
+    .checkmark::after {
+        content: '';
+        position: absolute;
+        left: 5px;
+        top: 1px;
+        width: 6px;
+        height: 11px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg) scale(0.6);
+        opacity: 0;
+        transition: all 0.16s ease;
+    }
+
+    /* checked state */
+    .checkbox-label input[type="checkbox"]:checked + .checkmark {
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        border-color: #CA0101;
+    }
+
+    .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+    }
     
+    /* keyboard focus */
+    .checkbox-label input[type="checkbox"]:focus + .checkmark {
+        box-shadow: 0 0 0 4px rgba(202,1,1,0.08);
+    }
 
+    .privacy-link {
+        color: #CA0101;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
 
+    .privacy-link:hover {
+        color: #E30613;
+        text-decoration: underline;
+    }
 
+    .form-options {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        padding: 1rem 1.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        color: #393939;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .option:hover {
+        background: rgba(255, 255, 255, 1);
+        border-color: rgba(202, 1, 1, 0.7);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .option input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2px solid rgba(202, 1, 1, 0.5);
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: white;
+    }
+    
+    .option input[type="radio"]:checked {
+        border-color: #CA0101;
+        background-color: white;
+    }
+    
+    .option input[type="radio"]:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #CA0101;
+        animation: formPulse 0.3s ease-out;
+    }
+    
+    .option input[type="radio"]:checked + span {
+        color: #CA0101;
+        font-weight: 700;
+    }
+    
+    .option span {
+        transition: all 0.3s ease;
+    }
+    
+    @keyframes formPulse {
+        0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .submit-btn {
+        width: 100%;
+        max-width: 400px;
+        background: linear-gradient(135deg, #CA0101, #E30613);
+        color: white;
+        border: none;
+        padding: 1.5rem 2rem;
+        border-radius: 16px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        box-shadow: 0 8px 25px rgba(202, 1, 1, 0.3);
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    .submit-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .submit-btn:hover::before {
+        left: 100%;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(202, 1, 1, 0.4);
+    }
+
+    .submit-btn:active {
+        transform: translateY(-1px);
+    }
+
+    .btn-text {
+        position: relative;
+        z-index: 2;
+    }
+
+    .btn-icon {
+        font-size: 1.5rem;
+        position: relative;
+        z-index: 2;
+        animation: bounce 2s infinite;
+    }
+
+    .stop-logo {
+        height: 2rem;
+        width: auto;
+        margin-left: 0.5rem;
+        vertical-align: middle;
+        transition: transform 0.25s ease;
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .submit-btn:hover .stop-logo {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6));
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-5px);
+        }
+        60% {
+            transform: translateY(-3px);
+        }
+    }
+
+    /* Responsive adjustments for form */
+    @media (max-width: 768px) {
+        .trabaja-content-section {
+            padding: 4rem 0;
+        }
+
+        .form-header h2 {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .form-header p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .postulacion-form {
+            padding: 2rem 1.5rem;
+            margin: 0 1rem;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.875rem;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-icon {
+            font-size: 1.3rem;
+        }
+
+        .stop-logo {
+            height: 1.8rem;
+        }
+
+        .form-options {
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 10px;
+            height: 10px;
+        }
+    }
 
     
 
@@ -329,10 +865,11 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         width: 100%;
         max-width: 100%;
         overflow: hidden;
-        padding: 2rem 0;
+        padding: 3rem 0;
         color: #393939;
         position: relative;
         border: 1px solid rgba(202, 1, 1, 0.08);
+        background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
     }
 
     .form-background::before {
@@ -343,8 +880,8 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         right: 0;
         bottom: 0;
         background: 
-            radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.06) 0%, transparent 50%);
+            radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.04) 0%, transparent 50%);
         pointer-events: none;
     }
 
@@ -477,6 +1014,41 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .servicios-section {
             padding-top: clamp(10rem, 25vh, 16rem); /* Padding específico para móvil */
             padding-bottom: 1rem;
+        }
+
+        /* Contact Form Responsive */
+        .trabaja-content-section {
+            padding: 2rem 0;
+        }
+
+        .contact-form-container {
+            padding: 2rem 1.5rem;
+            margin: 0 1rem;
+        }
+
+        .form-header h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        .form-header p {
+            font-size: 1rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 0.9rem 1rem;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
         }
 
 
@@ -702,6 +1274,59 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             padding: 0.8rem 0.6rem;
         }
 
+        /* Contact Form Responsive */
+        .trabaja-content-section {
+            padding: 1.5rem 0;
+        }
+
+        .contact-form-container {
+            padding: 1.5rem 1rem;
+            margin: 0 0.5rem;
+        }
+
+        .form-header h2 {
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+        }
+
+        .form-header p {
+            font-size: 0.9rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .submit-btn {
+            padding: 0.9rem 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .stop-logo {
+            height: 1.5rem;
+        }
+
+        .form-options {
+            gap: 0.8rem;
+        }
+
+        .option {
+            padding: 0.7rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 8px;
+            height: 8px;
+        }
+
         /* ContactForm Responsive */
         .contact-form {
             padding: 1rem 0;
@@ -866,6 +1491,59 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         
         .container {
             padding: 0.6rem 0.5rem;
+        }
+
+        /* Contact Form Responsive */
+        .trabaja-content-section {
+            padding: 1rem 0;
+        }
+
+        .contact-form-container {
+            padding: 1.2rem 0.8rem;
+            margin: 0 0.3rem;
+        }
+
+        .form-header h2 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+        }
+
+        .form-header p {
+            font-size: 0.85rem;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        .submit-btn {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .stop-logo {
+            height: 1.3rem;
+        }
+
+        .form-options {
+            gap: 0.6rem;
+        }
+
+        .option {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .option input[type="radio"] {
+            width: 14px;
+            height: 14px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 7px;
+            height: 7px;
         }
 
         /* ContactForm Responsive */
@@ -1955,6 +2633,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 </style>
 
 <script>
+    // Manejo del formulario STOP CAE
     const form = document.getElementById('stopForm');
     
     form?.addEventListener('submit', async (e) => {
@@ -1976,5 +2655,45 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             console.error('Error:', error);
             alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
         }
+    });
+
+    // Manejo del formulario de contacto
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Aquí puedes agregar la lógica para enviar el formulario
+                // Por ejemplo, usando fetch() para enviar a un endpoint
+                
+                // Simulación de envío exitoso
+                const submitBtn = form.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<span class="btn-text">Enviando...</span><span class="btn-icon">⏳</span>';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo en menos de 24 horas.');
+                    form.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            });
+        }
+        
+        // Validación en tiempo real
+        const requiredFields = form.querySelectorAll('[required]');
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#E30613';
+                } else {
+                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                }
+            });
+        });
     });
 </script>
