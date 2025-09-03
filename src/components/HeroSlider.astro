@@ -191,10 +191,11 @@ const { images } = Astro.props;
         display: block;
         opacity: 0;
         animation: slideInLeft 0.8s ease-out forwards;
+        margin-bottom: 2.5rem;
     }
 
     .title-line:nth-child(1) { animation-delay: 0.8s; }
-    .title-line:nth-child(2) { animation-delay: 1s; }
+    .title-line:nth-child(2) { animation-delay: 1s; margin-bottom: 0; }
     .title-line:nth-child(3) { animation-delay: 1.2s; }
 
     .highlight-text {
@@ -288,7 +289,7 @@ const { images } = Astro.props;
     }
 
     .hero-subtitle {
-        margin-top: 4rem;
+        margin-top: 10rem;
         opacity: 0;
         animation: fadeInUp 1s ease-out 1.5s forwards;
     }
@@ -523,7 +524,7 @@ const { images } = Astro.props;
 
         /* Añadir más espacio entre la pregunta y el botón */
         .title-line:nth-child(1) {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: block;
             padding-bottom: 0.5rem;
         }
@@ -537,7 +538,7 @@ const { images } = Astro.props;
         }
 
         .hero-subtitle {
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
     }
     
@@ -561,8 +562,16 @@ const { images } = Astro.props;
             margin-left: 0.2rem;
         }
 
+        .title-line {
+            margin-bottom: 1.8rem;
+        }
+
+        .title-line:nth-child(2) {
+            margin-bottom: 0;
+        }
+
         .hero-subtitle {
-            margin-top: 2.5rem;
+            margin-top: 3.5rem;
         }
 
         .hero-subtitle p {

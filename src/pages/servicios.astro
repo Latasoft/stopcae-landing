@@ -1798,6 +1798,18 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         }
 
         .testimonials-background {
+            padding: 1.5rem 0;
+        }
+        
+        /* Testimonios aún más delgados para pantallas muy pequeñas */
+        .testimonials-grid {
+            max-width: 250px;
+        }
+        
+        .testimonial-card {
+            max-width: 240px;
+            height: 420px;
+        }
             padding: 1rem 0;
         }
 
@@ -2650,11 +2662,13 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .testimonials-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
-            max-width: 400px;
+            max-width: 320px;
         }
         
         .testimonial-card {
             margin-top: 0 !important;
+            max-width: 300px;
+            height: 480px;
         }
         
         .card-image-container {
@@ -2747,6 +2761,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             max-width: 100%;
             margin: 0;
             padding: 1rem;
+        }
+
+        /* Testimonios más delgados en móvil */
+        .testimonials-grid {
+            max-width: 280px;
+        }
+        
+        .testimonial-card {
+            max-width: 260px;
+            height: 450px;
         }
     }
 
