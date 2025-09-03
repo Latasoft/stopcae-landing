@@ -983,7 +983,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
     
     .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 1.5rem;
         width: 100%;
@@ -2418,9 +2418,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     .testimonials-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
-        gap: 2rem;
-        max-width: 1200px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        max-width: 1400px;
         margin: 0 auto;
         width: 100%;
         justify-content: center;
@@ -2437,7 +2437,8 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         display: flex;
         flex-direction: column;
         height: 550px;
-        width: 350px;
+        width: 100%;
+        max-width: 320px;
         backdrop-filter: blur(10px);
         margin: 0 auto;
     }
@@ -2624,12 +2625,32 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
 
     .testimonial-card:nth-child(3), .testimonial-card:nth-child(4) {
-        margin-top: 1rem;
+        margin-top: 0; /* Removido el margin-top para desktop */
+    }
+
+    /* Media query para tablets */
+    @media (max-width: 1024px) {
+        .testimonials-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+        }
+        
+        .testimonial-card {
+            max-width: 380px;
+            height: 500px;
+        }
+
+        .testimonial-card:nth-child(3), .testimonial-card:nth-child(4) {
+            margin-top: 1rem; /* Mantener margin-top para tablets */
+        }
     }
 
     @media (max-width: 768px) {
         .testimonials-grid {
             grid-template-columns: 1fr;
+            gap: 1.5rem;
+            max-width: 400px;
         }
         
         .testimonial-card {
