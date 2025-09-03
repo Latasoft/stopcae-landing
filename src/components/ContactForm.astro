@@ -25,9 +25,9 @@
             </div>
 
             <div class="form-fields">
-                <input type="text" name="nombre" placeholder="Nombre completo" required>
-                <input type="email" name="correo" placeholder="Correo electrónico" required>
-                <input type="tel" name="telefono" placeholder="Teléfono" required>
+                <input type="text" name="nombre" placeholder="Nombre completo" required pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$" title="Solo se permiten letras y espacios">
+                <input type="email" name="correo" placeholder="Correo electrónico" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingresa un correo electrónico válido">
+                <input type="tel" name="telefono" placeholder="Teléfono (+56 9 1234 5678)" required pattern="^\+?56\s?[9876]\s?\d{4}\s?\d{4}$" title="Formato: +56 9 1234 5678">
                 <textarea name="comentario" placeholder="Cuéntanos tu situación"></textarea>
             </div>
 
@@ -305,24 +305,128 @@
 <script>
     const form = document.getElementById('stopForm');
     
-    form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target as HTMLFormElement);
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target as HTMLFormElement);
+            
+            // Aquí puedes agregar la lógica para enviar a Google Sheets o email
+            console.log(Object.fromEntries(formData));
+            
+            try {
+                alert('Gracias por contactarnos. Nos comunicaremos contigo pronto.');
+                (e.target as HTMLFormElement).reset();
+                
+                // Limpiar validaciones visuales
+                form.querySelectorAll('input, textarea').forEach(field => {
+                    field.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+            }
+        });
         
-        // Aquí puedes agregar la lógica para enviar a Google Sheets o email
-        console.log(Object.fromEntries(formData));
+        // Validación en tiempo real con funciones específicas
         
-        // Ejemplo de envío a Google Sheets (necesitarás configurar el endpoint)
-        try {
-            // const response = await fetch('TU_ENDPOINT_DE_GOOGLE_SHEETS', {
-            //     method: 'POST',
-            //     body: formData
-            // });
-            alert('Gracias por contactarnos. Nos comunicaremos contigo pronto.');
-            (e.target as HTMLFormElement).reset();
-        } catch (error) {
-            console.error('Error:', error);
-            alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+        // Función para validar nombre (solo letras y espacios)
+        function validateName(name) {
+            const nameRegex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/;
+            return nameRegex.test(name.trim()) && name.trim().length >= 2;
         }
-    });
+        
+        // Función para validar email
+        function validateEmail(email) {
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email.trim());
+        }
+        
+        // Función para validar teléfono chileno
+        function validateChileanPhone(phone) {
+            const phoneRegex = /^\+?56\s?[9876]\s?\d{4}\s?\d{4}$/;
+            return phoneRegex.test(phone.trim());
+        }
+        
+        // Validación específica por campo
+        const nombreField = form.querySelector('[name="nombre"]');
+        const emailField = form.querySelector('[name="correo"]');
+        const telefonoField = form.querySelector('[name="telefono"]');
+        
+        if (nombreField) {
+            nombreField.addEventListener('blur', function() {
+                if (!validateName(this.value)) {
+                    this.style.borderColor = '#E30613';
+                    this.setCustomValidity('El nombre solo puede contener letras y espacios, mínimo 2 caracteres');
+                } else {
+                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                    this.setCustomValidity('');
+                }
+            });
+            
+            nombreField.addEventListener('input', function() {
+                // Remover números mientras escribe
+                this.value = this.value.replace(/[0-9]/g, '');
+            });
+        }
+        
+        if (emailField) {
+            emailField.addEventListener('blur', function() {
+                if (!validateEmail(this.value)) {
+                    this.style.borderColor = '#E30613';
+                    this.setCustomValidity('Ingresa un correo electrónico válido');
+                } else {
+                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                    this.setCustomValidity('');
+                }
+            });
+        }
+        
+        if (telefonoField) {
+            telefonoField.addEventListener('blur', function() {
+                if (!validateChileanPhone(this.value)) {
+                    this.style.borderColor = '#E30613';
+                    this.setCustomValidity('Formato válido: +56 9 1234 5678');
+                } else {
+                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                    this.setCustomValidity('');
+                }
+            });
+            
+            telefonoField.addEventListener('input', function() {
+                // Formatear automáticamente el número
+                let value = this.value.replace(/\D/g, '');
+                if (value.startsWith('56')) {
+                    value = '+56 ' + value.substring(2);
+                } else if (value.startsWith('9') || value.startsWith('8') || value.startsWith('7') || value.startsWith('6')) {
+                    value = '+56 ' + value;
+                }
+                
+                if (value.length > 4) {
+                    const match = value.match(/(\+56)\s?(\d{1})\s?(\d{0,4})\s?(\d{0,4})/);
+                    if (match) {
+                        value = match[1] + ' ' + match[2];
+                        if (match[3]) value += ' ' + match[3];
+                        if (match[4]) value += ' ' + match[4];
+                    }
+                }
+                this.value = value;
+            });
+        }
+        
+        // Validación general para campos requeridos
+        const requiredFields = form.querySelectorAll('[required]');
+        requiredFields.forEach(field => {
+            if (!field.name || ['nombre', 'correo', 'telefono'].includes(field.name)) return;
+            
+            field.addEventListener('blur', function() {
+                if (!this.value.trim()) {
+                    this.style.borderColor = '#E30613';
+                    this.setCustomValidity('Este campo es obligatorio');
+                } else {
+                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                    this.setCustomValidity('');
+                }
+            });
+        });
+    }
 </script>

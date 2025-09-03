@@ -343,3 +343,102 @@ footer::before {
 .button:hover {
     background-color: var(--color-red-bright);
 }
+
+/* Global Form Validation Styles */
+input:invalid {
+    border-color: #E30613 !important;
+    box-shadow: 0 0 5px rgba(227, 6, 19, 0.3);
+}
+
+input:valid {
+    border-color: rgba(202, 1, 1, 0.1) !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #CA0101 !important;
+    box-shadow: 0 0 0 3px rgba(202, 1, 1, 0.1);
+}
+
+/* Estilos para campos válidos e inválidos */
+.form-field-error {
+    border-color: #E30613 !important;
+    background-color: rgba(227, 6, 19, 0.05);
+}
+
+.form-field-success {
+    border-color: #10b981 !important;
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+/* Mensajes de validación */
+.validation-message {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.validation-message.error {
+    color: #dc2626;
+    background-color: #fee2e2;
+    border: 1px solid #fecaca;
+}
+
+.validation-message.success {
+    color: #065f46;
+    background-color: #d1fae5;
+    border: 1px solid #a7f3d0;
+}
+
+.validation-message.info {
+    color: #1e40af;
+    background-color: #dbeafe;
+    border: 1px solid #93c5fd;
+}
+
+/* Animaciones para validaciones */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.form-field-error {
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Placeholder personalizado para campos de teléfono */
+input[type="tel"]::placeholder {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* Mejoras visuales para archivos */
+input[type="file"] {
+    transition: all 0.3s ease;
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: #CA0101 !important;
+    box-shadow: 0 0 0 3px rgba(202, 1, 1, 0.1);
+}
+
+input[type="file"].valid {
+    border-color: #10b981 !important;
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+input[type="file"].invalid {
+    border-color: #E30613 !important;
+    background-color: rgba(227, 6, 19, 0.05);
+}
