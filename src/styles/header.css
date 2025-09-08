@@ -235,17 +235,66 @@ header.scrolled .nav-container {
 }
 
 /* Responsive Styles */
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
+    .nav-container {
+        padding: 0 1.5rem;
+    }
+    
     .logo-section {
         margin-right: 1.5rem;
     }
     
     .nav-menu {
-        gap: 1.5rem;
+        gap: 1rem;
     }
     
     .slogan {
         font-size: 15px;
+    }
+    
+    .contact-info .phone-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .nav-container {
+        padding: 0 1rem;
+    }
+    
+    .logo-section {
+        margin-right: 1rem;
+    }
+    
+    .logo {
+        height: 120px;
+    }
+    
+    .nav-menu {
+        gap: 0.8rem;
+    }
+    
+    .nav-menu a {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.4rem;
+    }
+    
+    .slogan {
+        font-size: 14px;
+    }
+    
+    .contact-info .phone-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.95rem;
+    }
+    
+    .contact-info .call-text {
+        font-size: 1rem;
+    }
+    
+    .contact-info .phone-number {
+        font-size: 0.9rem;
     }
 }
 
@@ -348,15 +397,129 @@ header.scrolled .nav-container {
 }
 
 @media (max-width: 480px) {
-    .contact-info {
-        font-size: 0.9rem;
+    .nav-container {
+        padding: 0 0.8rem;
     }
     
-    .nav-container {
-        padding: 0 1rem;
+    .logo {
+        height: 50px;
+    }
+    
+    .nav-menu a {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.3rem;
+    }
+    
+    .contact-info {
+        font-size: 0.8rem;
     }
     
     .slogan {
-        font-size: 14px;
+        font-size: 12px;
+    }
+}
+
+/* Media queries para pantallas con poca altura */
+@media (max-height: 600px) {
+    header {
+        padding: 0.2rem 0;
+    }
+    
+    .logo {
+        height: 80px;
+    }
+    
+    .nav-menu a {
+        padding: 0.4rem 0.3rem;
+        font-size: 0.8rem;
+    }
+    
+    .contact-info .phone-link {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.9rem;
+    }
+    
+    .slogan {
+        font-size: 13px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    header {
+        padding: 0.1rem 0;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .nav-menu a {
+        padding: 0.3rem 0.2rem;
+        font-size: 0.75rem;
+    }
+    
+    .contact-info .phone-link {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .slogan {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+    
+    .header-content {
+        gap: 0.3rem;
+    }
+}
+
+/* Media queries para pantallas ultra anchas */
+@media (min-width: 1440px) {
+    .nav-container {
+        max-width: 1400px;
+        padding: 0 3rem;
+    }
+    
+    .logo {
+        height: 170px;
+    }
+    
+    .nav-menu a {
+        font-size: 1rem;
+        padding: 0.7rem 0.6rem;
+    }
+    
+    .slogan {
+        font-size: 18px;
+    }
+    
+    .contact-info .phone-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .nav-container {
+        max-width: 1600px;
+        padding: 0 4rem;
+    }
+    
+    .logo {
+        height: 180px;
+    }
+    
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: 0.8rem 0.7rem;
+    }
+    
+    .slogan {
+        font-size: 20px;
+    }
+    
+    .contact-info .phone-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
     }
 }

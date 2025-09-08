@@ -504,10 +504,147 @@ const { images } = Astro.props;
     }
 
     /* Responsive */
+    @media (min-width: 1600px) {
+        .hero-title {
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+        }
+
+        .action-text {
+            font-size: 1.1em;
+            padding: 0.8rem 1.5rem;
+        }
+
+        .stop-logo {
+            height: 2.2em;
+        }
+
+        .form-heading {
+            font-size: clamp(3.5rem, 6vw, 4.5rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(3rem, 5.5vw, 4rem);
+        }
+    }
+
+    @media (min-width: 1200px) and (max-width: 1599px) {
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.15;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(1.5rem, 2.8vw, 1.9rem);
+        }
+
+        .action-text {
+            font-size: 1em;
+            padding: 0.7rem 1.3rem;
+        }
+
+        .stop-logo {
+            height: 2em;
+        }
+
+        .form-heading {
+            font-size: clamp(3rem, 5.5vw, 4rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .hero-title {
+            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+        }
+
+        .action-text {
+            font-size: 0.95em;
+            padding: 0.6rem 1.2rem;
+        }
+
+        .stop-logo {
+            height: 1.8em;
+        }
+
+        .form-heading {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(2.2rem, 4.5vw, 3rem);
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 991px) {
+        .hero-title {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.25;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(1.2rem, 2.3vw, 1.5rem);
+        }
+
+        .action-text {
+            font-size: 0.9em;
+            padding: 0.55rem 1.1rem;
+        }
+
+        .stop-logo {
+            height: 1.7em;
+        }
+
+        .form-heading {
+            font-size: clamp(2.2rem, 4.5vw, 3rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+        }
+    }
+
     @media (max-width: 768px) {
         .hero-slider {
             height: 100vh; /* Ocupar toda la altura de la pantalla */
             min-height: 100vh; /* Asegurar que sea al menos 100vh */
+        }
+
+        .hero-title {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            line-height: 1.3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(1rem, 3.5vw, 1.4rem);
+        }
+
+        .hero-subtitle {
+            margin-top: 4rem;
+        }
+
+        .action-text {
+            font-size: 0.8em;
+            padding: 0.5rem 1rem;
+        }
+
+        .stop-logo {
+            height: 1.6em;
         }
 
         .cae-banner {
@@ -531,17 +668,42 @@ const { images } = Astro.props;
             display: block;
             padding-bottom: 0.5rem;
         }
-        
-        /* Mejorar espaciado general del título en móvil */
-        .hero-title {
-            line-height: 1.4;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+
+        .form-heading {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
         }
 
-        .hero-subtitle {
-            margin-top: 4rem;
+        .contact-form h2 {
+            font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero-title {
+            font-size: clamp(1.6rem, 5.5vw, 2.5rem);
+            line-height: 1.35;
+            gap: 0.8rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.95rem, 3.2vw, 1.25rem);
+        }
+
+        .action-text {
+            font-size: 0.75em;
+            padding: 0.45rem 0.9rem;
+        }
+
+        .stop-logo {
+            height: 1.5em;
+        }
+
+        .form-heading {
+            font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
         }
     }
     
@@ -552,16 +714,26 @@ const { images } = Astro.props;
         }
 
         .hero-title {
-            font-size: clamp(1.8rem, 7vw, 3.5rem);
+            font-size: clamp(1.4rem, 5vw, 2.2rem);
+            line-height: 1.4;
+            gap: 0.6rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.85rem, 3vw, 1.1rem);
+        }
+
+        .hero-subtitle {
+            margin-top: 3.5rem;
         }
 
         .action-text {
             padding: 0.4rem 0.8rem;
-            font-size: 0.75em;
+            font-size: 0.7em;
         }
 
         .stop-logo {
-            height: 2.3em;
+            height: 1.4em;
             margin-left: 0.2rem;
         }
 
@@ -571,14 +743,6 @@ const { images } = Astro.props;
 
         .title-line:nth-child(2) {
             margin-bottom: 0;
-        }
-
-        .hero-subtitle {
-            margin-top: 3.5rem;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(0.9rem, 4vw, 1.2rem);
         }
 
         .slider-nav {
@@ -598,6 +762,201 @@ const { images } = Astro.props;
         .indicator {
             width: 10px;
             height: 10px;
+        }
+
+        .form-heading {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.3rem, 3.8vw, 1.9rem);
+        }
+    }
+
+    @media (max-width: 360px) {
+        .hero-title {
+            font-size: clamp(1.2rem, 4.5vw, 1.8rem);
+            line-height: 1.45;
+            gap: 0.4rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.8rem, 2.8vw, 1rem);
+        }
+
+        .action-text {
+            padding: 0.35rem 0.7rem;
+            font-size: 0.65em;
+        }
+
+        .stop-logo {
+            height: 1.3em;
+        }
+
+        .title-line {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-heading {
+            font-size: clamp(1.2rem, 3.8vw, 1.8rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+        }
+    }
+
+    /* Media queries para pantallas con poca altura */
+    @media (max-height: 600px) {
+        .hero-title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            line-height: 1.2;
+            gap: 0.3rem;
+        }
+
+        .hero-subtitle {
+            margin-top: 2.5rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+        }
+
+        .action-text {
+            font-size: 0.75em;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .title-line {
+            margin-bottom: 1rem;
+        }
+
+        .title-line:nth-child(1) {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    @media (max-height: 500px) {
+        .hero-title {
+            font-size: clamp(1.3rem, 3.5vw, 1.9rem);
+            line-height: 1.15;
+            gap: 0.2rem;
+        }
+
+        .hero-subtitle {
+            margin-top: 2rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+        }
+
+        .action-text {
+            font-size: 0.7em;
+            padding: 0.35rem 0.7rem;
+        }
+
+        .stop-logo {
+            height: 1.2em;
+        }
+
+        .title-line {
+            margin-bottom: 0.8rem;
+        }
+
+        .title-line:nth-child(1) {
+            margin-bottom: 1.2rem;
+        }
+    }
+
+    @media (max-height: 400px) {
+        .hero-title {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            line-height: 1.1;
+            gap: 0.1rem;
+        }
+
+        .hero-subtitle {
+            margin-top: 1.5rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+        }
+
+        .action-text {
+            font-size: 0.65em;
+            padding: 0.3rem 0.6rem;
+        }
+
+        .stop-logo {
+            height: 1.1em;
+        }
+
+        .title-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .title-line:nth-child(1) {
+            margin-bottom: 0.8rem;
+        }
+    }
+
+    /* Landscape móvil específico */
+    @media (max-width: 768px) and (max-height: 500px) and (orientation: landscape) {
+        .hero-title {
+            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            margin-top: 1.5rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.8rem, 2.2vw, 1rem);
+        }
+
+        .action-text {
+            font-size: 0.7em;
+            padding: 0.35rem 0.7rem;
+        }
+
+        .title-line {
+            margin-bottom: 0.6rem;
+        }
+
+        .title-line:nth-child(1) {
+            margin-bottom: 1rem;
+        }
+    }
+
+    /* Pantallas ultra anchas */
+    @media (min-width: 1920px) {
+        .hero-title {
+            font-size: clamp(4rem, 8vw, 7rem);
+            line-height: 1.05;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(2rem, 3.5vw, 2.5rem);
+        }
+
+        .action-text {
+            font-size: 1.2em;
+            padding: 1rem 2rem;
+        }
+
+        .stop-logo {
+            height: 2.5em;
+        }
+
+        .form-heading {
+            font-size: clamp(4rem, 7vw, 5.5rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(3.5rem, 6vw, 4.5rem);
         }
     }
 
