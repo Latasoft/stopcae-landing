@@ -2,9 +2,8 @@
 export const EMAILJS_CONFIG = {
     SERVICE_ID: 'service_fzy350f',
     TEMPLATE_ID_SERVICIOS: 'template_2ba7wlj',
-    TEMPLATE_ID_TRABAJA: 'template_d4q2efe',
+    TEMPLATE_ID_TRABAJA: 'template_gxl2hcj',
     PUBLIC_KEY: 'Q5Qu6LefKc48raJFh', // Clave pública configurada
-    EMAIL_DESTINATION: 'contacto@stopcae.cl'
 };
 
 // Función para validar la configuración
@@ -14,4 +13,11 @@ export function validateEmailJSConfig() {
         return false;
     }
     return true;
+}
+
+// Ejemplo de uso de console.log para depuración
+export function sendDataToEmailJS(formData) {
+    // Aquí iría la lógica para enviar los datos a EmailJS
+
+    console.log('Datos enviados a EmailJS:', formData);
 }

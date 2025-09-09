@@ -1,1 +1,0 @@
-const e=document.getElementById("stopForm");e?.addEventListener("submit",async r=>{r.preventDefault();const o=new FormData(r.target);console.log(Object.fromEntries(o));try{alert("Gracias por contactarnos. Nos comunicaremos contigo pronto."),r.target.reset()}catch(t){console.error("Error:",t),alert("Hubo un error al enviar el formulario. Por favor, intenta nuevamente.")}});
