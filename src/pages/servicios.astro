@@ -46,7 +46,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         <div class="form-group">
                             <label for="nombre" aria-required="true">Nombre Completo *</label>
                             <input type="text" id="nombre" name="nombre" required placeholder="Ej. María Pérez" 
-                                   aria-describedby="nombre-help" autocomplete="name" pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$" title="Solo se permiten letras y espacios">
+                                   aria-describedby="nombre-help" autocomplete="name" title="Solo se permiten letras y espacios">
                             <div id="nombre-help" class="sr-only">Ingresa tu nombre completo</div>
                         </div>
                         <div class="form-group">
@@ -65,15 +65,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                             <div id="telefono-help" class="sr-only">Ingresa tu número de teléfono con código de país</div>
                         </div>
                         <div class="form-group">
-                            <label for="servicio" aria-required="true">Tipo de Servicio *</label>
-                            <select id="servicio" name="servicio" required aria-describedby="servicio-help">
-                                <option value="">Selecciona un servicio</option>
-                                <option value="plan-excepcion">Plan Excepción</option>
-                                <option value="plan-moratorio">Plan Moratorio</option>
-                                <option value="plan-custodia">Plan Custodia</option>
-                                <option value="consulta">Consulta legal general</option>
-                                <option value="otro">Otro servicio</option>
-                            </select>
+<label for="servicio">Tipo de Servicio</label>
+<select id="servicio" name="servicio" required >
+  <option value="plan-excepcion" selected>Plan Excepción</option>
+</select>
                             <div id="servicio-help" class="sr-only">Selecciona el tipo de servicio que necesitas</div>
                         </div>
                     </div>
@@ -90,6 +85,10 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                                     <input type="radio" name="status" value="nopagando" required aria-describedby="status-help">
                                             <span>Ya dejé de pagar</span>
                                         </label>
+                                        <label class="option">
+    <input type="radio" name="status" value="recibi-demanda">
+    <span>Ya recibí la demanda</span>
+</label>
                             </div>
                             <div id="status-help" class="sr-only">Selecciona tu situación actual con respecto al CAE</div>
                         </fieldset>
@@ -3466,21 +3465,18 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     import { EMAILJS_CONFIG, validateEmailJSConfig } from '../config/emailjs.js';
 
     // Manejo del formulario de servicios
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('contactForm');
-        
         if (form) {
-            form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-                
-                // Obtener el botón de envío
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
                 const submitBtn = form.querySelector('.submit-btn');
+                if (!submitBtn) return;
                 const originalText = submitBtn.innerHTML;
-                
-                // Cambiar estado del botón a "enviando"
-                submitBtn.innerHTML = '<span class="btn-text">Enviando...</span><span class="btn-icon">⏳</span>';
+                submitBtn.innerHTML = 'Enviando...';
                 submitBtn.disabled = true;
-                
+
                 try {
                     // Recopilar datos del formulario
                     const formData = {
@@ -3499,143 +3495,27 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         })
                     };
 
-                    // Validar configuración antes de enviar
-                    if (!validateEmailJSConfig()) {
-                        throw new Error('Configuración de EmailJS incompleta');
-                    }
-
-                    // Enviar email usando EmailJS
-                    const response = await emailjs.send(
-                        EMAILJS_CONFIG.SERVICE_ID,
-                        EMAILJS_CONFIG.TEMPLATE_ID_SERVICIOS,
+                    // Enviar email usando EmailJS directamente, sin await ni manejo de response
+                    emailjs.send(
+                        "service_fzy350f",
+                        "template_xj4r7td",
                         formData,
-                        EMAILJS_CONFIG.PUBLIC_KEY
+                        "Q5Qu6LefKc48raJFh"
                     );
 
-                    if (response.status === 200) {
-                        // Éxito
-                        alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo en menos de 24 horas.');
-                        form.reset();
-                        
-                        // Limpiar validaciones visuales
-                        form.querySelectorAll('input, select, textarea').forEach(field => {
-                            field.style.borderColor = 'rgba(202, 1, 1, 0.1)';
-                        });
-                    } else {
-                        throw new Error('Error en el envío');
-                    }
-                    
-        } catch (error) {
+                    alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo en menos de 24 horas.');
+                    form.reset();
+                    form.querySelectorAll('input, select, textarea').forEach(field => {
+                        field.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                    });
+                } catch (error) {
                     console.error('Error al enviar el formulario:', error);
-            alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+                    alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
                 } finally {
-                    // Restaurar botón
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                 }
             });
         }
-        
-        // Validación en tiempo real con funciones específicas
-        const requiredFields = form.querySelectorAll('[required]');
-        
-        // Función para validar nombre (solo letras y espacios)
-        function validateName(name) {
-            const nameRegex = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/;
-            return nameRegex.test(name.trim()) && name.trim().length >= 2;
-        }
-        
-        // Función para validar email
-        function validateEmail(email) {
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            return emailRegex.test(email.trim());
-        }
-        
-        // Función para validar teléfono chileno
-        function validateChileanPhone(phone) {
-            const phoneRegex = /^\+?56\s?[9876]\s?\d{4}\s?\d{4}$/;
-            return phoneRegex.test(phone.trim());
-        }
-        
-        // Validación específica por campo
-        const nombreField = form.querySelector('[name="nombre"]');
-        const emailField = form.querySelector('[name="email"]');
-        const telefonoField = form.querySelector('[name="telefono"]');
-        
-        if (nombreField) {
-            nombreField.addEventListener('blur', function() {
-                if (!validateName(this.value)) {
-                    this.style.borderColor = '#E30613';
-                    this.setCustomValidity('El nombre solo puede contener letras y espacios, mínimo 2 caracteres');
-                } else {
-                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
-                    this.setCustomValidity('');
-                }
-            });
-            
-            nombreField.addEventListener('input', function() {
-                // Remover números mientras escribe
-                this.value = this.value.replace(/[0-9]/g, '');
-            });
-        }
-        
-        if (emailField) {
-            emailField.addEventListener('blur', function() {
-                if (!validateEmail(this.value)) {
-                    this.style.borderColor = '#E30613';
-                    this.setCustomValidity('Ingresa un correo electrónico válido');
-                } else {
-                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
-                    this.setCustomValidity('');
-                }
-            });
-        }
-        
-        if (telefonoField) {
-            telefonoField.addEventListener('blur', function() {
-                if (!validateChileanPhone(this.value)) {
-                    this.style.borderColor = '#E30613';
-                    this.setCustomValidity('Formato válido: +56 9 1234 5678');
-                } else {
-                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
-                    this.setCustomValidity('');
-                }
-            });
-            
-            telefonoField.addEventListener('input', function() {
-                // Formatear automáticamente el número
-                let value = this.value.replace(/\D/g, '');
-                if (value.startsWith('56')) {
-                    value = '+56 ' + value.substring(2);
-                } else if (value.startsWith('9') || value.startsWith('8') || value.startsWith('7') || value.startsWith('6')) {
-                    value = '+56 ' + value;
-                }
-                
-                if (value.length > 4) {
-                    const match = value.match(/(\+56)\s?(\d{1})\s?(\d{0,4})\s?(\d{0,4})/);
-                    if (match) {
-                        value = match[1] + ' ' + match[2];
-                        if (match[3]) value += ' ' + match[3];
-                        if (match[4]) value += ' ' + match[4];
-                    }
-                }
-                this.value = value;
-            });
-        }
-        
-        // Validación general para campos requeridos
-        requiredFields.forEach(field => {
-            if (!field.name || ['nombre', 'email', 'telefono'].includes(field.name)) return;
-            
-            field.addEventListener('blur', function() {
-                if (!this.value.trim()) {
-                    this.style.borderColor = '#E30613';
-                    this.setCustomValidity('Este campo es obligatorio');
-                } else {
-                    this.style.borderColor = 'rgba(202, 1, 1, 0.1)';
-                    this.setCustomValidity('');
-                }
-            });
-        });
     });
 </script>
