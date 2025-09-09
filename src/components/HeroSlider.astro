@@ -253,42 +253,54 @@ const { images } = Astro.props;
         color: var(--color-red);
         font-weight: 700;
         position: relative;
-        padding: 0.5rem 1rem;
-        font-size: 0.85em;
+        padding: clamp(0.6rem, 2.5vw, 1.2rem) clamp(1.2rem, 4vw, 2.5rem);
+        font-size: clamp(0.8rem, 2.8vw, 1.2rem);
         opacity: 1;
-        line-height: 1.4;
-        border-radius: 25px;
-        display: inline-block;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        line-height: 1.3;
+        border-radius: clamp(20px, 4vw, 30px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0.3rem, 1vw, 0.6rem);
+        box-shadow: 0 clamp(4px, 1vw, 8px) clamp(15px, 3vw, 25px) rgba(0, 0, 0, 0.3);
         transition: all 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.8);
+        border: clamp(1px, 0.3vw, 2px) solid rgba(255, 255, 255, 0.8);
         text-shadow: none;
         text-decoration: none;
         cursor: pointer;
+        max-width: min(450px, 90vw);
+        min-width: min(200px, 60vw);
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
     }
 
     .action-text:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        transform: translateY(clamp(-1px, -0.3vw, -3px));
+        box-shadow: 0 clamp(6px, 1.5vw, 12px) clamp(20px, 4vw, 35px) rgba(0, 0, 0, 0.4);
         border-color: var(--color-red);
         background: linear-gradient(135deg, var(--color-white) 0%, #ffffff 100%);
     }
 
     .stop-logo {
-        height: 1.5em;
+        height: clamp(1.2rem, 3.5vw, 2.2rem);
         width: auto;
         display: inline-block;
-        margin-left: 0.3rem;
+        margin-left: clamp(0.2rem, 0.8vw, 0.5rem);
         transition: all 0.3s ease;
         vertical-align: middle;
         opacity: 1;
-        border-radius: 4px;
-        padding: 0.1rem;
+        border-radius: clamp(2px, 0.5vw, 4px);
+        padding: clamp(0.05rem, 0.2vw, 0.15rem);
+        flex-shrink: 0;
+        object-fit: contain;
     }
 
     .stop-logo:hover {
         transform: scale(1.1);
-        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6)) 
+        filter: drop-shadow(0 0 clamp(6px, 1.5vw, 10px) rgba(202, 1, 1, 0.6));
     }
 
     .hero-subtitle {
@@ -504,206 +516,227 @@ const { images } = Astro.props;
     }
 
     /* Responsive */
-    @media (min-width: 1600px) {
+    /* Responsive Design - Mobile First Approach */
+    
+    /* Small Devices (landscape phones, 481px and up) */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .slider-content {
+            width: 95%;
+            padding: 0.8rem;
+        }
+        
         .hero-title {
-            font-size: clamp(3.5rem, 7vw, 6rem);
-            line-height: 1.1;
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            gap: 0.8rem;
         }
-
-        .hero-subtitle p {
-            font-size: clamp(1.8rem, 3vw, 2.2rem);
-        }
-
+        
         .action-text {
-            font-size: 1.1em;
-            padding: 0.8rem 1.5rem;
+            font-size: clamp(0.8rem, 2.8vw, 1rem);
+            padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+            max-width: 90vw;
+            min-width: 70vw;
         }
-
+        
         .stop-logo {
-            height: 2.2em;
+            height: clamp(1.1rem, 3.2vw, 1.6rem);
+            margin-left: clamp(0.2rem, 0.6vw, 0.4rem);
         }
-
-        .form-heading {
-            font-size: clamp(3.5rem, 6vw, 4.5rem);
+        
+        .hero-subtitle {
+            margin-top: 2rem;
         }
-
-        .contact-form h2 {
-            font-size: clamp(3rem, 5.5vw, 4rem);
+        
+        .hero-subtitle p {
+            font-size: clamp(0.9rem, 2.8vw, 1.2rem);
+        }
+        
+        .slider-nav {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .slider-nav svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .prev-btn {
+            left: 1rem;
+        }
+        
+        .next-btn {
+            right: 1rem;
+        }
+        
+        .slide-indicators {
+            bottom: 1.5rem;
+            gap: 0.8rem;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
         }
     }
-
-    @media (min-width: 1200px) and (max-width: 1599px) {
+    
+    /* Medium Devices (tablets, 768px and up) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .slider-content {
+            width: 90%;
+            padding: 1rem;
+        }
+        
         .hero-title {
-            font-size: clamp(3rem, 6vw, 5rem);
-            line-height: 1.15;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(1.5rem, 2.8vw, 1.9rem);
-        }
-
-        .action-text {
-            font-size: 1em;
-            padding: 0.7rem 1.3rem;
-        }
-
-        .stop-logo {
-            height: 2em;
-        }
-
-        .form-heading {
-            font-size: clamp(3rem, 5.5vw, 4rem);
-        }
-
-        .contact-form h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-        }
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
-        .hero-title {
-            font-size: clamp(2.5rem, 5.5vw, 4rem);
-            line-height: 1.2;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(1.3rem, 2.5vw, 1.7rem);
-        }
-
-        .action-text {
-            font-size: 0.95em;
-            padding: 0.6rem 1.2rem;
-        }
-
-        .stop-logo {
-            height: 1.8em;
-        }
-
-        .form-heading {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-        }
-
-        .contact-form h2 {
-            font-size: clamp(2.2rem, 4.5vw, 3rem);
-        }
-    }
-
-    @media (min-width: 769px) and (max-width: 991px) {
-        .hero-title {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            line-height: 1.25;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(1.2rem, 2.3vw, 1.5rem);
-        }
-
-        .action-text {
-            font-size: 0.9em;
-            padding: 0.55rem 1.1rem;
-        }
-
-        .stop-logo {
-            height: 1.7em;
-        }
-
-        .form-heading {
-            font-size: clamp(2.2rem, 4.5vw, 3rem);
-        }
-
-        .contact-form h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-slider {
-            height: 100vh; /* Ocupar toda la altura de la pantalla */
-            min-height: 100vh; /* Asegurar que sea al menos 100vh */
-        }
-
-        .hero-title {
-            font-size: clamp(1.8rem, 6vw, 3rem);
-            line-height: 1.3;
-            display: flex;
-            flex-direction: column;
+            font-size: clamp(2rem, 4vw, 3rem);
             gap: 1rem;
         }
-
-        .hero-subtitle p {
-            font-size: clamp(1rem, 3.5vw, 1.4rem);
+        
+        .action-text {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            padding: clamp(0.6rem, 2.2vw, 1.2rem) clamp(1.2rem, 3.5vw, 2rem);
+            max-width: 400px;
+            min-width: 300px;
         }
-
+        
+        .stop-logo {
+            height: clamp(1.3rem, 3.8vw, 1.8rem);
+            margin-left: clamp(0.3rem, 0.8vw, 0.5rem);
+        }
+        
+        .hero-subtitle {
+            margin-top: 3rem;
+        }
+        
+        .hero-subtitle p {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+        }
+        
+        .slider-nav {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .slider-nav svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .prev-btn {
+            left: 1.5rem;
+        }
+        
+        .next-btn {
+            right: 1.5rem;
+        }
+        
+        .slide-indicators {
+            bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    
+    /* Large Devices (desktops, 1024px and up) */
+    @media (min-width: 1025px) and (max-width: 1440px) {
+        .slider-content {
+            width: 85%;
+            max-width: 1000px;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+        }
+        
+        .action-text {
+            font-size: clamp(1rem, 2.2vw, 1.2rem);
+            padding: clamp(0.7rem, 2vw, 1.5rem) clamp(1.5rem, 4vw, 2.5rem);
+            max-width: 450px;
+            min-width: 350px;
+        }
+        
+        .stop-logo {
+            height: clamp(1.5rem, 4vw, 2rem);
+            margin-left: clamp(0.4rem, 1vw, 0.6rem);
+        }
+        
         .hero-subtitle {
             margin-top: 4rem;
         }
-
-        .action-text {
-            font-size: 0.8em;
-            padding: 0.5rem 1rem;
+        
+        .hero-subtitle p {
+            font-size: clamp(1.1rem, 2.2vw, 1.5rem);
         }
-
-        .stop-logo {
-            height: 1.6em;
-        }
-
-        .cae-banner {
-            padding: 1.5rem 2rem;
-            width: 90%;
-            max-width: 400px;
-        }
-
+        
         .slider-nav {
-            width: 40px;
-            height: 40px;
-            font-size: 1.5rem;
+            width: 55px;
+            height: 55px;
         }
-
-        .prev-btn { left: 1rem; }
-        .next-btn { right: 1rem; }
-
-        /* Añadir más espacio entre la pregunta y el botón */
-        .title-line:nth-child(1) {
-            margin-bottom: 2rem;
-            display: block;
-            padding-bottom: 0.5rem;
+        
+        .slider-nav svg {
+            width: 22px;
+            height: 22px;
         }
-
-        .form-heading {
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        
+        .prev-btn {
+            left: 2rem;
         }
-
-        .contact-form h2 {
-            font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+        
+        .next-btn {
+            right: 2rem;
         }
     }
-
-    @media (max-width: 640px) {
+    
+    /* Extra Large Devices (large desktops, 1440px and up) */
+    @media (min-width: 1441px) {
+        .slider-content {
+            width: 80%;
+            max-width: 1200px;
+        }
+        
         .hero-title {
-            font-size: clamp(1.6rem, 5.5vw, 2.5rem);
-            line-height: 1.35;
-            gap: 0.8rem;
+            font-size: clamp(3rem, 3.5vw, 4rem);
         }
-
-        .hero-subtitle p {
-            font-size: clamp(0.95rem, 3.2vw, 1.25rem);
-        }
-
+        
         .action-text {
-            font-size: 0.75em;
-            padding: 0.45rem 0.9rem;
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            padding: clamp(0.8rem, 2.2vw, 2rem) clamp(2rem, 4.5vw, 3rem);
+            max-width: 500px;
+            min-width: 400px;
         }
-
+        
         .stop-logo {
-            height: 1.5em;
+            height: clamp(1.8rem, 4.5vw, 2.5rem);
+            margin-left: clamp(0.5rem, 1.2vw, 0.8rem);
         }
-
-        .form-heading {
-            font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+        
+        .hero-subtitle {
+            margin-top: 5rem;
         }
-
-        .contact-form h2 {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
+        
+        .hero-subtitle p {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+        }
+        
+        .slider-nav {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .slider-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .prev-btn {
+            left: 2.5rem;
+        }
+        
+        .next-btn {
+            right: 2.5rem;
         }
     }
     
@@ -728,13 +761,17 @@ const { images } = Astro.props;
         }
 
         .action-text {
-            padding: 0.4rem 0.8rem;
-            font-size: 0.7em;
+            padding: clamp(0.4rem, 2vw, 0.8rem) clamp(0.8rem, 3vw, 1.2rem);
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            max-width: 95vw;
+            min-width: 80vw;
+            white-space: normal;
+            line-height: 1.2;
         }
 
         .stop-logo {
-            height: 1.4em;
-            margin-left: 0.2rem;
+            height: clamp(1rem, 3vw, 1.4rem);
+            margin-left: clamp(0.1rem, 0.5vw, 0.3rem);
         }
 
         .title-line {
@@ -773,190 +810,38 @@ const { images } = Astro.props;
         }
     }
 
-    @media (max-width: 360px) {
-        .hero-title {
-            font-size: clamp(1.2rem, 4.5vw, 1.8rem);
-            line-height: 1.45;
-            gap: 0.4rem;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(0.8rem, 2.8vw, 1rem);
-        }
-
-        .action-text {
-            padding: 0.35rem 0.7rem;
-            font-size: 0.65em;
-        }
-
-        .stop-logo {
-            height: 1.3em;
-        }
-
-        .title-line {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-heading {
-            font-size: clamp(1.2rem, 3.8vw, 1.8rem);
-        }
-
-        .contact-form h2 {
-            font-size: clamp(1.1rem, 3.5vw, 1.6rem);
-        }
-    }
-
-    /* Media queries para pantallas con poca altura */
-    @media (max-height: 600px) {
-        .hero-title {
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            line-height: 1.2;
-            gap: 0.3rem;
-        }
-
+    /* Landscape orientation adjustments */
+    @media (max-height: 600px) and (orientation: landscape) {
         .hero-subtitle {
-            margin-top: 2.5rem;
+            margin-top: clamp(1rem, 3vw, 2rem);
         }
-
-        .hero-subtitle p {
-            font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-        }
-
-        .action-text {
-            font-size: 0.75em;
-            padding: 0.4rem 0.8rem;
-        }
-
-        .title-line {
-            margin-bottom: 1rem;
-        }
-
-        .title-line:nth-child(1) {
-            margin-bottom: 1.5rem;
-        }
-    }
-
-    @media (max-height: 500px) {
+        
         .hero-title {
-            font-size: clamp(1.3rem, 3.5vw, 1.9rem);
-            line-height: 1.15;
-            gap: 0.2rem;
+            gap: clamp(0.3rem, 1vw, 0.5rem);
         }
-
-        .hero-subtitle {
-            margin-top: 2rem;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(0.8rem, 2.2vw, 1rem);
-        }
-
+        
         .action-text {
-            font-size: 0.7em;
-            padding: 0.35rem 0.7rem;
-        }
-
-        .stop-logo {
-            height: 1.2em;
-        }
-
-        .title-line {
-            margin-bottom: 0.8rem;
-        }
-
-        .title-line:nth-child(1) {
-            margin-bottom: 1.2rem;
-        }
-    }
-
-    @media (max-height: 400px) {
-        .hero-title {
-            font-size: clamp(1.1rem, 3vw, 1.6rem);
-            line-height: 1.1;
-            gap: 0.1rem;
-        }
-
-        .hero-subtitle {
-            margin-top: 1.5rem;
-        }
-
-        .hero-subtitle p {
+            padding: clamp(0.4rem, 1.5vw, 0.8rem) clamp(0.8rem, 2.5vw, 1.2rem);
             font-size: clamp(0.7rem, 2vw, 0.9rem);
         }
-
-        .action-text {
-            font-size: 0.65em;
-            padding: 0.3rem 0.6rem;
-        }
-
+        
         .stop-logo {
-            height: 1.1em;
-        }
-
-        .title-line {
-            margin-bottom: 0.5rem;
-        }
-
-        .title-line:nth-child(1) {
-            margin-bottom: 0.8rem;
+            height: clamp(1rem, 2.5vw, 1.3rem);
         }
     }
-
-    /* Landscape móvil específico */
-    @media (max-width: 768px) and (max-height: 500px) and (orientation: landscape) {
-        .hero-title {
-            font-size: clamp(1.2rem, 3.5vw, 1.8rem);
-            line-height: 1.1;
-        }
-
-        .hero-subtitle {
-            margin-top: 1.5rem;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(0.8rem, 2.2vw, 1rem);
-        }
-
-        .action-text {
-            font-size: 0.7em;
-            padding: 0.35rem 0.7rem;
-        }
-
-        .title-line {
-            margin-bottom: 0.6rem;
-        }
-
-        .title-line:nth-child(1) {
-            margin-bottom: 1rem;
-        }
-    }
-
-    /* Pantallas ultra anchas */
+    
+    /* Ultra-wide screens */
     @media (min-width: 1920px) {
-        .hero-title {
-            font-size: clamp(4rem, 8vw, 7rem);
-            line-height: 1.05;
-        }
-
-        .hero-subtitle p {
-            font-size: clamp(2rem, 3.5vw, 2.5rem);
-        }
-
         .action-text {
-            font-size: 1.2em;
-            padding: 1rem 2rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            padding: clamp(1rem, 2.5vw, 2rem) clamp(2rem, 5vw, 3rem);
+            max-width: 600px;
+            min-width: 500px;
         }
-
+        
         .stop-logo {
-            height: 2.5em;
-        }
-
-        .form-heading {
-            font-size: clamp(4rem, 7vw, 5.5rem);
-        }
-
-        .contact-form h2 {
-            font-size: clamp(3.5rem, 6vw, 4.5rem);
+            height: clamp(2rem, 5vw, 3rem);
+            margin-left: clamp(0.6rem, 1.5vw, 1rem);
         }
     }
 
@@ -1557,6 +1442,63 @@ const { images } = Astro.props;
         max-width: 100%;
         overflow: hidden;
     }
+    
+    /* Touch device optimizations */
+    @media (hover: none) and (pointer: coarse) {
+        .action-text {
+            padding: clamp(0.8rem, 2.5vw, 1.5rem) clamp(1.5rem, 4vw, 2.5rem);
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            min-height: 48px;
+            touch-action: manipulation;
+        }
+        
+        .stop-logo {
+            height: clamp(1.3rem, 3.5vw, 1.8rem);
+            margin-left: clamp(0.3rem, 0.8vw, 0.5rem);
+        }
+        
+        .slider-nav {
+            width: clamp(50px, 10vw, 70px);
+            height: clamp(50px, 10vw, 70px);
+        }
+        
+        .indicator {
+            width: clamp(12px, 3vw, 16px);
+            height: clamp(12px, 3vw, 16px);
+        }
+    }
+    
+    /* High DPI displays optimization */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .stop-logo {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        
+        .action-text {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .action-text {
+            transition: none;
+        }
+        
+        .stop-logo {
+            transition: none;
+        }
+        
+        .action-text:hover {
+            transform: none;
+        }
+        
+        .stop-logo:hover {
+            transform: none;
+        }
+    }
 </style>
 
 <script>
@@ -1824,5 +1766,40 @@ const { images } = Astro.props;
                 }
             });
         });
+    }
+    
+    // Optimizaciones adicionales para dispositivos móviles
+    if ('ontouchstart' in window) {
+        // Prevenir zoom en inputs en iOS
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                if (input.style.fontSize === '16px') return;
+                input.style.fontSize = '16px';
+            });
+        });
+        
+        // Optimizar el viewport para dispositivos móviles
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        }
+        
+        // Mejorar el rendimiento en dispositivos táctiles
+        document.body.style.touchAction = 'manipulation';
+        
+        // Optimizar las transiciones para dispositivos móviles
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                * {
+                    -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+                    -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
 </script>
