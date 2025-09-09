@@ -376,8 +376,24 @@ header.scrolled .nav-container {
     }
     
     .nav-menu.active {
-        max-height: 300px;
+        max-height: 500px;
         padding-top: 1rem;
+    }
+    
+    /* Expandir más el nav-menu cuando el dropdown está activo */
+    .nav-menu.active .dropdown-container.active {
+        max-height: 600px;
+    }
+    
+    /* Hacer que el nav-menu sea más largo cuando el dropdown está desplegado */
+    .nav-menu.active .dropdown-container.active ~ * {
+        margin-top: 1rem;
+    }
+    
+    /* Expandir el nav-menu específicamente cuando el dropdown está activo */
+    .nav-menu.active.dropdown-expanded {
+        max-height: 600px;
+        padding-bottom: 1rem;
     }
     
     /* Mobile scrolled state */
