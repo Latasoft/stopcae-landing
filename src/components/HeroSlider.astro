@@ -74,7 +74,9 @@ const { images } = Astro.props;
                             <input type="hidden" name="servicio" value="plan-excepcion">
 
                             <div class="form-fields">
-                                <input type="text" name="nombre" placeholder="Nombre completo" required pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$" title="Solo se permiten letras y espacios">
+                                <input type="text" name="nombre" placeholder="Nombre completo" required     
+
+ title="Solo se permiten letras y espacios">
                                 <input type="email" name="correo" placeholder="Correo electrónico" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingresa un correo electrónico válido">
                                 <input type="tel" name="telefono" placeholder="Teléfono (+56 9 1234 5678)" required pattern="^\+56\s?[9876]\s?\d{4}\s?\d{4}$" title="Formato: +56 9 1234 5678">
                                 <textarea name="comentario" placeholder="Cuentanos tu situación"></textarea>
