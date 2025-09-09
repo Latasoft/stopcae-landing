@@ -804,17 +804,19 @@ if (currentPath === '/') {
         }
         
         .dropdown-menu {
-            position: absolute;
+            position: static !important;
+            margin: 0.5rem auto 0 auto;
+            left: 0 !important;
+            right: 0 !important;
+            transform: none !important;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid rgba(202, 1, 1, 0.2);
             border-radius: 12px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            margin: 0.5rem auto 0 auto;
-            min-width: auto;
-            width: 100%;
+            min-width: 0;
+            width: 90%;
             max-width: 300px;
             display: block;
             padding: 0;
@@ -824,14 +826,12 @@ if (currentPath === '/') {
             z-index: 1001;
             min-height: 0;
             text-align: center;
-            left: 50%;
-            transform: translateX(-50%) translateY(-10px);
         }
         
         .dropdown-container.active .dropdown-menu {
             opacity: 1 !important;
             visibility: visible !important;
-            transform: translateX(-50%) translateY(0) !important;
+            transform: none !important;
             padding: 0.5rem 0 !important;
             max-height: 400px !important;
             min-height: auto !important;
@@ -1059,11 +1059,16 @@ if (currentPath === '/') {
         }
         
         .dropdown-menu {
-            max-width: 280px;
+            position: static !important;
+            margin: 0.5rem auto 0 auto;
+            left: 0 !important;
+            right: 0 !important;
+            transform: none !important;
+            max-width: 95vw;
+            width: 95vw;
             border-radius: 10px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
             max-height: 0;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1072,7 +1077,7 @@ if (currentPath === '/') {
         .dropdown-container.active .dropdown-menu {
             opacity: 1 !important;
             visibility: visible !important;
-            transform: translateY(0) !important;
+            transform: none !important;
             max-height: 400px !important;
             min-height: auto !important;
             display: block !important;
