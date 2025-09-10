@@ -1776,7 +1776,40 @@ const sliderImages = [
         });
     }
     
-    
+// Optimizaciones adicionales para dispositivos móviles
+    if ('ontouchstart' in window) {
+        // Prevenir zoom en inputs en iOS
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            if (input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement) {
+                input.addEventListener('focus', () => {
+                    if (input.style.fontSize === '16px') return;
+                    input.style.fontSize = '16px';
+                });
+            }
+        });
+        
+        // Optimizar el viewport para dispositivos móviles
+        const viewport = document.querySelector('meta[name="viewport"]');
+        if (viewport) {
+            viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        }
+        
+        // Mejorar el rendimiento en dispositivos táctiles
+        document.body.style.touchAction = 'manipulation';
+        
+        // Optimizar las transiciones para dispositivos móviles
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                * {
+                    -webkit-backface-visibility: hidden;
+                    backface-visibility: hidden;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
