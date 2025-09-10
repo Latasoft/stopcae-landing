@@ -12,23 +12,16 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     <Header />
     
     <main class="servicios-page">
-        <section class="servicios-section">
+        <section class="servicios-header">
             <div class="banner-container">
                 <div class="banner-illustration">
-                    <!-- Aquí puedes agregar una imagen o ilustración -->
                     <div class="illustration-placeholder">
-    <img src="/assets/stop_excepcion.png" alt="Acción Legal" class="banner-img" />
-                            <circle cx="100" cy="100" r="80" fill="#E0DCDC" stroke="#CA0101" stroke-width="2"/>
-                            <path d="M70 90 L90 110 L130 70" stroke="#CA0101" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        
+                        <img src="/assets/stop_excepcion.png" alt="Stop Excepción" class="banner-img" />
                     </div>
                 </div>
                 <div class="banner-content">
-                    <h1 class="banner-title">
-                        <span class="title-line">Defiende tu futuro,</span>
-                        <span class="title-line">te ayudamos a excepcionar el CAE legalmente.</span>
-                    </h1>
-                    
+                    <h1 class="banner-title">PLAN: Stop Preventivo</h1>
+                    <p class="banner-subtitle">Defensa preventiva antes de la demanda</p>
                 </div>
             </div>
         </section>
@@ -424,17 +417,17 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     }
 
     /* Estilos del banner - copiados de quienes-somos.astro */
-    .servicios-section {
+    .servicios-header {
         padding: clamp(8rem, 20vh, 14rem) 0 2rem 0; /* Aumentado desde 6rem a 8rem */
         background: linear-gradient(135deg, #393939 0%, #2d2d2d 100%);
         position: relative;
         overflow: hidden;
         min-height: 50vh;
-            display: flex;
+        display: flex;
         align-items: center;
     }
 
-    .servicios-section::before {
+    .servicios-header::before {
         content: '';
         position: absolute;
         top: 0;
@@ -475,11 +468,26 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         }
     }
 
-        .banner-illustration {
+    @media (min-width: 769px) {
+        .banner-container {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: bannerSlideIn 1.2s ease-out 0.3s forwards;
+        }
+    }
+
+    @keyframes bannerSlideIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .banner-illustration {
         flex: 0 0 300px;
         display: flex;
         align-items: center;
-            justify-content: center;
+        justify-content: center;
         opacity: 1;
         transform: scale(1) rotate(0deg);
     }
@@ -499,11 +507,26 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         }
     }
 
-        .illustration-placeholder {
+    @media (min-width: 769px) {
+        .banner-illustration {
+            opacity: 0;
+            transform: scale(0.8) rotate(-10deg);
+            animation: illustrationFloat 1.5s ease-out 0.6s forwards;
+        }
+    }
+
+    @keyframes illustrationFloat {
+        to {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+
+    .illustration-placeholder {
         width: 200px;
         height: 200px;
         display: flex;
-            align-items: center;
+        align-items: center;
         justify-content: center;
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
@@ -512,6 +535,35 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
+    }
+
+    .illustration-placeholder::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.6s ease;
+        opacity: 0;
+    }
+
+    .illustration-placeholder:hover::before {
+        opacity: 1;
+        animation: shimmer 1.5s ease-in-out;
+    }
+
+    .illustration-placeholder:hover {
+        transform: scale(1.05);
+        border-color: rgba(202, 1, 1, 0.6);
+        box-shadow: 0 0 30px rgba(202, 1, 1, 0.3);
+    }
+
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
     }
 
     .illustration-placeholder::before {
@@ -555,9 +607,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         margin-bottom: 1rem;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
         position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
         opacity: 1;
         transform: translateX(0);
     }
@@ -577,10 +626,62 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         }
     }
 
-    .title-line {
-        display: block;
+    .banner-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        border-radius: 3px;
+    }
+
+    @media (min-width: 769px) {
+        .banner-title::after {
+            width: 0;
+            animation: underlineExpand 1s ease-out 1.6s forwards;
+        }
+    }
+
+    @keyframes underlineExpand {
+        to {
+            width: 100px;
+        }
+    }
+
+    .banner-subtitle {
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+        color: #E0DCDC;
+        opacity: 0.9;
+        line-height: 1.4;
         opacity: 1;
         transform: translateY(0);
+    }
+
+    @media (min-width: 769px) {
+        .banner-subtitle {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: subtitleSlideIn 0.8s ease-out 1.2s forwards;
+        }
+    }
+
+    @keyframes subtitleSlideIn {
+        to {
+            opacity: 0.9;
+            transform: translateY(0);
+        }
+    }
+
+    .servicios-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 10px;
+        background: linear-gradient(90deg, #CA0101, #E30613, #E0DCDC);
     }
 
     @media (min-width: 769px) {
@@ -2431,27 +2532,14 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
     /* Media queries para móviles grandes (481px - 768px) */
     @media (max-width: 768px) {
-        /* Banner responsive styles */
         .banner-container {
             flex-direction: column;
             text-align: center;
             gap: 2rem;
-            padding: 0 1.5rem;
         }
 
         .banner-illustration {
             flex: none;
-            order: -1; /* Poner la ilustración arriba */
-        }
-
-        .illustration-placeholder {
-            width: 160px;
-            height: 160px;
-        }
-
-        .banner-title {
-            gap: 0.3rem;
-            font-size: clamp(1.8rem, 5vw, 2.8rem);
         }
 
         .banner-title::after {
@@ -2459,12 +2547,9 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             transform: translateX(-50%);
         }
 
-        .servicios-section {
-            padding: clamp(8rem, 20vh, 12rem) 0 1rem 0;
-        }
-
-        .banner-content {
-            order: 1;
+        .servicios-header {
+            padding-top: clamp(10rem, 25vh, 16rem); /* Padding específico para móvil */
+            padding-bottom: 1rem;
         }
     }
 
