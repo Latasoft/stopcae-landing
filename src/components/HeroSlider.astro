@@ -31,7 +31,7 @@ const { images } = Astro.props;
                 <div class="hero-subtitle">
                     <p>Libera tu futuro financiero con nuestro equipo legal especializado</p>
                 </div>
-        </div>
+            </div>
         </div>
         
         <!-- Indicadores de slide -->
@@ -1197,20 +1197,24 @@ const { images } = Astro.props;
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         color: var(--color-white);
+        position: relative;
+        overflow: hidden;
     }
 
     .overlay::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        width: clamp(120px, 15vw, 200px);
+        height: clamp(120px, 15vw, 200px);
         background: url('/images/lady-justice-watermark.png') no-repeat center center;
         background-size: contain;
-        opacity: 0.05;
+        opacity: 0.15;
         pointer-events: none;
-        z-index: -1;
+        z-index: 1;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     }
 
     /* Form Responsive styles */
@@ -1298,6 +1302,13 @@ const { images } = Astro.props;
             cursor: not-allowed;
             transform: none !important;
             box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        }
+
+        .overlay::before {
+            right: 10%;
+            width: clamp(80px, 12vw, 120px);
+            height: clamp(80px, 12vw, 120px);
+            opacity: 0.1;
         }
     }
     
@@ -1463,6 +1474,13 @@ const { images } = Astro.props;
             cursor: not-allowed;
             transform: none !important;
             box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        }
+
+        .overlay::before {
+            right: 8%;
+            width: clamp(60px, 10vw, 100px);
+            height: clamp(60px, 10vw, 100px);
+            opacity: 0.08;
         }
     }
 

@@ -5,6 +5,8 @@ import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 ---
 
+
+
 <Layout>
     <Header />
     
@@ -13,12 +15,24 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             <div class="banner-container">
                 <div class="banner-illustration">
                     <div class="illustration-placeholder">
-                        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <img src="/assets/trabaja.webp" alt="Stop Excepción" class="banner-img" />
                             <circle cx="100" cy="100" r="80" fill="#E0DCDC" stroke="#CA0101" stroke-width="2"/>
                             <path d="M70 90 L90 110 L130 70" stroke="#CA0101" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
                     </div>
                 </div>
+
+
+                <style>
+
+.banner-img {
+  filter: invert(1) brightness(2) grayscale(1);
+  padding-top: 2.9rem;
+  padding-bottom:0rem;
+  margin-top:1rem;
+  size:auto;
+}
+</style>
+
                 <div class="banner-content">
                     <h1 class="banner-title">Únete a Nuestro Equipo</h1>
                     <p class="banner-subtitle">Forma parte de un estudio jurídico que transforma vidas</p>
@@ -831,6 +845,31 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             font-size: 1.3rem;
         }
     }
+
+
+    /* Puedes agregar esto en el <style> de cada página o en tu CSS global */
+.banner-img {
+  width: 160px;
+  max-width: 40vw;
+  min-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .banner-img {
+    width: 200px;
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-img {
+    width: 220px;
+    max-width: 240px;
+  }
+}
 </style>
 
 <script>
