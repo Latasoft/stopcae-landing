@@ -2,12 +2,12 @@
 ---
 
 <div class="whatsapp-button animate-on-scroll fade-in-scale">
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-        <a href="https://instagram.com/stopcae" target="_blank" rel="noopener noreferrer" class="hover-bounce" style="background-color: #E1306C;">
-            <i class="fab fa-instagram"></i>
-        </a>
+    <div class="social-btns-col">
         <a href="https://web.whatsapp.com/send?phone=56954787021" id="whatsapp-link" target="_blank" rel="noopener noreferrer" class="hover-bounce">
             <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/stopcae" target="_blank" rel="noopener noreferrer" class="hover-bounce" style="background-color: #E1306C;">
+            <i class="fab fa-instagram"></i>
         </a>
     </div>
 </div>
@@ -35,7 +35,11 @@
         right: 20px;
         z-index: 1000;
     }
-
+    .social-btns-col {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
     .whatsapp-button a {
         display: flex;
         justify-content: center;
@@ -49,25 +53,33 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
     }
-
+    .whatsapp-button a[href*="instagram"] {
+        background-color: #E1306C;
+    }
     .whatsapp-button a:hover {
         transform: scale(1.1);
     }
-
     .whatsapp-button a[href*="instagram"]:hover {
         background-color: #ff0000 !important;
         box-shadow: 0 8px 20px rgba(225, 48, 108, 0.4);
     }
-
     .whatsapp-button a[href*="whatsapp"]:hover {
         box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
-
     .whatsapp-button.animate-on-scroll {
         animation: float 3s ease-in-out infinite;
     }
-
     .whatsapp-button i {
         font-size: 2rem;
+    }
+    @media (max-width: 768px) {
+        .whatsapp-button {
+            top: 20px;
+            bottom: auto;
+            right: 20px;
+        }
+        .social-btns-col {
+            flex-direction: column;
+        }
     }
 </style>
