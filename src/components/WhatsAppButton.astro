@@ -33,7 +33,7 @@
         position: fixed;
         bottom: 40px;
         right: 20px;
-        z-index: 1000;
+    z-index: 9999;
     }
     .social-btns-col {
         display: flex;
@@ -73,10 +73,14 @@
         font-size: 2rem;
     }
     @media (max-width: 768px) {
+
         .whatsapp-button {
-            top: auto;
-            bottom: 30px;
-            right: 20px;
+            position: fixed !important;
+            top: auto !important;
+            bottom: 80px !important;
+            right: 20px !important;
+            left: auto !important;
+            z-index: 9999 !important;
         }
         .social-btns-col {
             flex-direction: column;

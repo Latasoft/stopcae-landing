@@ -5,6 +5,7 @@ import HeroSlider from '../components/HeroSlider.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
+
 const sliderImages = [
     {
         src: '/assets/img_prov_1.webp',
@@ -23,13 +24,1768 @@ const sliderImages = [
 
 <Layout>
     <Header />
-        <section id="inicio">
-        <HeroSlider images={sliderImages} />
-    </section>
+
+<section class="hero-slider">
+    <div class="slider-container">
+        {sliderImages.map((image) => (
+            <div class="slide">
+                <img src={image.src} alt={image.alt} />
+                <div class="slide-overlay"></div>
+            </div>
+        ))}
+        <div class="slider-content">
+            <div class="hero-text-container">
+                <h1 class="hero-title">
+                    <span class="title-line">¿Fuiste notificado con una demanda CAE?</span>
+                    <span class="title-line">
+                        <a class="action-text" id="scroll-to-form">
+                            Haz click aqui y ponle
+                            <img src="/stop.png" alt="Logo" class="stop-logo">
+                        </a>
+                    </span>
+                </h1>
+                <div class="hero-subtitle">
+                    <p>Libera tu futuro financiero con nuestro equipo legal especializado</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Indicadores de slide -->
+        <div class="slide-indicators">
+            {sliderImages.map((_, index) => (
+                <div class="indicator" data-slide={index}></div>
+            ))}
+
+    </div>
+
+</section>
+
+<!-- Form Section -->
+<section id="contacto-form" class="servicios-content">
+    <div class="form-background fondo-formulario">
+        <div class="container">
+            <h3 class="form-heading" style="padding-top:1.5rem;">Porque estudiar no debería costarte tu futuro</h3>
+            <div class="form-wrapper">
+                <!-- ContactForm Component Inserted -->
+                <div class="contact-form">
+                    <div class="form-container overlay">
+                        <h2>Contacta con nosotros</h2>
+                        
+                        <form id="stopForm" class="stop-form">
+                            <div class="form-options">
+                                <label class="option">
+                                    <input type="radio" name="status" value="pagando" required>
+                                    <span>Estoy pagando mi CAE</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="status" value="nopagando">
+                                    <span>Ya dejé de pagar</span>
+                                </label>
+                                <label class="option">
+                                    <input type="radio" name="status" value="recibi-demanda">
+                                    <span>Ya recibí la demanda</span>
+                                </label>
+                            </div>
+
+                            <!-- Campo oculto para tipo de servicio siempre Plan Excepción -->
+                            <input type="hidden" name="servicio" value="plan-excepcion">
+
+                            <div class="form-fields">
+                                <input type="text" name="nombre" placeholder="Nombre completo" required     
+
+ title="Solo se permiten letras y espacios">
+                                <input type="email" name="correo" placeholder="Correo electrónico" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingresa un correo electrónico válido">
+                                <input type="tel" name="telefono" placeholder="Teléfono (+56 9 1234 5678)" required pattern="^\+56\s?[9876]\s?\d{4}\s?\d{4}$" title="Formato: +56 9 1234 5678">
+                                <textarea name="comentario" placeholder="Cuentanos tu situación"></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-button">Quiero decir <img src="/stop.png" alt="Logo" class="stop-logo" /></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-slider {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        overflow: hidden;
+        margin-top: 0;
+        background: linear-gradient(180deg, 
+            var(--color-red) 0%, 
+            #dc2626 20%, 
+            #ef4444 40%, 
+            #f87171 60%, 
+            #fca5a5 80%, 
+            #fef2f2 100%);
+        scroll-snap-align: start;
+    }
+
+    .hero-slider::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 70% 80%, rgba(202, 1, 1, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .slider-container {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+
+    .slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(1.1);
+    }
+
+    .slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        filter: brightness(0.8) contrast(1.1);
+    }
+
+    .slide-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            180deg,
+            rgba(202, 1, 1, 0.3) 0%,
+            rgba(202, 1, 1, 0.15) 25%,
+            rgba(220, 38, 38, 0.1) 50%,
+            rgba(239, 68, 68, 0.05) 75%,
+            rgba(255, 255, 255, 0.1) 100%
+        );
+        z-index: 1;
+    }
+
+    .slider-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: var(--color-white);
+        z-index: 2;
+        width: 90%;
+        max-width: 1000px;
+    }
+
+    .hero-text-container {
+        animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 4rem);
+        margin: 0;
+        line-height: 1.2;
+        font-weight: 800;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        letter-spacing: -0.02em;
+        color: var(--color-white);
+    }
+
+    .title-line {
+        display: block;
+        opacity: 0;
+        animation: slideInLeft 0.8s ease-out forwards;
+        margin-bottom: 2.5rem;
+    }
+
+    .title-line:nth-child(1) { animation-delay: 0.8s; }
+    .title-line:nth-child(2) { animation-delay: 1s; margin-bottom: 0; }
+    .title-line:nth-child(3) { animation-delay: 1.2s; }
+
+    .highlight-text {
+        background: linear-gradient(135deg, var(--color-red) 0%, #dc2626 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        position: relative;
+        padding: 0 0.2rem;
+    }
+
+    .highlight-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, var(--color-red) 0%, #dc2626 100%);
+        border-radius: 2px;
+        transform: scaleX(0);
+        animation: underlineExpand 0.6s ease-out 1.5s forwards;
+    }
+
+    .accent-text {
+        background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        position: relative;
+        padding: 0 0.2rem;
+        text-shadow: 0 0 30px rgba(251, 191, 36, 0.3);
+    }
+
+    .accent-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+        border-radius: 2px;
+        transform: scaleX(0);
+        animation: underlineExpand 0.6s ease-out 1.7s forwards;
+    }
+
+    .action-text {
+        background: linear-gradient(135deg, var(--color-white) 0%, #f8f8f8 100%);
+        color: var(--color-red);
+        font-weight: 700;
+        position: relative;
+        padding: clamp(0.7rem, 2.5vw, 1.4rem) clamp(1.5rem, 4.5vw, 3rem);
+        font-size: clamp(1.2rem, 3.8vw, 1.8rem);
+        opacity: 1;
+        line-height: 1.3;
+        border-radius: clamp(25px, 5vw, 40px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0.5rem, 1.5vw, 1rem);
+        box-shadow: 0 clamp(6px, 1.5vw, 12px) clamp(20px, 4vw, 35px) rgba(0, 0, 0, 0.4);
+        transition: all 0.3s ease;
+        border: clamp(2px, 0.5vw, 3px) solid rgba(255, 255, 255, 0.9);
+        text-shadow: none;
+        text-decoration: none;
+        cursor: pointer;
+        max-width: min(550px, 95vw);
+        min-width: min(280px, 70vw);
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+    }
+
+    .action-text:hover {
+        transform: translateY(clamp(-2px, -0.5vw, -5px));
+        box-shadow: 0 clamp(8px, 2vw, 16px) clamp(25px, 5vw, 45px) rgba(0, 0, 0, 0.5);
+        border-color: var(--color-red);
+        background: linear-gradient(135deg, var(--color-white) 0%, #ffffff 100%);
+    }
+
+    .stop-logo {
+        height: clamp(1.8rem, 5vw, 3.2rem);
+        width: auto;
+        display: inline-block;
+        margin-left: clamp(0.5rem, 1.4vw, 1rem);
+        transition: all 0.3s ease;
+        vertical-align: middle;
+        opacity: 1;
+        border-radius: clamp(3px, 0.8vw, 6px);
+        padding: clamp(0.1rem, 0.3vw, 0.2rem);
+        flex-shrink: 0;
+        object-fit: contain;
+    }
+
+    /* Reduce mucho el padding del contenido dentro del botón del HeroSlider */
+    .submit-button {
+        padding: 0.4rem 0.7rem !important;
+        font-size: 1.25rem;
+    }
+
+    .submit-button .stop-logo {
+        height: 2.2rem;
+        margin-left: 0.5rem;
+    }
+
+    .stop-logo:hover {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 clamp(6px, 1.5vw, 10px) rgba(202, 1, 1, 0.6));
+    }
+
+    .hero-subtitle {
+        margin-top: 10rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease-out 1.5s forwards;
+    }
+
+    .hero-subtitle p {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 400;
+        opacity: 1;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+        margin: 0;
+        color: var(--color-white);
+    }
+
+    .cae-banner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
+        color: var(--color-red);
+        padding: 2rem 2.5rem;
+        border-radius: 20px;
+        text-align: center;
+        z-index: 3;
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        animation: bannerFloat 3s ease-in-out infinite;
+    }
+
+    .cae-banner:hover {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.98) 100%);
+        transform: translate(-50%, -50%) scale(1.05);
+        box-shadow: 
+            0 30px 60px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.3);
+        border-color: rgba(220, 38, 38, 0.3);
+    }
+
+    .banner-icon {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        animation: pulse 2s ease-in-out infinite;
+    }
+
+    .banner-content {
+        margin-bottom: 1rem;
+    }
+
+    .banner-question {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #374151;
+    }
+
+    .banner-action {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #4b5563;
+    }
+
+    .banner-arrow {
+        font-size: 1.5rem;
+        color: var(--color-red);
+        animation: bounce 2s ease-in-out infinite;
+    }
+
+    .stop-text {
+        font-family: 'Arial Black', 'Helvetica Black', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #ff0000;
+        text-shadow: 3px 3px 0px #000, 1px 1px 0px #000;
+        letter-spacing: 3px;
+        display: inline-block;
+        transform: rotate(-5deg);
+        margin-left: 0.5rem;
+        animation: stopGlow 2s ease-in-out infinite;
+    }
+
+    /* Indicadores de slide */
+    .slide-indicators {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 1rem;
+        z-index: 4;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .indicator.active {
+        background: var(--color-red);
+        transform: scale(1.2);
+        border-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 4px 12px rgba(202, 1, 1, 0.5);
+    }
+
+    .indicator:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Controles de navegación */
+    .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        font-size: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        z-index: 4;
+    }
+
+    .slider-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev-btn {
+        left: 2rem;
+    }
+
+    .next-btn {
+        right: 2rem;
+    }
+
+    /* Animaciones */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes underlineExpand {
+        from {
+            transform: scaleX(0);
+        }
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes bannerFloat {
+        0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+        50% { transform: translate(-50%, -50%) translateY(-10px); }
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+    }
+
+    @keyframes logoFloat {
+        0%, 100% { 
+            transform: translateY(0px);
+        }
+        50% { 
+            transform: translateY(-5px);
+        }
+    }
+
+    /* Responsive */
+    /* Responsive Design - Mobile First Approach */
+    
+    /* Small Devices (landscape phones, 481px and up) */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .slider-content {
+            width: 95%;
+            padding: 0.8rem;
+        }
+        
+        .hero-title {
+            font-size: clamp(1.5rem, 4.5vw, 2.5rem);
+            gap: 0.8rem;
+        }
+        
+        .action-text {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            padding: clamp(0.6rem, 2vw, 1rem) clamp(1.2rem, 3.5vw, 1.8rem);
+            max-width: 95vw;
+            min-width: 75vw;
+        }
+        
+        .stop-logo {
+            height: clamp(1.6rem, 4.5vw, 2.3rem);
+            margin-left: clamp(0.4rem, 1.2vw, 0.7rem);
+        }
+        
+        .hero-subtitle {
+            margin-top: 2rem;
+        }
+        
+        .hero-subtitle p {
+            font-size: clamp(0.9rem, 2.8vw, 1.2rem);
+        }
+        
+        .slider-nav {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .slider-nav svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .prev-btn {
+            left: 1rem;
+        }
+        
+        .next-btn {
+            right: 1rem;
+        }
+        
+        .slide-indicators {
+            bottom: 1.5rem;
+            gap: 0.8rem;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+        }
+    }
+    
+    /* Medium Devices (tablets, 768px and up) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .slider-content {
+            width: 90%;
+            padding: 1rem;
+        }
+        
+        .hero-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            gap: 1rem;
+        }
+        
+        .action-text {
+            font-size: clamp(1.2rem, 3.3vw, 1.6rem);
+            padding: clamp(0.7rem, 2.3vw, 1.3rem) clamp(1.5rem, 4vw, 2.2rem);
+            max-width: 500px;
+            min-width: 350px;
+        }
+        
+        .stop-logo {
+            height: clamp(1.8rem, 4.7vw, 2.5rem);
+            margin-left: clamp(0.5rem, 1.3vw, 0.8rem);
+        }
+        
+        .hero-subtitle {
+            margin-top: 3rem;
+        }
+        
+        .hero-subtitle p {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+        }
+        
+        .slider-nav {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .slider-nav svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .prev-btn {
+            left: 1.5rem;
+        }
+        
+        .next-btn {
+            right: 1.5rem;
+        }
+        
+        .slide-indicators {
+            bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+        }
+    }
+    
+    /* Large Devices (desktops, 1024px and up) */
+    @media (min-width: 1025px) and (max-width: 1440px) {
+        .slider-content {
+            width: 85%;
+            max-width: 1000px;
+        }
+        
+        .hero-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+        }
+        
+        .action-text {
+            font-size: clamp(1.3rem, 3.1vw, 1.7rem);
+            padding: clamp(0.8rem, 2.2vw, 1.5rem) clamp(1.7rem, 4.5vw, 2.7rem);
+            max-width: 550px;
+            min-width: 400px;
+        }
+        
+        .stop-logo {
+            height: clamp(2rem, 5vw, 2.8rem);
+            margin-left: clamp(0.6rem, 1.4vw, 0.9rem);
+        }
+        
+        .hero-subtitle {
+            margin-top: 4rem;
+        }
+        
+        .hero-subtitle p {
+            font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+        }
+        
+        .slider-nav {
+            width: 55px;
+            height: 55px;
+        }
+        
+        .slider-nav svg {
+            width: 22px;
+            height: 22px;
+        }
+        
+        .prev-btn {
+            left: 2rem;
+        }
+        
+        .next-btn {
+            right: 2rem;
+        }
+    }
+    
+    /* Extra Large Devices (large desktops, 1440px and up) */
+    @media (min-width: 1441px) {
+        .slider-content {
+            width: 80%;
+            max-width: 1200px;
+        }
+        
+        .hero-title {
+            font-size: clamp(3rem, 3.5vw, 4rem);
+        }
+        
+        .action-text {
+            font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+            padding: clamp(1rem, 2.5vw, 2.2rem) clamp(2.2rem, 5vw, 3.7rem);
+            max-width: 600px;
+            min-width: 450px;
+        }
+        
+        .stop-logo {
+            height: clamp(2rem, 5vw, 2.8rem);
+            margin-left: clamp(0.6rem, 1.4vw, 0.9rem);
+        }
+        
+        .hero-subtitle {
+            margin-top: 5rem;
+        }
+        
+        .hero-subtitle p {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+        }
+        
+        .slider-nav {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .slider-nav svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .prev-btn {
+            left: 2.5rem;
+        }
+        
+        .next-btn {
+            right: 2.5rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero-slider {
+            height: 100vh; /* Mantener 100vh en pantallas muy pequeñas */
+            min-height: 100vh;
+        }
+
+        .hero-title {
+            font-size: clamp(1.4rem, 5vw, 2.2rem);
+            line-height: 1.4;
+            gap: 0.6rem;
+        }
+
+        .hero-subtitle p {
+            font-size: clamp(0.85rem, 3vw, 1.1rem);
+        }
+
+        .hero-subtitle {
+            margin-top: 3.5rem;
+        }
+
+        .action-text {
+            padding: clamp(0.3rem, 1.8vw, 0.7rem) clamp(0.7rem, 2.5vw, 1rem);
+            font-size: clamp(0.8rem, 3.2vw, 1rem);
+            max-width: 95vw;
+            min-width: 80vw;
+            white-space: normal;
+            line-height: 1.2;
+        }
+
+        .stop-logo {
+            height: clamp(1.1rem, 3.3vw, 1.5rem);
+            margin-left: clamp(0.2rem, 0.6vw, 0.4rem);
+        }
+
+        .title-line {
+            margin-bottom: 1.8rem;
+        }
+
+        .title-line:nth-child(2) {
+            margin-bottom: 0;
+        }
+
+        .slider-nav {
+            width: 35px;
+            height: 35px;
+            font-size: 1.2rem;
+        }
+
+        .prev-btn { left: 0.5rem; }
+        .next-btn { right: 0.5rem; }
+
+        .slide-indicators {
+            bottom: 1.5rem;
+            gap: 0.8rem;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+        }
+
+        .form-heading {
+            font-size: clamp(1.4rem, 4vw, 2rem);
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.3rem, 3.8vw, 1.9rem);
+        }
+    }
+
+    /* Landscape orientation adjustments */
+    @media (max-height: 600px) and (orientation: landscape) {
+        .hero-subtitle {
+            margin-top: clamp(1rem, 3vw, 2rem);
+        }
+        
+        .hero-title {
+            gap: clamp(0.3rem, 1vw, 0.5rem);
+        }
+        
+        .action-text {
+            padding: clamp(0.4rem, 1.5vw, 0.8rem) clamp(0.8rem, 2.5vw, 1.2rem);
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
+        }
+        
+        .stop-logo {
+            height: clamp(1rem, 2.5vw, 1.3rem);
+        }
+    }
+    
+    /* Ultra-wide screens */
+    @media (min-width: 1920px) {
+        .action-text {
+            font-size: clamp(1.3rem, 2.8vw, 1.7rem);
+            padding: clamp(0.9rem, 2.2vw, 1.8rem) clamp(1.8rem, 4.5vw, 2.7rem);
+            max-width: 600px;
+            min-width: 500px;
+        }
+        
+        .stop-logo {
+            height: clamp(2.2rem, 5.5vw, 3.3rem);
+            margin-left: clamp(0.7rem, 1.7vw, 1.1rem);
+        }
+    }
+
+    /* Reglas específicas para dispositivos móviles reales */
+    :global(.real-mobile-device) .title-line {
+        opacity: 0; /* Comienza invisible */
+        animation-name: mobileTextFadeIn !important;
+        animation-duration: 0.8s !important;
+        animation-fill-mode: forwards !important;
+        animation-timing-function: ease-out !important;
+        will-change: opacity, transform; /* Optimización de rendimiento */
+    }
+    
+    :global(.real-mobile-device) .mobile-animated {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
+    @keyframes mobileTextFadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form Styles */
+    .servicios-content {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        padding: 2rem 0;
+        color: #393939;
+        position: relative;
+        border: 1px solid rgba(202, 1, 1, 0.08);
+    }
+
+    .form-background {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        padding: 2rem 0;
+        color: #393939;
+        position: relative;
+        border: 1px solid rgba(202, 1, 1, 0.08);
+    }
+
+    .form-background::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.06) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .form-wrapper {
+        background-color: transparent;
+        margin: 0;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-heading {
+        text-align: center;
+        margin: 0 0 2rem 0;
+        color: #ffffff;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.2;
+        position: relative;
+        padding: 0.5rem 0;
+    }
+
+    .form-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #CA0101, #E30613);
+        border-radius: 2px;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* ContactForm Styles */
+    .contact-form .stop-logo {
+        display: inline-block;
+        height: 3rem;
+        width: auto;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+        vertical-align: middle;
+        transition: transform 0.25s ease;
+        opacity: 1;
+        pointer-events: none;
+    }
+
+    .contact-form .stop-logo:hover {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 8px rgba(202, 1, 1, 0.6));
+    }
+
+    .contact-form {
+        color: var(--color-white);
+        padding: 2rem 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        color: #393939;
+    }
+
+    .contact-form h2, .contact-form h3 {
+        text-align: center;
+        margin: 0;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+
+    .contact-form h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        text-align: center;
+        color: var(--color-white);
+    }
+
+    .contact-form h3 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        opacity: 0.95;
+    }
+
+    .stop-form {
+        background: linear-gradient(30deg, #FFFBFB 0%, #E8E5E5 50%,#E8E5E5 75%, #E0DCDC 100%);
+        padding: 3rem;
+        border-radius: 12px;
+        backdrop-filter: blur(15px);
+        box-shadow: 0 15px 30px rgba(57, 57, 57, 0.15);
+        border: 2px solid rgba(202, 1, 1, 0.1);
+        color: #393939;
+        margin-top: 2rem;
+        transition: all 0.3s ease;
+    }
+
+    .stop-form:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 30px 60px rgba(57, 57, 57, 0.25);
+        border-color: rgba(202, 1, 1, 0.2);
+    }
+
+    .form-options {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+        padding: 0.5rem;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        padding: 1rem 1.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        color: #393939;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .option:hover {
+        background: rgba(255, 255, 255, 1);
+        border-color: rgba(202, 1, 1, 0.7);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .option input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 22px;
+        height: 22px;
+        border: 2px solid rgba(202, 1, 1, 0.5);
+        border-radius: 50%;
+        outline: none;
+        position: relative;
+        margin: 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: white;
+    }
+    
+    .option input[type="radio"]:checked {
+        border-color: #CA0101;
+        background-color: white;
+    }
+    
+    .option input[type="radio"]:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #CA0101;
+        animation: formPulse 0.3s ease-out;
+    }
+    
+    .option input[type="radio"]:checked + span {
+        color: #CA0101;
+        font-weight: 700;
+    }
+    
+    .option span {
+        transition: all 0.3s ease;
+    }
+    
+    @keyframes formPulse {
+        0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+        50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.7; }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    .form-fields {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid rgba(202, 1, 1, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 251, 251, 0.9);
+        color: #393939;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+        outline: none;
+        border-color: #CA0101;
+        background: #FFFBFB;
+        box-shadow: 0 0 0 3px rgba(202, 1, 1, 0.1);
+    }
+
+    .contact-form input::placeholder, .contact-form textarea::placeholder {
+        color: rgba(57, 57, 57, 0.6);
+    }
+
+    .contact-form textarea {
+        height: 100px;
+        resize: vertical;
+    }
+
+    .submit-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
+        color: #FFFBFB;
+        border: none;
+        padding: 1.2rem 1.6rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        border-radius: 25px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1.5rem;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 8px 25px rgba(202, 1, 1, 0.25);
+        border: 2px solid rgba(202, 1, 1, 0.3);
+        min-height: 60px;
+        box-sizing: border-box;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .submit-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(202, 1, 1, 0.4);
+        border-color: rgba(255, 251, 251, 0.4);
+    }
+
+    .submit-button:active {
+        transform: translateY(-1px);
+    }
+    
+    .submit-button:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none !important;
+        box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        border-color: rgba(255, 251, 251, 0.2) !important;
+    }
+    
+    .submit-button:disabled:hover {
+        transform: none !important;
+        box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        border-color: rgba(255, 251, 251, 0.2) !important;
+    }
+
+    .overlay {
+        background-color: var(--color-red);
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        color: var(--color-white);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .overlay::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 15%;
+        transform: translateY(-50%);
+        width: clamp(120px, 15vw, 200px);
+        height: clamp(120px, 15vw, 200px);
+        background: url('/images/lady-justice-watermark.png') no-repeat center center;
+        background-size: contain;
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 1;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+
+    /* Form Responsive styles */
+    @media (max-width: 768px) {
+        .form-background {
+            padding: 1rem 0;
+        }
+
+        .container {
+            padding: 1rem 0.8rem;
+        }
+
+        .form-wrapper {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            margin: 0;
+            width: 100%;
+            max-width: 100%;
+        }
+        
+        .form-heading {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            padding: 1.5rem 0;
+        }
+
+        .form-container {
+            padding: 1.5rem;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .stop-form {
+            padding: 2rem 1.5rem;
+        }
+
+        .form-options {
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .option {
+            padding: 0.8rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .option input[type="radio"] {
+            width: 18px;
+            height: 18px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 10px;
+            height: 10px;
+        }
+
+        .form-fields {
+            gap: 0.8rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .contact-form textarea {
+            height: 80px;
+        }
+
+        .submit-button {
+            padding: 0.9rem 1rem;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        }
+
+        .overlay::before {
+            right: 10%;
+            width: clamp(80px, 12vw, 120px);
+            height: clamp(80px, 12vw, 120px);
+            opacity: 0.1;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .contact-form .stop-logo {
+            height: 2.5rem;
+        }
+        
+        .container {
+            padding: 0.8rem 0.6rem;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .form-wrapper {
+            padding: 0rem;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+        }
+        
+        .form-heading {
+            font-size: clamp(1.3rem, 3.5vw, 2rem);
+        }
+        
+        .form-heading::after {
+            width: 60px;
+            height: 2px;
+            bottom: -8px;
+        }
+
+        .contact-form {
+            padding: 1rem 0;
+        }
+
+        .form-container {
+            padding: 1rem;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+        }
+
+        .stop-form {
+            padding: 1.5rem 1rem;
+        }
+
+        .form-options {
+            gap: 0.8rem;
+        }
+
+        .option {
+            padding: 0.7rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .option input[type="radio"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 8px;
+            height: 8px;
+        }
+
+        .form-fields {
+            gap: 0.7rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        .contact-form textarea {
+            height: 70px;
+        }
+
+        .submit-button {
+            padding: 0.8rem 0.9rem;
+            font-size: 0.9rem;
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        }
+    }
+
+    @media (max-width: 360px) {
+        .container {
+            padding: 0.6rem 0.5rem;
+        }
+        
+        .form-wrapper {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-heading {
+            font-size: clamp(1.1rem, 3vw, 1.8rem);
+        }
+
+        .contact-form {
+            padding: 0.8rem 0;
+        }
+
+        .form-container {
+            padding: 0.8rem;
+        }
+
+        .contact-form h2 {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+        }
+
+        .stop-form {
+            padding: 1.2rem 0.8rem;
+        }
+
+        .form-options {
+            gap: 0.6rem;
+        }
+
+        .option {
+            padding: 0.6rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .option input[type="radio"] {
+            width: 14px;
+            height: 14px;
+        }
+
+        .option input[type="radio"]:checked::after {
+            width: 7px;
+            height: 7px;
+        }
+
+        .form-fields {
+            gap: 0.6rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 0.6rem;
+            font-size: 0.8rem;
+        }
+
+        .contact-form textarea {
+            height: 60px;
+        }
+
+        .submit-button {
+            padding: 0.7rem 0.8rem;
+            font-size: 0.85rem;
+        }
+        
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: 0 4px 15px rgba(202, 1, 1, 0.2) !important;
+        }
+
+        .overlay::before {
+            right: 8%;
+            width: clamp(60px, 10vw, 100px);
+            height: clamp(60px, 10vw, 100px);
+            opacity: 0.08;
+        }
+    }
+
+    /* Landscape orientation adjustments for mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+        .form-wrapper {
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    /* High DPI displays optimization */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .contact-form .stop-logo {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+    }
+
+    /* Ensure content is centered and not overflowing */
+    .contact-form {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
+    /* Touch device optimizations */
+    @media (hover: none) and (pointer: coarse) {
+        .action-text {
+            padding: clamp(0.7rem, 2.2vw, 1.3rem) clamp(1.3rem, 3.5vw, 2.2rem);
+            font-size: clamp(1rem, 2.8vw, 1.3rem);
+            min-height: 48px;
+            touch-action: manipulation;
+        }
+        
+        .stop-logo {
+            height: clamp(1.5rem, 4vw, 2rem);
+            margin-left: clamp(0.4rem, 1vw, 0.6rem);
+        }
+        
+        .slider-nav {
+            width: clamp(50px, 10vw, 70px);
+            height: clamp(50px, 10vw, 70px);
+        }
+        
+        .indicator {
+            width: clamp(12px, 3vw, 16px);
+            height: clamp(12px, 3vw, 16px);
+        }
+    }
+    
+    /* High DPI displays optimization */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .stop-logo {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        
+        .action-text {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+        .action-text {
+            transition: none;
+        }
+        
+        .stop-logo {
+            transition: none;
+        }
+        
+        .action-text:hover {
+            transform: none;
+        }
+        
+        .stop-logo:hover {
+            transform: none;
+        }
+    }
+
+    .fondo-formulario {
+        position: relative;
+        overflow: hidden;
+            width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-width: 100vw;
+    box-sizing: border-box;
+    background-size:cover
+
+    }
+    .fondo-formulario::before {
+        content: "";
+        position: absolute;
+        background-size:cover;
+        inset: 0;
+            width: 100%;
+    height: 100%;
+        background: url('/fondo-formulario.webp') center center/90% 100% no-repeat;;
+        opacity: 0.13;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .fondo-formulario > * {
+        position: relative;
+        z-index: 1;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Detectar si es un dispositivo móvil real (no solo por tamaño de pantalla)
+        const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        
+        // Aplicar clase específica para dispositivos móviles reales
+        if (isMobileDevice) {
+            document.body.classList.add('real-mobile-device');
+            
+            // Iniciar animaciones manualmente
+            const animatedElements = document.querySelectorAll('.title-line, .animate-on-scroll');
+            animatedElements.forEach(el => {
+                // Forzar repintado
+                (el as HTMLElement).style.display = 'none';
+                setTimeout(() => {
+                    (el as HTMLElement).style.display = '';
+                    // Aplicar clase para activar animación
+                    el.classList.add('mobile-animated');
+                }, 10);
+            });
+        }
+    });
+
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentSlide = 0;
+
+    function showSlide(index: number) {
+        // Ocultar todas las slides
+        slides.forEach((slide) => slide.classList.remove('active'));
+        indicators.forEach((indicator) => indicator.classList.remove('active'));
+        
+        // Mostrar la slide actual
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        const prevIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+        showSlide(prevIndex);
+    }
+
+    // Event listeners para controles
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Event listeners para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+    });
+
+    // Iniciar el slider
+    showSlide(0);
+    
+    // Auto-play con intervalo
+    const autoPlay = setInterval(nextSlide, 5000);
+    
+    // Pausar auto-play al hacer hover sobre controles
+    const controls = [prevBtn, nextBtn, ...indicators];
+    controls.forEach(control => {
+        if (control) {
+            control.addEventListener('mouseenter', () => clearInterval(autoPlay));
+            control.addEventListener('mouseleave', () => setInterval(nextSlide, 5000));
+        }
+    });
+
+    // Scroll to form functionality
+    const scrollToFormBtn = document.getElementById('scroll-to-form');
+    if (scrollToFormBtn) {
+        scrollToFormBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const formSection = document.getElementById('contacto-form');
+            if (formSection) {
+                const offsetTop = formSection.offsetTop;
+                window.scrollTo(0, offsetTop);
+            }
+        });
+    }
+
+    // Form submission handler
+    const form = document.getElementById('stopForm') as HTMLFormElement | null;
+    
+    // Importar EmailJS dinámicamente
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Obtener el botón de envío
+            const submitBtn = form.querySelector('.submit-button') as HTMLButtonElement | null;
+            if (!submitBtn) return;
+            const originalText = submitBtn.innerHTML;
+            
+            // Cambiar estado del botón a "enviando"
+            submitBtn.innerHTML = 'Enviando... <img src="/stop.png" alt="Logo" class="stop-logo" />';
+            submitBtn.disabled = true;
+            
+            try {
+                // Importar módulos dinámicamente
+                const [emailjs] = await Promise.all([
+                    import('@emailjs/browser')
+                ]);
+                
+                // Recopilar datos del formulario
+                const formData = {
+                    nombre: (form.querySelector('[name="nombre"]') as HTMLInputElement | null)?.value ?? '',
+                    email: (form.querySelector('[name="correo"]') as HTMLInputElement | null)?.value ?? '',
+                    telefono: (form.querySelector('[name="telefono"]') as HTMLInputElement | null)?.value ?? '',
+                    servicio: (form.querySelector('[name="servicio"]') as HTMLInputElement | null)?.value ?? 'plan-excepcion',
+                    status: (form.querySelector('[name="status"]:checked') as HTMLInputElement | null)?.value || 'No especificado',
+                    mensaje: (form.querySelector('[name="comentario"]') as HTMLTextAreaElement | null)?.value || 'Consulta desde Hero Slider - Plan Excepción',
+                    time: new Date().toLocaleString('es-CL', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                };
+
+                // Enviar email usando EmailJS directamente, sin await ni manejo de response
+                emailjs.default.send(
+                    "service_fzy350f",
+                    "template_xj4r7td",
+                    formData,
+                    "Q5Qu6LefKc48raJFh"
+                );
+
+                alert('¡Gracias por tu consulta! Nos pondremos en contacto contigo en menos de 24 horas para ayudarte con tu Plan Excepción.');
+                form.reset();
+                form.querySelectorAll('input, textarea').forEach(field => {
+                    if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement) {
+                        field.style.borderColor = 'rgba(202, 1, 1, 0.1)';
+                    }
+                });
+            } catch (error) {
+                console.error('Error al enviar el formulario:', error);
+                alert('Hubo un error al enviar el formulario. Por favor, intenta nuevamente.');
+            } finally {
+                // Restaurar botón
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+    
+    
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
     <Footer />
+    <WhatsAppButton/>
+
 </Layout>
 
 
