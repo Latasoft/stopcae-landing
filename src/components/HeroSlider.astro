@@ -1618,9 +1618,9 @@ const { images } = Astro.props;
             const animatedElements = document.querySelectorAll('.title-line, .animate-on-scroll');
             animatedElements.forEach(el => {
                 // Forzar repintado
-                el.style.display = 'none';
+                (el as HTMLElement).style.display = 'none';
                 setTimeout(() => {
-                    el.style.display = '';
+                    (el as HTMLElement).style.display = '';
                     // Aplicar clase para activar animación
                     el.classList.add('mobile-animated');
                 }, 10);
