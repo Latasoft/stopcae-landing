@@ -23,7 +23,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         
                     </div>
                 </div>
-                </div>
                 <div class="banner-content">
                     <h1 class="banner-title">
                         <span class="title-line">PLAN: Acción Legal Inmediata</span>
@@ -361,7 +360,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 <style>
 
-    .servicios-page {
+ .servicios-page {
         min-height: 100vh;
         background: linear-gradient(135deg, #e5e5e5 0%, #d8d8d8 25%, #c9c9c9 50%, #bebebe 75%, #b5b5b5 100%);
         scroll-margin-top: 120px;
@@ -488,10 +487,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             opacity: 0;
             transform: scale(0.8) rotate(-10deg);
             animation: illustrationFloat 1.5s ease-out 0.6s forwards;
-        }
-
-        .banner-img {
-            width: clamp(150px, 12vw, 250px);
         }
     }
 
@@ -2376,10 +2371,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             flex: 0 0 350px;
         }
 
-        .banner-img {
-            width: clamp(180px, 10vw, 220px);
-        }
-
         .illustration-placeholder {
             width: 250px;
             height: 250px;
@@ -2401,10 +2392,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             flex: 0 0 280px;
         }
 
-        .banner-img {
-            width: clamp(160px, 9vw, 200px);
-        }
-
         .illustration-placeholder {
             width: 220px;
             height: 220px;
@@ -2424,10 +2411,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
         .banner-illustration {
             flex: 0 0 250px;
-        }
-
-        .banner-img {
-            width: clamp(140px, 8vw, 180px);
         }
 
         .illustration-placeholder {
@@ -2457,10 +2440,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .banner-illustration {
             flex: none;
             order: -1; /* Poner la ilustración arriba */
-        }
-
-        .banner-img {
-            width: clamp(100px, 20vw, 160px);
         }
 
         .illustration-placeholder {
@@ -2494,10 +2473,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             padding: 0 1rem;
         }
 
-        .banner-img {
-            width: clamp(80px, 18vw, 140px);
-        }
-
         .illustration-placeholder {
             width: 140px;
             height: 140px;
@@ -2522,10 +2497,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .banner-container {
             gap: 1rem;
             padding: 0 0.8rem;
-        }
-
-        .banner-img {
-            width: clamp(70px, 16vw, 120px);
         }
 
         .illustration-placeholder {
@@ -2560,10 +2531,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             margin-bottom: 0.5rem;
         }
 
-        .banner-img {
-            width: clamp(60px, 14vw, 100px);
-        }
-
         .illustration-placeholder {
             width: 120px;
             height: 120px;
@@ -2588,10 +2555,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         .banner-title {
             font-size: clamp(1.5rem, 3.5vw, 2rem);
             margin-bottom: 0;
-        }
-
-        .banner-img {
-            width: clamp(50px, 12vw, 80px);
         }
 
         .illustration-placeholder {
@@ -2724,10 +2687,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
         .banner-illustration {
             flex: 0 0 400px;
-        }
-
-        .banner-img {
-            width: clamp(200px, 8vw, 300px);
         }
 
         .illustration-placeholder {
@@ -4036,31 +3995,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         transition: all 0.3s ease;
     }
 
-    /* Puedes agregar esto en el <style> de cada página o en tu CSS global */
-.banner-img {
-  width: 160px;
-  max-width: 40vw;
-  min-width: 100px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-@media (min-width: 600px) {
-  .banner-img {
-    width: 200px;
-    max-width: 220px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .banner-img {
-    width: 220px;
-    max-width: 240px;
-  }
-}
-
-
     .testimonials:hover .section-title::after {
         opacity: 1;
         width: 60px;
@@ -4094,6 +4028,30 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
+    /* Puedes agregar esto en el <style> de cada página o en tu CSS global */
+.banner-img {
+  width: 160px;
+  max-width: 40vw;
+  min-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .banner-img {
+    width: 200px;
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-img {
+    width: 220px;
+    max-width: 240px;
+  }
+}
 
     @media (min-width: 769px) {
         .testimonial-card {
@@ -4434,26 +4392,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         }
     }
 
-    /* Landscape orientation adjustments for mobile */
-    @media (max-width: 768px) and (orientation: landscape) {
-
-
-        .services-header h1 {
-            padding: 1rem 0;
-        }
-
-        .form-wrapper {
-            margin-bottom: 1.5rem;
-        }
-
-        .cae-description-container {
-            padding: 1.5rem 0;
-        }
-
-        .testimonials {
-            padding: 1rem;
-        }
-    }
 
     /* Puedes agregar esto en el <style> de cada página o en tu CSS global */
 .banner-img {
@@ -4478,6 +4416,27 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
     max-width: 240px;
   }
 }
+
+    /* Landscape orientation adjustments for mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+
+
+        .services-header h1 {
+            padding: 1rem 0;
+        }
+
+        .form-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        .cae-description-container {
+            padding: 1.5rem 0;
+        }
+
+        .testimonials {
+            padding: 1rem;
+        }
+    }
 
     /* High DPI displays optimization */
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
