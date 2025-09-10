@@ -442,3 +442,27 @@ input[type="file"].invalid {
     border-color: #E30613 !important;
     background-color: rgba(227, 6, 19, 0.05);
 }
+
+/* Puedes agregar esto en el <style> de cada página o en tu CSS global */
+.banner-img {
+  width: 160px;
+  max-width: 40vw;
+  min-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .banner-img {
+    width: 200px;
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .banner-img {
+    width: 220px;
+    max-width: 240px;
+  }
+}

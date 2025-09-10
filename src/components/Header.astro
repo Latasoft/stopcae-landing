@@ -12,7 +12,7 @@ const PHONE_HREF = PHONE.replace(/[^+\d+]/g, '');
 let activeTab = 'inicio';
 if (currentPath === '/') {
     activeTab = 'inicio';
-} else if (currentPath.startsWith('/servicios')) {
+} else if (currentPath.startsWith('/servicios') || currentPath.startsWith('/serviciosanticipado') || currentPath.startsWith('/serviciosaccionlegal')) {
     activeTab = 'servicios';
 } else if (currentPath.startsWith('/quienes-somos')) {
     activeTab = 'quienes-somos';
@@ -74,9 +74,9 @@ if (currentPath === '/') {
                                 <i class="fas fa-chevron-down dropdown-icon"></i>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="/servicios#stop-preventivo" class="dropdown-link">Antes de la demanda → Stop Preventivo</a></li>
-                                <li><a href="/servicios#stop-anticipado" class="dropdown-link">Demanda ya ingresada → Stop Anticipado</a></li>
-                                <li><a href="/servicios#accion-legal" class="dropdown-link">Demanda ya notificada → Acción Legal Inmediata</a></li>
+                                <li><a href="/servicios" class="dropdown-link">Antes de la demanda → Stop Preventivo</a></li>
+                                <li><a href="/serviciosanticipado" class="dropdown-link">Demanda ya ingresada → Stop Anticipado</a></li>
+                                <li><a href="/serviciosaccionlegal" class="dropdown-link">Demanda ya notificada → Acción Legal Inmediata</a></li>
                             </ul>
                         </li>
                         <li><a href="/quienes-somos" class={`nav-link animate-on-scroll fade-in-up ${activeTab === 'quienes-somos' ? 'active' : ''}`} data-section="quienes-somos">Quienes Somos</a></li>
@@ -1307,7 +1307,7 @@ if (currentPath === '/') {
             
             if (currentPath === '/') {
                 currentSection = 'inicio';
-            } else if (currentPath.startsWith('/servicios')) {
+            } else if (currentPath.startsWith('/servicios') || currentPath.startsWith('/serviciosanticipado') || currentPath.startsWith('/serviciosaccionlegal')) {
                 currentSection = 'servicios';
             } else if (currentPath.startsWith('/quienes-somos')) {
                 currentSection = 'quienes-somos';
