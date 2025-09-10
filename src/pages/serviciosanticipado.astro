@@ -27,90 +27,6 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
         </section>
 
         
-        <!-- Formulario de Contacto -->
-        <section class="trabaja-content-section">
-                <div class="container">
-                            <div class="form-header">
-                    <h2>Contáctanos</h2>
-                </div>
-                <p class="hero-subtitle-text">Completa el formulario y nos pondremos en contacto contigo.</p>
-                <form class="postulacion-form" id="contactForm" role="form" aria-label="Formulario de contacto para servicios legales">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre" aria-required="true">Nombre Completo *</label>
-                            <input type="text" id="nombre" name="nombre" required placeholder="Ej. María Pérez" 
-                                   aria-describedby="nombre-help" autocomplete="name" title="Solo se permiten letras y espacios">
-                            <div id="nombre-help" class="sr-only">Ingresa tu nombre completo</div>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" aria-required="true">Correo Electrónico *</label>
-                            <input type="email" id="email" name="email" required placeholder="Ej. correo@ejemplo.com" 
-                                   aria-describedby="email-help" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingresa un correo electrónico válido">
-                            <div id="email-help" class="sr-only">Ingresa tu correo electrónico válido</div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="telefono" aria-required="true">Teléfono *</label>
-                            <input type="tel" id="telefono" name="telefono" required placeholder="+56 9 1234 5678" 
-                                   aria-describedby="telefono-help" autocomplete="tel" pattern="^\+?56\s?[9876]\s?\d{4}\s?\d{4}$" title="Formato: +56 9 1234 5678">
-                            <div id="telefono-help" class="sr-only">Ingresa tu número de teléfono con código de país</div>
-                        </div>
-                        <div class="form-group">
-<label for="servicio">Tipo de Servicio</label>
-<select id="servicio" name="servicio" required >
-  <option value="plan-anticipado" selected>Plan Anticipado</option>
-</select>
-                            <div id="servicio-help" class="sr-only">Selecciona el tipo de servicio que necesitas</div>
-                        </div>
-                    </div>
-                    
-                                        <div class="form-group">
-                        <fieldset>
-                            <legend style="text-align: center; display: block; font-weight: 600; margin-bottom: 1rem;">¿Cuál es tu situación actual? *</legend>
-                            <div class="form-options" role="radiogroup" aria-labelledby="status-legend">
-                                        <label class="option">
-                                    <input type="radio" name="status" value="pagando" required aria-describedby="status-help">
-                                            <span>Estoy pagando mi CAE</span>
-                                        </label>
-                                        <label class="option">
-                                    <input type="radio" name="status" value="nopagando" required aria-describedby="status-help">
-                                            <span>Ya dejé de pagar</span>
-                                        </label>
-                                        <label class="option">
-    <input type="radio" name="status" value="recibi-demanda">
-    <span>Ya recibí la demanda</span>
-</label>
-                            </div>
-                            <div id="status-help" class="sr-only">Selecciona tu situación actual con respecto al CAE</div>
-                        </fieldset>
-                                    </div>
-
-                                        <div class="form-group">
-                        <label for="mensaje">Cuéntanos tu situación</label>
-                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tu caso o consulta..." 
-                                  aria-describedby="mensaje-help"></textarea>
-                        <small id="mensaje-help">Este campo es opcional pero nos ayuda a entender mejor tu caso.</small>
-                                    </div>
-
-                    <div class="form-group checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="privacy" required aria-describedby="privacy-help">
-                            <span class="checkmark" aria-hidden="true"></span>
-                            Acepto que mis datos sean tratados según la <a href="#" class="privacy-link" target="_blank" rel="noopener">política de privacidad</a>
-                        </label>
-                        <div id="privacy-help" class="sr-only">Debes aceptar la política de privacidad para continuar</div>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn" aria-describedby="submit-help">
-                        <span class="btn-text">Quiero decir</span>
-                        <img src="/stop.png" alt="STOP" class="stop-logo">
-                    </button>
-                    <div id="submit-help" class="sr-only">Envía tu consulta y nos pondremos en contacto contigo</div>
-                                </form>
-                            </div>
-        </section>
             
         <section class="servicios-content">
             <div class="servicios-background">
@@ -272,6 +188,93 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                     </div>
                 </div>
             </div>
+
+
+
+                    <!-- Formulario de Contacto -->
+        <section class="trabaja-content-section">
+                <div class="container">
+                            <div class="form-header">
+                    <h2>Contáctanos</h2>
+                </div>
+                <p class="hero-subtitle-text">Completa el formulario y nos pondremos en contacto contigo.</p>
+                <form class="postulacion-form" id="contactForm" role="form" aria-label="Formulario de contacto para servicios legales">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre" aria-required="true">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej. María Pérez" 
+                                   aria-describedby="nombre-help" autocomplete="name" title="Solo se permiten letras y espacios">
+                            <div id="nombre-help" class="sr-only">Ingresa tu nombre completo</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" aria-required="true">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required placeholder="Ej. correo@ejemplo.com" 
+                                   aria-describedby="email-help" autocomplete="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Ingresa un correo electrónico válido">
+                            <div id="email-help" class="sr-only">Ingresa tu correo electrónico válido</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono" aria-required="true">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required placeholder="+56 9 1234 5678" 
+                                   aria-describedby="telefono-help" autocomplete="tel" pattern="^\+?56\s?[9876]\s?\d{4}\s?\d{4}$" title="Formato: +56 9 1234 5678">
+                            <div id="telefono-help" class="sr-only">Ingresa tu número de teléfono con código de país</div>
+                        </div>
+                        <div class="form-group">
+<label for="servicio">Tipo de Servicio</label>
+<select id="servicio" name="servicio" required >
+  <option value="plan-anticipado" selected>Plan Anticipado</option>
+</select>
+                            <div id="servicio-help" class="sr-only">Selecciona el tipo de servicio que necesitas</div>
+                        </div>
+                    </div>
+                    
+                                        <div class="form-group">
+                        <fieldset>
+                            <legend style="text-align: center; display: block; font-weight: 600; margin-bottom: 1rem;">¿Cuál es tu situación actual? *</legend>
+                            <div class="form-options" role="radiogroup" aria-labelledby="status-legend">
+                                        <label class="option">
+                                    <input type="radio" name="status" value="pagando" required aria-describedby="status-help">
+                                            <span>Estoy pagando mi CAE</span>
+                                        </label>
+                                        <label class="option">
+                                    <input type="radio" name="status" value="nopagando" required aria-describedby="status-help">
+                                            <span>Ya dejé de pagar</span>
+                                        </label>
+                                        <label class="option">
+    <input type="radio" name="status" value="recibi-demanda">
+    <span>Ya recibí la demanda</span>
+</label>
+                            </div>
+                            <div id="status-help" class="sr-only">Selecciona tu situación actual con respecto al CAE</div>
+                        </fieldset>
+                                    </div>
+
+                                        <div class="form-group">
+                        <label for="mensaje">Cuéntanos tu situación</label>
+                        <textarea id="mensaje" name="mensaje" rows="4" placeholder="Describe brevemente tu caso o consulta..." 
+                                  aria-describedby="mensaje-help"></textarea>
+                        <small id="mensaje-help">Este campo es opcional pero nos ayuda a entender mejor tu caso.</small>
+                                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="privacy" required aria-describedby="privacy-help">
+                            <span class="checkmark" aria-hidden="true"></span>
+                            Acepto que mis datos sean tratados según la <a href="#" class="privacy-link" target="_blank" rel="noopener">política de privacidad</a>
+                        </label>
+                        <div id="privacy-help" class="sr-only">Debes aceptar la política de privacidad para continuar</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" aria-describedby="submit-help">
+                        <span class="btn-text">Quiero decir</span>
+                        <img src="/stop.png" alt="STOP" class="stop-logo">
+                    </button>
+                    <div id="submit-help" class="sr-only">Envía tu consulta y nos pondremos en contacto contigo</div>
+                                </form>
+                            </div>
+        </section>
 
 
             <div class="testimonials-background">
