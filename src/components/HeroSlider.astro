@@ -45,7 +45,7 @@ const { images } = Astro.props;
 
 <!-- Form Section -->
 <section id="contacto-form" class="servicios-content">
-    <div class="form-background">
+    <div class="form-background fondo-formulario">
         <div class="container">
             <h3 class="form-heading" style="padding-top:1.5rem;">Porque estudiar no debería costarte tu futuro</h3>
             <div class="form-wrapper">
@@ -302,6 +302,17 @@ const { images } = Astro.props;
         padding: clamp(0.1rem, 0.3vw, 0.2rem);
         flex-shrink: 0;
         object-fit: contain;
+    }
+
+    /* Reduce mucho el padding del contenido dentro del botón del HeroSlider */
+    .submit-button {
+        padding: 0.4rem 0.7rem !important;
+        font-size: 1.25rem;
+    }
+
+    .submit-button .stop-logo {
+        height: 2.2rem;
+        margin-left: 0.5rem;
     }
 
     .stop-logo:hover {
@@ -1150,8 +1161,8 @@ const { images } = Astro.props;
         background: linear-gradient(135deg, #CA0101 0%, #E30613 100%);
         color: #FFFBFB;
         border: none;
-        padding: 1.05rem 1.25rem;
-        font-size: 1.05rem;
+        padding: 1.2rem 1.6rem;
+        font-size: 1.25rem;
         font-weight: 700;
         border-radius: 25px;
         cursor: pointer;
@@ -1561,6 +1572,32 @@ const { images } = Astro.props;
         .stop-logo:hover {
             transform: none;
         }
+    }
+
+    .fondo-formulario {
+        position: relative;
+        overflow: hidden;
+            width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-width: 100vw;
+    box-sizing: border-box;
+
+    }
+    .fondo-formulario::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url('/fondo-formulario.webp') center center/contain no-repeat;
+        opacity: 0.13;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .fondo-formulario > * {
+        position: relative;
+        z-index: 1;
     }
 </style>
 
