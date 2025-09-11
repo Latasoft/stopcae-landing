@@ -112,7 +112,69 @@ const sliderImages = [
     </div>
 
 
+   <div class="testimonials-background">
+             
+                
+                    <div class="testimonials-wrapper">
+                        <!-- Testimonials Component Inserted -->
+                        <div class="testimonials">
+                            <div class="testimonials-grid">
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                                    <div class="card-image-container">
+                                        <img src="/assets/erika_ingeniera.jpeg" alt="Erika S." class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">Erika S.</p>
+                                            <p class="testimonial-role">Ingeniera</p>
+                                        </div>
+                                        <blockquote>"Mi ex estudio me dejo botada recibí una oferta y elegí volver a confiar ya que mi juicio estaba avanzado, hoy los recomiendo."</blockquote>
+                                    </div>
+                                </div>
 
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                                    <div class="card-image-container">
+                                        <img src="/assets/angela-enfermera.jpeg" alt="Angela A." class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">Angela A.</p>
+                                            <p class="testimonial-role">Enfermera</p>
+                                        </div>
+                                        <blockquote>"Mi experiencia ha superado las expectativas iniciales. No solo he obtenido resultados, sino también un trato serio y responsable en todo momento."</blockquote>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                                    <div class="card-image-container">
+                                        <img src="/assets/angelina_ed_parvularia.jpeg" alt="Angelina L." class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">Angelina L.</p>
+                                            <p class="testimonial-role">Educadora de Párvulos</p>
+                                        </div>
+                                        <blockquote>"La verdad no creía mucho, pero una amiga me convenció y menos mal que lo hice. He visto resultados y siempre me contestan cuando escribo."</blockquote>
+                                    </div>
+                                </div>
+
+                                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                                    <div class="card-image-container">
+                                        <img src="/assets/leon_tecnico_mineria.jpeg" alt="León S." class="testimonial-image" />
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <div class="testimonial-info">
+                                            <p class="testimonial-name">León S.</p>
+                                            <p class="testimonial-role">Técnico en Minería</p>
+                                        </div>
+                                        <blockquote>"Al inicio pensé que sería como cualquier otra cosa, pero me demostraron lo contrario. Son responsables y siempre están atentos."</blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
     
 
 </section>
@@ -1629,6 +1691,371 @@ const sliderImages = [
         position: relative;
         z-index: 1;
     }
+
+
+    .testimonials-background {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding:  0;
+    color: #393939;
+    position: relative;
+    border: 1px solid rgba(202, 1, 1, 0.08);
+}
+.testimonials-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(202, 1, 1, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(227, 6, 19, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+.testimonials {
+    padding: 2rem;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: #393939;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    background: transparent;
+}
+.section-title {
+    color: #CA0101;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #CA0101, #E30613);
+    border-radius: 2px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+.testimonials:hover .section-title::after {
+    opacity: 1;
+    width: 60px;
+}
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+.testimonial-card {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(202, 1, 1, 0.08);
+    position: relative;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 550px;
+    width: 100%;
+    max-width: 320px;
+    backdrop-filter: blur(10px);
+    margin: 0 auto;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+@media (min-width: 769px) {
+    .testimonial-card {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+        animation: testimonialSlideIn 1s ease-out forwards;
+    }
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.3s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.5s; }
+    .testimonial-card:nth-child(4) { animation-delay: 0.7s; }
+}
+@keyframes testimonialSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.card-image-container {
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+.card-image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 12px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+    z-index: 2;
+}
+.testimonial-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+    background-color: #f5f5f5;
+}
+/* Estilo específico para la imagen de Erika */
+.testimonial-card:nth-child(1) .testimonial-image {
+    transform: scale(1.12);
+    object-position: center 10%;
+}
+/* Estilo específico para la imagen de Angela */
+.testimonial-card:nth-child(2) .testimonial-image {
+    transform: scale(1.5) translateY(40px);
+    object-position: center center;
+}
+/* Estilo específico para la imagen de Angelina */
+.testimonial-card:nth-child(3) .testimonial-image {
+    object-position: center 0%;
+}
+/* Estilo específico para la imagen de León */
+.testimonial-card:nth-child(4) .testimonial-image {
+    transform: scale(1.3) translateY(-30px);
+    object-position: center 10%;
+}
+.testimonial-card:hover .testimonial-image {
+    transform: scale(1.05);
+}
+/* Hover específico para cada imagen */
+.testimonial-card:nth-child(1):hover .testimonial-image {
+    transform: scale(1.17);
+}
+.testimonial-card:nth-child(2):hover .testimonial-image {
+    transform: scale(1.55) translateY(40px);
+}
+.testimonial-card:nth-child(4):hover .testimonial-image {
+    transform: scale(1.35) translateY(-30px);
+}
+.testimonial-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(34, 23, 23, 0.98);
+    padding: 2rem;
+    color: white;
+    border-radius: 24px;
+    z-index: 2;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(202, 1, 1, 0.08);
+}
+.testimonials blockquote {
+    margin: 1rem 0 0 0;
+    font-style: italic;
+    color: white;
+    line-height: 1.5;
+    font-size: 0.8rem;
+    position: relative;
+    transition: all 0.3s ease;
+    flex: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    border-top: 1px solid rgba(202, 1, 1, 0.1);
+    padding-top: 0.75rem;
+}
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #CA0101, #E30613);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    z-index: 3;
+}
+.testimonial-card:hover::before {
+    transform: scaleX(1);
+}
+.testimonial-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.15);
+    border-color: rgba(202, 1, 1, 0.2);
+}
+.testimonial-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: auto;
+    border-top: 1px solid rgba(202, 1, 1, 0.1);
+    padding-top: 0.75rem;
+}
+.testimonial-name {
+    margin: 0;
+    font-weight: 700;
+    color: #CA0101;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.testimonial-role {
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+}
+@keyframes fadeInTestimonial {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.testimonial-card:nth-child(1) {
+    animation: fadeInTestimonial 0.6s ease-out 0.1s forwards;
+    opacity: 0;
+}
+.testimonial-card:nth-child(2) {
+    animation: fadeInTestimonial 0.6s ease-out 0.3s forwards;
+    opacity: 0;
+}
+.testimonial-card:nth-child(3) {
+    animation: fadeInTestimonial 0.6s ease-out 0.5s forwards;
+    opacity: 0;
+}
+.testimonial-card:nth-child(4) {
+    animation: fadeInTestimonial 0.6s ease-out 0.7s forwards;
+    opacity: 0;
+}
+.testimonial-card:nth-child(3), .testimonial-card:nth-child(4) {
+    margin-top: 0; /* Removido el margin-top para desktop */
+}
+/* Media query para tablets */
+@media (max-width: 1024px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 800px;
+    }
+    .testimonial-card {
+        max-width: 380px;
+        height: 500px;
+    }
+    .testimonial-card:nth-child(3), .testimonial-card:nth-child(4) {
+        margin-top: 1rem; /* Mantener margin-top para tablets */
+    }
+}
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 320px;
+    }
+    .testimonial-card {
+        margin-top: 0 !important;
+        max-width: 300px;
+        height: 480px;
+    }
+    .card-image-container {
+        height: 60%;
+    }
+    /* Usar los mismos estilos de desktop para las imágenes en móvil */
+    .testimonial-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+        background-color: #f5f5f5;
+    }
+    /* Estilo específico para la imagen de Erika - MÁS ZOOM EN MÓVIL */
+    .testimonial-card:nth-child(1) .testimonial-image {
+        transform: scale(1.25);
+        object-position: center 10%;
+    }
+    /* Estilo específico para la imagen de Angela - MÁS ZOOM EN MÓVIL */
+    .testimonial-card:nth-child(2) .testimonial-image {
+        transform: scale(1.7) translateY(40px);
+        object-position: center center;
+    }
+    /* Estilo específico para la imagen de Angelina */
+    .testimonial-card:nth-child(3) .testimonial-image {
+        object-position: center 0%;
+    }
+    /* Estilo específico para la imagen de León */
+    .testimonial-card:nth-child(4) .testimonial-image {
+        transform: scale(1.3);
+        object-position: center 10%;
+    }
+    .testimonial-card:hover .testimonial-image {
+        transform: scale(1.05);
+    }
+    /* Hover específico para cada imagen - MÁS ZOOM EN MÓVIL */
+    .testimonial-card:nth-child(1):hover .testimonial-image {
+        transform: scale(1.3);
+    }
+    .testimonial-card:nth-child(2):hover .testimonial-image {
+        transform: scale(1.75) translateY(40px);
+    }
+    .testimonial-card:nth-child(4):hover .testimonial-image {
+        transform: scale(1.35);
+    }
+    .testimonial-content {
+        /* ... */
+    }
+    .testimonials blockquote {
+        -webkit-line-clamp: 5;
+    }
+}
+/* Additional mobile optimizations */
+@media (max-width: 480px) {
+    .testimonials-grid {
+        max-width: 280px;
+    }
+    .testimonial-card {
+        max-width: 260px;
+        height: 450px;
+    }
+}
+/* Para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .testimonials-grid {
+        max-width: 250px;
+    }
+    .testimonial-card {
+        max-width: 240px;
+        height: 420px;
+    }
+}
 </style>
 
 <script>
