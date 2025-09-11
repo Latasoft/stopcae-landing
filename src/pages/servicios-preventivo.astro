@@ -233,32 +233,12 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
                         <div class="form-group">
 <label for="servicio">Tipo de Servicio</label>
 <select id="servicio" name="servicio" required >
-  <option value="plan-excepcion" selected>Plan Excepción</option>
+  <option value="plan-preventivo" selected>Plan Preventivo</option>
 </select>
                             <div id="servicio-help" class="sr-only">Selecciona el tipo de servicio que necesitas</div>
                         </div>
                     </div>
                     
-                                        <div class="form-group">
-                        <fieldset>
-                            <legend style="text-align: center; display: block; font-weight: 600; margin-bottom: 1rem;">¿Cuál es tu situación actual? *</legend>
-                            <div class="form-options" role="radiogroup" aria-labelledby="status-legend">
-                                        <label class="option">
-                                    <input type="radio" name="status" value="pagando" required aria-describedby="status-help">
-                                            <span>Estoy pagando mi CAE</span>
-                                        </label>
-                                        <label class="option">
-                                    <input type="radio" name="status" value="nopagando" required aria-describedby="status-help">
-                                            <span>Ya dejé de pagar</span>
-                                        </label>
-                                        <label class="option">
-    <input type="radio" name="status" value="recibi-demanda">
-    <span>Ya recibí la demanda</span>
-</label>
-                            </div>
-                            <div id="status-help" class="sr-only">Selecciona tu situación actual con respecto al CAE</div>
-                        </fieldset>
-                                    </div>
 
                                         <div class="form-group">
                         <label for="mensaje">Cuéntanos tu situación</label>
