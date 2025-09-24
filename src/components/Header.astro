@@ -691,6 +691,12 @@ if (currentPath === '/') {
         gap: 0.3rem;
         position: relative;
         cursor: pointer;
+        /* Mejorar soporte touch para iOS */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        touch-action: manipulation;
     }
     
     .dropdown-toggle:hover {
@@ -700,9 +706,11 @@ if (currentPath === '/') {
     .dropdown-icon {
         font-size: 0.7rem;
         transition: transform 0.3s ease;
+        pointer-events: none;
     }
     
-    .dropdown-container:hover .dropdown-icon {
+    .dropdown-container:hover .dropdown-icon,
+    .dropdown-container.active .dropdown-icon {
         transform: rotate(180deg);
     }
     
@@ -726,7 +734,8 @@ if (currentPath === '/') {
         backdrop-filter: blur(10px);
     }
     
-    .dropdown-container:hover .dropdown-menu {
+    .dropdown-container:hover .dropdown-menu,
+    .dropdown-container.active .dropdown-menu {
         opacity: 1;
         visibility: visible;
         transform: translateX(-50%) translateY(0);
@@ -1144,6 +1153,72 @@ if (currentPath === '/') {
         }
     }
     
+    /* Estilos específicos para dispositivos táctiles (iOS Safari) */
+    @media (hover: none) and (pointer: coarse) {
+        .dropdown-toggle {
+            -webkit-tap-highlight-color: rgba(202, 1, 1, 0.3);
+            tap-highlight-color: rgba(202, 1, 1, 0.3);
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+            min-height: 44px; /* iOS recomendado para touch targets */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dropdown-container .dropdown-menu {
+            /* Asegurar que el dropdown sea visible en touch */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-container.active .dropdown-menu {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateX(-50%) translateY(0) !important;
+        }
+        
+        /* Mejorar el área táctil en móvil */
+        @media (max-width: 768px) {
+            .dropdown-toggle {
+                padding: 0.8rem 1rem;
+                min-height: 48px;
+                font-size: 1rem;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                width: 100%;
+                box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+                border-radius: 8px;
+                margin: 0.5rem 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease, padding 0.3s ease;
+                padding: 0;
+            }
+            
+            .dropdown-container.active .dropdown-menu {
+                max-height: 300px;
+                padding: 0.5rem 0;
+            }
+            
+            .dropdown-link {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+            }
+            
+            .dropdown-link:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+    
     /* Ultra-wide screens */
     @media (min-width: 1920px) {
         .dropdown-menu {
@@ -1205,28 +1280,61 @@ if (currentPath === '/') {
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         
         if (dropdownContainer && dropdownToggle) {
+            let touchStarted = false;
+            
             // Desktop hover functionality
             dropdownContainer.addEventListener('mouseenter', () => {
-                if (window.innerWidth > 768) {
+                if (window.innerWidth > 768 && !touchStarted) {
                     dropdownContainer.classList.add('active');
                 }
             });
             
             dropdownContainer.addEventListener('mouseleave', () => {
-                if (window.innerWidth > 768) {
+                if (window.innerWidth > 768 && !touchStarted) {
                     dropdownContainer.classList.remove('active');
                 }
             });
             
-            // Click functionality for both desktop and mobile
+            // Touch events para dispositivos móviles (especialmente iOS)
+            dropdownToggle.addEventListener('touchstart', (e) => {
+                touchStarted = true;
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Toggle dropdown
+                dropdownContainer.classList.toggle('active');
+                
+                // Para mobile, asegurar que el nav menu se mantenga abierto
+                if (window.innerWidth <= 768) {
+                    const navMenu = document.getElementById('nav-menu');
+                    if (navMenu) {
+                        navMenu.classList.add('active');
+                        if (dropdownContainer.classList.contains('active')) {
+                            navMenu.classList.add('dropdown-expanded');
+                        } else {
+                            navMenu.classList.remove('dropdown-expanded');
+                        }
+                    }
+                }
+                
+                // Reset touch flag after a delay
+                setTimeout(() => { touchStarted = false; }, 300);
+            });
+            
+            // Click functionality para desktop y como fallback
             dropdownToggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Toggle dropdown for both desktop and mobile
+                // Si ya se manejó con touch, no procesar el click
+                if (touchStarted) {
+                    return;
+                }
+                
+                // Toggle dropdown
                 dropdownContainer.classList.toggle('active');
                 
-                // For mobile, ensure the nav menu stays open and expand it
+                // Para mobile, asegurar que el nav menu se mantenga abierto
                 if (window.innerWidth <= 768) {
                     const navMenu = document.getElementById('nav-menu');
                     if (navMenu) {
@@ -1240,9 +1348,23 @@ if (currentPath === '/') {
                 }
             });
             
-            // Close dropdown when clicking outside
+            // Close dropdown when clicking/touching outside
             document.addEventListener('click', (e) => {
-                if (!dropdownContainer.contains(e.target) && 
+                if (!dropdownContainer.contains(e.target as Node) && 
+                    dropdownContainer.classList.contains('active')) {
+                    dropdownContainer.classList.remove('active');
+                    
+                    // Remove dropdown-expanded class from nav-menu
+                    const navMenu = document.getElementById('nav-menu');
+                    if (navMenu) {
+                        navMenu.classList.remove('dropdown-expanded');
+                    }
+                }
+            });
+            
+            // Close dropdown when touching outside (iOS specific)
+            document.addEventListener('touchstart', (e) => {
+                if (!dropdownContainer.contains(e.target as Node) && 
                     dropdownContainer.classList.contains('active')) {
                     dropdownContainer.classList.remove('active');
                     
