@@ -6,20 +6,48 @@ import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 
-const sliderImages = [
+// Imágenes para desktop (webp y png de alta calidad)
+const desktopImages = [
     {
-        src: '/assets/img_prov_1.webp',
-        alt: 'Familia feliz representando un futuro sin deudas'
+        src: '/assets/pareja_feliz_con_auto_propio.webp',
+        alt: 'Pareja feliz con auto propio'
     },
     {
-        src: '/assets/img_prov_2.avif',
-        alt: 'Auto nuevo representando las posibilidades después de resolver deudas'
+        src: '/assets/estabilidad_financiera_pareja_en_vacaciones.webp',
+        alt: 'Pareja de jovenes despreocupados de vacaciones'
     },
     {
-        src: '/assets/img_prov_3.avif',
-        alt: 'Casa moderna representando la estabilidad financiera'
+        src: '/assets/pareja_con_casa_propia_e_hija.webp',
+        alt: 'Casa moderna pareja e hijo representando la estabilidad financiera'
+    },
+    {
+        src: '/assets/celebracion_de_jovenes_despreocupados.png',
+        alt: 'Jovenes celebran despreocupados'
     }
 ];
+
+// Imágenes para mobile (jpeg más ligeras)
+const mobileImages = [
+    {
+        src: '/assets/pareja_feliz_con_auto_propio.jpeg',
+        alt: 'Pareja feliz con auto propio'
+    },
+    {
+        src: '/assets/estabilidad_financiera_pareja_en_vacaciones.jpeg',
+        alt: 'Pareja de jovenes despreocupados de vacaciones'
+    },
+    {
+        src: '/assets/pareja_con_casa_propia_e_hija.jpeg',
+        alt: 'Casa moderna pareja e hijo representando la estabilidad financiera'
+    },
+    {
+        src: '/assets/celebracion_de_jovenes_despreocupados.jpeg',
+        alt: 'Jovenes celebran despreocupados'
+    }
+];
+
+// Determinar qué imágenes usar (por defecto desktop, se cambiará con JS)
+const sliderImages = desktopImages;
 ---
 
 
@@ -60,9 +88,15 @@ const sliderImages = [
 
 <section class="hero-slider">
     <div class="slider-container">
-        {sliderImages.map((image) => (
-            <div class="slide">
-                <img src={image.src} alt={image.alt} />
+        {sliderImages.map((image, index) => (
+            <div class="slide" data-slide-index={index}>
+                <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    data-desktop-src={desktopImages[index].src}
+                    data-mobile-src={mobileImages[index].src}
+                    class="slide-image"
+                />
                 <div class="slide-overlay"></div>
             </div>
         ))}
@@ -388,12 +422,38 @@ const sliderImages = [
         transform: scale(1);
     }
 
-    .slide img {
+    .slide img, .slide-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top;
+        object-position: center;
         filter: brightness(0.8) contrast(1.1);
+        transition: all 0.5s ease;
+    }
+
+    /* Optimizaciones específicas para desktop */
+    @media (min-width: 1024px) {
+        .slide img, .slide-image {
+            object-fit: cover;
+            object-position: center center;
+            filter: brightness(0.75) contrast(1.15) saturate(1.1);
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        
+        /* Ajuste específico para imagen 3: pareja_con_casa_propia_e_hija - mostrar más arriba */
+        .slide[data-slide-index="2"] .slide-image {
+            object-position: center top;
+        }
+    }
+
+    /* Optimizaciones para móvil */
+    @media (max-width: 1023px) {
+        .slide img, .slide-image {
+            object-fit: cover;
+            object-position: center top;
+            filter: brightness(0.8) contrast(1.05);
+        }
     }
 
     .slide-overlay {
@@ -667,10 +727,11 @@ const sliderImages = [
         height: 12px;
         border-radius: 50%;
         background: rgba(255, 255, 255, 0.6);
-        cursor: pointer;
+        cursor: default;
         transition: all 0.3s ease;
         border: 2px solid rgba(255, 255, 255, 0.4);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        pointer-events: none;
     }
 
     .indicator.active {
@@ -678,12 +739,6 @@ const sliderImages = [
         transform: scale(1.2);
         border-color: rgba(255, 255, 255, 0.9);
         box-shadow: 0 4px 12px rgba(202, 1, 1, 0.5);
-    }
-
-    .indicator:hover {
-        background: rgba(255, 255, 255, 0.9);
-        transform: scale(1.1);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
     }
 
     /* Controles de navegación */
@@ -2425,6 +2480,33 @@ const sliderImages = [
         // Detectar si es un dispositivo móvil real (no solo por tamaño de pantalla)
         const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         
+        // Función para cambiar imágenes según tamaño de pantalla
+        function updateSliderImages() {
+            const slideImages = document.querySelectorAll('.slide-image');
+            const isDesktop = window.innerWidth >= 1024;
+            
+            slideImages.forEach((img) => {
+                const imgElement = img as HTMLImageElement;
+                if (isDesktop) {
+                    // Usar imágenes de desktop (.webp y .png)
+                    imgElement.src = imgElement.getAttribute('data-desktop-src') || imgElement.src;
+                } else {
+                    // Usar imágenes de mobile (.jpeg)
+                    imgElement.src = imgElement.getAttribute('data-mobile-src') || imgElement.src;
+                }
+            });
+        }
+        
+        // Ejecutar al cargar la página
+        updateSliderImages();
+        
+        // Ejecutar cuando cambie el tamaño de ventana
+        let resizeTimeout: NodeJS.Timeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(updateSliderImages, 250);
+        });
+        
         // Aplicar clase específica para dispositivos móviles reales
         if (isMobileDevice) {
             document.body.classList.add('real-mobile-device');
@@ -2475,10 +2557,7 @@ const sliderImages = [
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-    // Event listeners para indicadores
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => showSlide(index));
-    });
+    // Los indicadores ya no son clickeables - removido event listener
 
     // Iniciar el slider
     showSlide(0);
@@ -2486,8 +2565,8 @@ const sliderImages = [
     // Auto-play con intervalo
     const autoPlay = setInterval(nextSlide, 5000);
     
-    // Pausar auto-play al hacer hover sobre controles
-    const controls = [prevBtn, nextBtn, ...indicators];
+    // Pausar auto-play al hacer hover sobre controles (solo botones prev/next)
+    const controls = [prevBtn, nextBtn];
     controls.forEach(control => {
         if (control) {
             control.addEventListener('mouseenter', () => clearInterval(autoPlay));
