@@ -55,20 +55,33 @@ const sliderImages = desktopImages;
     <head>
     <meta name="description" content="Defensa legal CAE, elimina tu deuda estudiantil con STOP CAE. Abogados expertos en demandas, prescripción y soluciones legales para estudiantes en Chile." />
     <script type="application/ld+json">
-    {
+     {
         "@context": "https://schema.org",
         "@type": "Review",
         "itemReviewed": {
             "@type": "LegalService",
-            "name": "StopCAE",
-            "description": "Defensa legal especializada en demandas por deuda estudiantil CAE"
+            "@id": "https://stopcae.cl",
+            "name": "StopCAE - Defensa Legal CAE",
+            "description": "Defensa legal especializada en demandas por deuda estudiantil CAE en Chile",
+            "provider": {
+                "@type": "Organization",
+                "@id": "https://stopcae.cl",
+                "name": "StopCAE",
+                "url": "https://stopcae.cl",
+                "description": "Abogados especialistas en defensa legal contra demandas CAE"
+            },
+            "serviceType": "Defensa Legal",
+            "areaServed": {
+                "@type": "Country",
+                "name": "Chile"
+            }
         },
         "reviewRating": {
             "@type": "Rating",
             "ratingValue": "5",
             "bestRating": "5"
         },
-        "name": "Mi historia con el CAE: de la Angustia a la Tranquilidad",
+        "name": "🎓 Mi historia con el CAE: de la Angustia a la Tranquilidad",
         "reviewBody": "Cuando salí de la U como ingeniero en mecánica automotriz, el CAE se volvió imposible de pagar. Llegó la demanda y fue muy estresante. Gracias a StopCAE, mi juicio terminó, ya no tengo ninguna demanda encima y pude volver a enfocarme en lo que importa. Los recomiendo a ojos cerrados.",
         "author": {
             "@type": "Person",
@@ -80,7 +93,8 @@ const sliderImages = desktopImages;
             "@type": "Organization",
             "name": "StopCAE",
             "url": "https://stopcae.cl"
-        }
+        },
+        "datePublished": "2024-01-15"
     }
     </script>
 </head>
