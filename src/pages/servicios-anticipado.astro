@@ -12,6 +12,35 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 <Layout>
     <head>
     <meta name="description" content="Stop Anticipado: Defensa judicial anticipada para el CAE. Abogados expertos en demandas estudiantiles en STOP CAE." />
+    
+    <!-- JSON-LD Structured Data for Review -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Review",
+      "name": "🎓 Mi historia con el CAE: de la Angustia a la Tranquilidad",
+      "author": {
+        "@type": "Person",
+        "name": "DYLAN F.",
+        "jobTitle": "Ingeniero en Mecánica Automotriz",
+        "additionalProperty": {
+          "@type": "PropertyValue",
+          "name": "age",
+          "value": "28 años"
+        }
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5
+      },
+      "itemReviewed": {
+        "@type": "LegalService",
+        "name": "Stop CAE - Servicios Legales",
+        "description": "Servicios legales especializados en defensa judicial anticipada para el CAE"
+      }
+    }
+    </script>
     </head>
     <Header />
     
@@ -2709,10 +2738,7 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
             text-align: left;
         }
 
-        .banner-title {
-            font-size: clamp(1.3rem, 3.5vw, 1.8rem);
-            text-align: left;
-        }
+  
 
         .illustration-placeholder {
             width: 90px;
